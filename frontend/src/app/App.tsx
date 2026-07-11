@@ -1,8 +1,9 @@
 import { Route, Routes } from 'react-router'
-import { HomePage } from './pages/HomePage'
-import { PlaceholderPage } from './pages/PlaceholderPage'
-import { RuleDetailPage } from './pages/RuleDetailPage'
-import { RulesPage } from './pages/RulesPage'
+import { HomePage } from '../features/home/HomePage'
+import { RuleDetailPage } from '../features/rules/pages/RuleDetailPage'
+import { RulesPage } from '../features/rules/pages/RulesPage'
+import { SearchResultsPage } from '../features/search/pages/SearchResultsPage'
+import { PlaceholderPage } from '../shared/pages/PlaceholderPage'
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Route path="/" element={<HomePage />} />
       <Route path="/rules" element={<RulesPage />} />
       <Route path="/rules/:ruleId" element={<RuleDetailPage />} />
+      <Route path="/search" element={<SearchResultsPage />} />
       <Route
         path="/rotation"
         element={

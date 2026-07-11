@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest'
-import { rules } from '../data/rules'
+import { rules } from '../../rules/data/rules'
 import { normalizeSearchText, searchRules } from '../utils/searchRules'
 
 describe('normalizeSearchText', () => {

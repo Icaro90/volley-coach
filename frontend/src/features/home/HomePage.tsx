@@ -1,7 +1,7 @@
-import { AppHeader } from '../components/AppHeader'
-import { LearningShortcutCard } from '../components/LearningShortcutCard'
-import { SearchForm } from '../components/SearchForm'
-import { homeShortcuts } from '../data/homeShortcuts'
+import { SearchForm } from '../search/components/SearchForm'
+import { AppHeader } from '../../shared/components/AppHeader'
+import { LearningShortcutCard } from './components/LearningShortcutCard'
+import { homeShortcuts } from './data/homeShortcuts'
 
 export function HomePage() {
   return (

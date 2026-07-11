@@ -1,4 +1,4 @@
-import type { VolleyballRule } from '../data/rules'
+import type { VolleyballRule } from '../../rules/data/rules'
 
 export function normalizeSearchText(value: string) {
   return value

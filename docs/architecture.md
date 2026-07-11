@@ -26,7 +26,7 @@ O backend NestJS, o Prisma e o PostgreSQL permanecem previstos para quando uma f
 | --- | --- | --- |
 | `/` | Apresentar a Home e os atalhos de aprendizagem | Implementada nesta feature |
 | `/rules` | Consultar regras básicas | Implementada na feature `002-rules` |
-| `/search` | Exibir resultados de uma busca de regras | Planejada na feature `003-search` |
+| `/search` | Exibir resultados de uma busca de regras | Implementada na feature `003-search` |
 | `/rotation` | Explicar rodízio | Destino temporário até a spec própria |
 | `/quiz` | Iniciar quiz | Destino temporário até a spec própria |
 
@@ -51,7 +51,7 @@ Route `/rules/:ruleId`     -> detalhe de uma regra
 
 Cada regra possui um identificador estável para a URL, título, descrição curta, explicação, exemplo prático, resultado da jogada e metadados da fonte. A ilustração é referenciada como um recurso local e precisa de texto alternativo descritivo.
 
-Os dados ficarão em `frontend/src/data/rules.ts` e os diagramas vetoriais simples em `frontend/src/assets/rules/`. Essa separação evita que componentes de apresentação conheçam detalhes de conteúdo ou de arquivos estáticos.
+Os dados ficam em `frontend/src/features/rules/data/rules.ts` e os diagramas vetoriais simples em `frontend/src/features/rules/assets/rules/`. Essa separação evita que componentes de apresentação conheçam detalhes de conteúdo ou de arquivos estáticos.
 
 ### Fonte e revisão do conteúdo
 
@@ -88,7 +88,7 @@ SearchResultsPage
 
 - `SearchForm`: componente controlado para digitar e enviar o termo, com mensagem local para uma submissão vazia.
 - `SearchResultsPage`: lê `q` da URL e apresenta o resultado derivado, sem armazená-lo em estado React.
-- `searchRules`: função pura em `frontend/src/utils/searchRules.ts`, responsável por normalizar texto e filtrar regras.
+- `searchRules`: função pura em `frontend/src/features/search/utils/searchRules.ts`, responsável por normalizar texto e filtrar regras.
 
 ### Normalização
 
@@ -98,16 +98,25 @@ Antes da comparação, termo e campos pesquisáveis são convertidos para minús
 
 O contrato da função local isola a interface da estratégia de busca. Quando o catálogo crescer, a implementação poderá ser substituída por uma API ou mecanismo full-text, preservando a rota e o formato dos resultados.
 
-## Organização do frontend
+## Estrutura do frontend
 
-Para a feature Home, a composição esperada é pequena:
+O frontend é organizado por feature. Cada feature mantém próximas as páginas, componentes, dados, assets, utilitários e testes que pertencem ao mesmo domínio.
 
-- `HomePage`: organiza a página e seus blocos.
-- Cabeçalho: identifica o aplicativo.
-- Busca: recebe o texto de uma dúvida, sem executar pesquisa nesta feature.
-- Cartões de atalho: levam às áreas de regras, rodízio e quiz.
+```text
+frontend/src/
+├── app/                         # composição global de rotas
+├── features/
+│   ├── home/                    # Home, atalhos e seus dados
+│   ├── rules/                   # lista, detalhe, conteúdo, SVGs e testes de regras
+│   └── search/                  # formulário, resultados, utilitário e testes de busca
+├── shared/
+│   ├── components/              # componentes reutilizados entre features
+│   └── pages/                   # páginas temporárias reutilizáveis
+├── index.css                    # estilos globais mínimos
+└── main.tsx                     # ponto de entrada React
+```
 
-Componentes devem ter uma responsabilidade visual clara. Dados que alimentam os três cartões podem ficar em uma estrutura estática local até existir uma necessidade concreta de API.
+Uma peça deve ficar dentro da feature enquanto tiver um único contexto de negócio. Ela só deve ir para `shared` quando for reutilizada por mais de uma feature e não carregar regra de negócio específica. Essa regra evita um diretório global de componentes sem dono claro.
 
 ## Decisões de qualidade
 

@@ -22,7 +22,7 @@ export type VolleyballRule = {
   example: string
   outcome: string
   diagram: {
-    fileName: string
+    src: string
     alt: string
   }
   source: RuleSource
@@ -46,7 +46,7 @@ export const rules: VolleyballRule[] = [
       'Depois de uma troca de bolas, seu ataque toca o chão dentro da quadra adversária. Sua equipe marca um ponto.',
     outcome: 'Quem vence o rally recebe um ponto.',
     diagram: {
-      fileName: 'scoring.svg',
+      src: scoringDiagram,
       alt: 'Bola tocando o chão dentro da quadra adversária para indicar um ponto.',
     },
     source: {
@@ -64,7 +64,7 @@ export const rules: VolleyballRule[] = [
       'Ao sacar, o pé pisa na linha de fundo antes do contato com a bola. Isso é falta de saque.',
     outcome: 'Uma falta de saque dá um ponto e o direito de sacar ao adversário.',
     diagram: {
-      fileName: 'service.svg',
+      src: serviceDiagram,
       alt: 'Jogador sacando atrás da linha de fundo, sem tocar a linha no momento do golpe.',
     },
     source: {
@@ -82,7 +82,7 @@ export const rules: VolleyballRule[] = [
       'Após um bloqueio, a equipe faz recepção, levantamento e ataque. A jogada é válida porque o bloqueio não contou como um dos três toques.',
     outcome: 'Usar quatro toques antes de devolver a bola é falta e dá ponto ao adversário.',
     diagram: {
-      fileName: 'three-hits.svg',
+      src: threeHitsDiagram,
       alt: 'Sequência de três contatos da equipe com a bola antes de enviá-la sobre a rede.',
     },
     source: {
@@ -100,7 +100,7 @@ export const rules: VolleyballRule[] = [
       'No levantamento, a pessoa segura a bola por um instante antes de empurrá-la. Isso caracteriza condução.',
     outcome: 'Condução ou dois toques irregulares são faltas e dão ponto ao adversário.',
     diagram: {
-      fileName: 'ball-handling.svg',
+      src: ballHandlingDiagram,
       alt: 'Comparação entre uma bola rebatida e uma bola segurada durante o toque.',
     },
     source: {
@@ -118,7 +118,7 @@ export const rules: VolleyballRule[] = [
       'Ao atacar, a pessoa toca a faixa da rede entre as antenas antes de terminar a ação. É falta.',
     outcome: 'A falta na rede dá ponto ao adversário.',
     diagram: {
-      fileName: 'net-contact.svg',
+      src: netContactDiagram,
       alt: 'Jogador tocando a rede entre as antenas durante um ataque.',
     },
     source: {
@@ -136,7 +136,7 @@ export const rules: VolleyballRule[] = [
       'A bola cai perto da linha de fundo e uma pequena parte dela toca a linha. A bola é dentro.',
     outcome: 'Se a bola cai dentro da quadra adversária, sua equipe marca ponto; se sai da quadra após seu toque, o ponto é do adversário.',
     diagram: {
-      fileName: 'ball-in-or-out.svg',
+      src: ballInOrOutDiagram,
       alt: 'Bola tocando a linha para indicar bola dentro e bola totalmente fora da linha para indicar bola fora.',
     },
     source: {
@@ -145,3 +145,9 @@ export const rules: VolleyballRule[] = [
     },
   },
 ]
+import ballHandlingDiagram from '../assets/rules/ball-handling.svg'
+import ballInOrOutDiagram from '../assets/rules/ball-in-or-out.svg'
+import netContactDiagram from '../assets/rules/net-contact.svg'
+import scoringDiagram from '../assets/rules/scoring.svg'
+import serviceDiagram from '../assets/rules/service.svg'
+import threeHitsDiagram from '../assets/rules/three-hits.svg'

@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router'
 import { HomePage } from './pages/HomePage'
 import { PlaceholderPage } from './pages/PlaceholderPage'
+import { RuleDetailPage } from './pages/RuleDetailPage'
 import { RulesPage } from './pages/RulesPage'
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/rules" element={<RulesPage />} />
+      <Route path="/rules/:ruleId" element={<RuleDetailPage />} />
       <Route
         path="/rotation"
         element={

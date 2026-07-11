@@ -25,7 +25,7 @@ O backend NestJS, o Prisma e o PostgreSQL permanecem previstos para quando uma f
 | Rota | Responsabilidade | Estado inicial |
 | --- | --- | --- |
 | `/` | Apresentar a Home e os atalhos de aprendizagem | Implementada nesta feature |
-| `/rules` | Consultar regras básicas | Planejada na feature `002-rules` |
+| `/rules` | Consultar regras básicas | Implementada na feature `002-rules` |
 | `/rotation` | Explicar rodízio | Destino temporário até a spec própria |
 | `/quiz` | Iniciar quiz | Destino temporário até a spec própria |
 

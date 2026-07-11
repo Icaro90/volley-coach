@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 270" fill="none">
+  <title>Jogador tocando a rede durante uma ação de ataque</title>
+  <rect width="480" height="270" rx="24" fill="#FFF7ED"/>
+  <rect x="52" y="55" width="376" height="165" rx="8" fill="#DBEAFE" stroke="#1E3A8A" stroke-width="4"/>
+  <path d="M240 45V230" stroke="#1E3A8A" stroke-width="6"/>
+  <path d="M226 65H254M226 85H254M226 105H254M226 125H254M226 145H254M226 165H254M226 185H254M226 205H254" stroke="#93C5FD" stroke-width="3"/>
+  <circle cx="177" cy="100" r="15" fill="#1D4ED8"/>
+  <path d="M177 116V158M177 128L207 143M177 128L152 143M177 158L156 190M177 158L197 190" stroke="#1D4ED8" stroke-width="9" stroke-linecap="round"/>
+  <path d="M207 143L235 128" stroke="#1D4ED8" stroke-width="9" stroke-linecap="round"/>
+  <circle cx="212" cy="117" r="13" fill="#F97316" stroke="#9A3412" stroke-width="3"/>
+  <path d="M268 88L324 144M324 88L268 144" stroke="#DC2626" stroke-width="10" stroke-linecap="round"/>
+</svg>

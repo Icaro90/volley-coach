@@ -26,6 +26,7 @@ O backend NestJS, o Prisma e o PostgreSQL permanecem previstos para quando uma f
 | --- | --- | --- |
 | `/` | Apresentar a Home e os atalhos de aprendizagem | Implementada nesta feature |
 | `/rules` | Consultar regras básicas | Implementada na feature `002-rules` |
+| `/search` | Exibir resultados de uma busca de regras | Planejada na feature `003-search` |
 | `/rotation` | Explicar rodízio | Destino temporário até a spec própria |
 | `/quiz` | Iniciar quiz | Destino temporário até a spec própria |
 
@@ -63,6 +64,39 @@ O conteúdo desta feature referencia as **Official Volleyball Rules 2025–2028*
 - Um identificador inexistente apresenta uma página de conteúdo não encontrado com link de retorno para `/rules`.
 
 Não haverá estado global, TanStack Query ou chamadas HTTP nesta feature. Essas ferramentas passam a ser relevantes quando o conteúdo deixar de ser estático ou depender de servidor.
+
+## Busca de regras
+
+A feature `003-search` realiza uma busca local sobre os dados de `rules.ts`. O termo enviado fica na URL, o que torna o resultado compartilhável e preserva a busca ao atualizar a página ou usar a navegação do navegador.
+
+```text
+SearchForm na Home
+      |
+      | envia termo não vazio
+      v
+/search?q=termo
+      |
+      v
+SearchResultsPage
+      |
+      +-- lê `q` com useSearchParams
+      +-- chama função pura de busca
+      +-- renderiza resultados ou estado vazio
+```
+
+### Organização
+
+- `SearchForm`: componente controlado para digitar e enviar o termo, com mensagem local para uma submissão vazia.
+- `SearchResultsPage`: lê `q` da URL e apresenta o resultado derivado, sem armazená-lo em estado React.
+- `searchRules`: função pura em `frontend/src/utils/searchRules.ts`, responsável por normalizar texto e filtrar regras.
+
+### Normalização
+
+Antes da comparação, termo e campos pesquisáveis são convertidos para minúsculas, recebem `trim()` e têm marcas diacríticas removidas por normalização Unicode. Assim, `pontuacao` encontra `Pontuação` sem introduzir uma biblioteca de busca.
+
+### Evolução prevista
+
+O contrato da função local isola a interface da estratégia de busca. Quando o catálogo crescer, a implementação poderá ser substituída por uma API ou mecanismo full-text, preservando a rota e o formato dos resultados.
 
 ## Organização do frontend
 

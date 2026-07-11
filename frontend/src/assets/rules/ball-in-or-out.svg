@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 270" fill="none">
+  <title>Bola tocando a linha e bola totalmente fora da linha</title>
+  <rect width="480" height="270" rx="24" fill="#FFF7ED"/>
+  <rect x="34" y="38" width="190" height="194" rx="16" fill="#EFF6FF" stroke="#93C5FD" stroke-width="3"/>
+  <rect x="256" y="38" width="190" height="194" rx="16" fill="#FEF2F2" stroke="#FCA5A5" stroke-width="3"/>
+  <path d="M56 179H202" stroke="#1E3A8A" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="116" cy="167" r="24" fill="#F97316" stroke="#9A3412" stroke-width="4"/>
+  <path d="M79 201L94 215L126 181" stroke="#15803D" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M278 179H424" stroke="#1E3A8A" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="342" cy="136" r="24" fill="#F97316" stroke="#9A3412" stroke-width="4"/>
+  <path d="M365 196L405 216M405 196L365 216" stroke="#DC2626" stroke-width="8" stroke-linecap="round"/>
+</svg>

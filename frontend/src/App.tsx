@@ -1,20 +1,15 @@
 import { Route, Routes } from 'react-router'
 import { HomePage } from './pages/HomePage'
 import { PlaceholderPage } from './pages/PlaceholderPage'
+import { RuleDetailPage } from './pages/RuleDetailPage'
+import { RulesPage } from './pages/RulesPage'
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route
-        path="/rules"
-        element={
-          <PlaceholderPage
-            title="Regras básicas"
-            description="Em breve, consulte aqui as regras fundamentais do vôlei."
-          />
-        }
-      />
+      <Route path="/rules" element={<RulesPage />} />
+      <Route path="/rules/:ruleId" element={<RuleDetailPage />} />
       <Route
         path="/rotation"
         element={

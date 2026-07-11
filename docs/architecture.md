@@ -25,9 +25,44 @@ O backend NestJS, o Prisma e o PostgreSQL permanecem previstos para quando uma f
 | Rota | Responsabilidade | Estado inicial |
 | --- | --- | --- |
 | `/` | Apresentar a Home e os atalhos de aprendizagem | Implementada nesta feature |
-| `/rules` | Consultar regras básicas | Destino temporário até a spec própria |
+| `/rules` | Consultar regras básicas | Implementada na feature `002-rules` |
 | `/rotation` | Explicar rodízio | Destino temporário até a spec própria |
 | `/quiz` | Iniciar quiz | Destino temporário até a spec própria |
+
+## Consulta de regras básicas
+
+A feature `002-rules` permanece inteiramente no frontend. As seis regras iniciais serão mantidas em uma fonte de dados estática tipada, sem API ou banco de dados.
+
+```text
+Route `/rules`             -> lista de regras
+Route `/rules/:ruleId`     -> detalhe de uma regra
+                                  |
+                                  v
+                      dados estáticos tipados
+                                  |
+                                  +-- explicação e exemplo
+                                  +-- resultado da jogada
+                                  +-- referência da fonte oficial
+                                  +-- ilustração SVG simples
+```
+
+### Modelo de conteúdo esperado
+
+Cada regra possui um identificador estável para a URL, título, descrição curta, explicação, exemplo prático, resultado da jogada e metadados da fonte. A ilustração é referenciada como um recurso local e precisa de texto alternativo descritivo.
+
+Os dados ficarão em `frontend/src/data/rules.ts` e os diagramas vetoriais simples em `frontend/src/assets/rules/`. Essa separação evita que componentes de apresentação conheçam detalhes de conteúdo ou de arquivos estáticos.
+
+### Fonte e revisão do conteúdo
+
+O conteúdo desta feature referencia as **Official Volleyball Rules 2025–2028** da FIVB. Cada item de conteúdo deve registrar a edição da regra, URL da fonte e data da revisão. O detalhe da regra poderá apresentar uma referência curta à fonte, sem reproduzir o texto oficial integralmente.
+
+### Rotas e estado de erro
+
+- `/rules` lista as seis regras aprovadas na spec `002-rules`.
+- `/rules/:ruleId` busca o item pelo identificador estável nos dados locais.
+- Um identificador inexistente apresenta uma página de conteúdo não encontrado com link de retorno para `/rules`.
+
+Não haverá estado global, TanStack Query ou chamadas HTTP nesta feature. Essas ferramentas passam a ser relevantes quando o conteúdo deixar de ser estático ou depender de servidor.
 
 ## Organização do frontend
 

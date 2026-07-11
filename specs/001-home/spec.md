@@ -22,7 +22,7 @@ Jogador ou jogadora iniciante de vôlei, principalmente em treinos ou partidas r
 ## Critérios de aceite
 
 - A Home apresenta o nome do aplicativo e uma descrição curta do seu propósito.
-- Um campo de pesquisa é visível sem que seja necessário rolar a página em uma visualização de celular comum.
+- Um campo de pesquisa é visível sem que seja necessário rolar a página em um viewport de `360 × 640` pixels CSS.
 - A tela disponibiliza atalhos claros para `Regras básicas`, `Rodízio` e `Quiz rápido`.
 - Cada atalho possui um título e uma breve descrição em linguagem simples.
 - Os atalhos são visualmente distinguíveis e fáceis de selecionar em telas pequenas.
@@ -40,8 +40,8 @@ Jogador ou jogadora iniciante de vôlei, principalmente em treinos ou partidas r
 
 ## Dependências
 
-- Definição posterior das rotas de regras, rodízio e quiz.
-- Conteúdo e ilustrações das áreas de destino, que não bloqueiam a construção visual inicial da Home.
+- As rotas `/rules`, `/rotation` e `/quiz`, já configuradas na aplicação para receber os atalhos da Home.
+- Conteúdo detalhado de rodízio e quiz, que será definido em suas próprias specs e não bloqueia a Home.
 
 ## Riscos
 

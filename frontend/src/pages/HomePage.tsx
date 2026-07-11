@@ -1,5 +1,7 @@
 import { AppHeader } from '../components/AppHeader'
+import { LearningShortcutCard } from '../components/LearningShortcutCard'
 import { SearchField } from '../components/SearchField'
+import { homeShortcuts } from '../data/homeShortcuts'
 
 export function HomePage() {
   return (
@@ -22,6 +24,17 @@ export function HomePage() {
             Qual é a sua dúvida?
           </h2>
           <SearchField />
+        </section>
+
+        <section className="mt-14" aria-labelledby="learning-title">
+          <h2 className="text-2xl font-bold tracking-tight text-slate-900" id="learning-title">
+            O que você quer aprender hoje?
+          </h2>
+          <ul className="mt-5 grid gap-4 sm:grid-cols-3">
+            {homeShortcuts.map((shortcut) => (
+              <LearningShortcutCard key={shortcut.path} shortcut={shortcut} />
+            ))}
+          </ul>
         </section>
       </main>
     </div>

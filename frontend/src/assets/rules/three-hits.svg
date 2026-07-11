@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 270" fill="none">
+  <title>Três contatos da equipe antes de devolver a bola</title>
+  <rect width="480" height="270" rx="24" fill="#FFF7ED"/>
+  <rect x="52" y="55" width="376" height="165" rx="8" fill="#DBEAFE" stroke="#1E3A8A" stroke-width="4"/>
+  <path d="M240 55V220" stroke="#1E3A8A" stroke-width="4"/>
+  <circle cx="105" cy="175" r="15" fill="#1D4ED8"/>
+  <circle cx="168" cy="122" r="15" fill="#1D4ED8"/>
+  <circle cx="213" cy="168" r="15" fill="#1D4ED8"/>
+  <path d="M118 166C130 152 140 142 151 132M181 132C193 144 199 151 204 155M225 157C270 131 302 112 352 107" stroke="#EA580C" stroke-width="6" stroke-linecap="round" stroke-dasharray="9 9"/>
+  <path d="M342 99L360 106L345 117" stroke="#EA580C" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="118" cy="158" r="10" fill="#F97316"/>
+  <circle cx="182" cy="131" r="10" fill="#F97316"/>
+  <circle cx="226" cy="157" r="10" fill="#F97316"/>
+  <circle cx="361" cy="106" r="14" fill="#F97316" stroke="#9A3412" stroke-width="3"/>
+</svg>

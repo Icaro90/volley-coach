@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 270" fill="none">
+  <title>Saque executado atrás da linha de fundo</title>
+  <rect width="480" height="270" rx="24" fill="#FFF7ED"/>
+  <rect x="72" y="35" width="336" height="170" rx="8" fill="#DBEAFE" stroke="#1E3A8A" stroke-width="4"/>
+  <path d="M240 35V205" stroke="#1E3A8A" stroke-width="4"/>
+  <path d="M72 205H408" stroke="#1E3A8A" stroke-width="6"/>
+  <path d="M86 232H394" stroke="#FB923C" stroke-width="4" stroke-dasharray="10 10"/>
+  <circle cx="138" cy="181" r="14" fill="#1D4ED8"/>
+  <path d="M138 195V226M138 204L116 215M138 204L157 191M138 226L120 247M138 226L155 247" stroke="#1D4ED8" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="177" cy="148" r="15" fill="#F97316" stroke="#9A3412" stroke-width="3"/>
+  <path d="M191 141C229 112 281 93 334 100" stroke="#EA580C" stroke-width="6" stroke-linecap="round" stroke-dasharray="10 10"/>
+  <path d="M324 92L342 100L325 110" stroke="#EA580C" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

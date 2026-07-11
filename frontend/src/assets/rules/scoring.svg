@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 270" fill="none">
+  <title>Ponto marcado com a bola dentro da quadra adversária</title>
+  <rect width="480" height="270" rx="24" fill="#FFF7ED"/>
+  <rect x="52" y="55" width="376" height="165" rx="8" fill="#DBEAFE" stroke="#1E3A8A" stroke-width="4"/>
+  <path d="M240 55V220M52 137.5H428" stroke="#1E3A8A" stroke-width="4"/>
+  <path d="M70 192H410" stroke="#93C5FD" stroke-width="2" stroke-dasharray="8 8"/>
+  <path d="M332 83C345 105 348 131 338 160" stroke="#EA580C" stroke-width="6" stroke-linecap="round"/>
+  <path d="M328 151L338 166L347 149" stroke="#EA580C" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="338" cy="178" r="17" fill="#F97316" stroke="#9A3412" stroke-width="4"/>
+  <path d="M322 178H354M338 162C344 171 344 185 338 194M338 162C332 171 332 185 338 194" stroke="#FFF7ED" stroke-width="2"/>
+  <circle cx="132" cy="165" r="12" fill="#1D4ED8"/>
+  <circle cx="180" cy="185" r="12" fill="#1D4ED8"/>
+  <circle cx="212" cy="154" r="12" fill="#1D4ED8"/>
+</svg>

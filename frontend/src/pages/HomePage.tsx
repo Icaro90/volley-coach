@@ -1,30 +1,29 @@
-import { Link } from 'react-router'
+import { AppHeader } from '../components/AppHeader'
+import { SearchField } from '../components/SearchField'
 
 export function HomePage() {
   return (
-    <main className="mx-auto max-w-2xl p-6">
-      <h1 className="text-3xl font-bold text-slate-900">Regras de Vôlei</h1>
-      <p className="mt-2 text-slate-600">Página inicial temporária.</p>
+    <div className="min-h-screen bg-slate-50">
+      <AppHeader />
 
-      <nav className="mt-6" aria-label="Áreas de aprendizagem">
-        <ul className="space-y-2">
-          <li>
-            <Link className="text-blue-700 underline" to="/rules">
-              Regras básicas
-            </Link>
-          </li>
-          <li>
-            <Link className="text-blue-700 underline" to="/rotation">
-              Rodízio
-            </Link>
-          </li>
-          <li>
-            <Link className="text-blue-700 underline" to="/quiz">
-              Quiz rápido
-            </Link>
-          </li>
-        </ul>
-      </nav>
-    </main>
+      <main className="mx-auto max-w-2xl px-5 py-16 sm:px-8 sm:py-24">
+        <p className="text-sm font-semibold tracking-wide text-orange-700 uppercase">
+          Aprenda na prática
+        </p>
+        <h1 className="mt-3 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+          Entenda as regras. Jogue com mais confiança.
+        </h1>
+        <p className="mt-5 max-w-xl text-lg leading-8 text-slate-600">
+          Explicações simples para tirar dúvidas e aproveitar melhor cada treino e partida.
+        </p>
+
+        <section className="mt-10" aria-labelledby="search-title">
+          <h2 className="mb-3 text-lg font-semibold text-slate-900" id="search-title">
+            Qual é a sua dúvida?
+          </h2>
+          <SearchField />
+        </section>
+      </main>
+    </div>
   )
 }

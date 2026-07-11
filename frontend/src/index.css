@@ -15,6 +15,10 @@ body {
   min-height: 100svh;
 }
 
+#root {
+  min-height: 100svh;
+}
+
 button,
 input {
   font: inherit;

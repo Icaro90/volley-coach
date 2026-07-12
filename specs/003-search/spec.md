@@ -24,7 +24,7 @@ Jogador ou jogadora iniciante de vôlei, em treino ou partida recreativa, que te
 
 - O campo de busca da Home pode ser enviado por teclado e aciona uma pesquisa.
 - A rota `/search` mantém o termo pesquisado no parâmetro `q` da URL.
-- A busca considera título, resumo e explicação das regras básicas.
+- A busca considera título, resumo, explicação e termos alternativos controlados das regras básicas.
 - A comparação não diferencia maiúsculas de minúsculas nem acentos.
 - A página de resultados mostra o termo pesquisado e a quantidade de resultados encontrados.
 - Cada resultado apresenta título, resumo e link para o detalhe da regra.
@@ -36,7 +36,7 @@ Jogador ou jogadora iniciante de vôlei, em treino ou partida recreativa, que te
 ## Fora do escopo
 
 - Busca em conteúdo de rodízio, quiz ou futuras funcionalidades.
-- Autocomplete, sugestões enquanto digita, correção ortográfica ou sinônimos.
+- Autocomplete, sugestões enquanto digita, correção ortográfica ou sinônimos livres.
 - Filtros, ordenação, histórico e pesquisas salvas.
 - Indexação no servidor, busca full-text no PostgreSQL ou TanStack Query.
 - Analytics de termos pesquisados.

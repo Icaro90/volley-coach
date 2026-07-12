@@ -10,8 +10,9 @@ Validação da feature `003-search`, realizada antes da revisão da Pull Request
 | --- | --- | --- |
 | Envio por teclado | `SearchForm` usa um elemento `form` com botão `submit` | Aprovado por inspeção de código |
 | Termo na URL | O formulário navega para `/search?q=...` e `SearchResultsPage` lê `q` com `useSearchParams` | Aprovado por inspeção de código |
-| Campos pesquisáveis | `searchRules` compara título, resumo e explicação | Aprovado por testes unitários |
-| Caixa e acentos | Normalização Unicode e testes para `pontuacao` e `SAQUE` | Aprovado por testes unitários |
+| Campos pesquisáveis | `searchRules` compara título, resumo, explicação e termos alternativos controlados | Aprovado por testes unitários |
+| Caixa, acentos e pontuação | Normalização Unicode e testes para `pontuacao`, `SAQUE` e perguntas pontuadas | Aprovado por testes unitários |
+| Dúvidas frequentes | Testes para `pode segurar a bola?` e `bola na linha vale?` | Aprovado por testes unitários |
 | Termo e quantidade | Página mostra `q` e `results.length` | Aprovado por inspeção de código |
 | Resultado com detalhe | `RuleListItem` exibe título, resumo e link para `/rules/:ruleId` | Aprovado por inspeção de código |
 | Sem resultado | Mensagem clara e link para `/rules` | Aprovado por inspeção de código |
@@ -34,11 +35,12 @@ Com `npm run dev`, confirmar:
 1. Na Home, enviar `pontuacao` por Enter e verificar `/search?q=pontuacao`.
 2. Abrir um resultado e confirmar a navegação para o detalhe da regra.
 3. Enviar o formulário vazio e verificar a mensagem de orientação.
-4. Abrir `/search?q=arremesso` e `/search` diretamente.
-5. Navegar com `Tab` e conferir foco visível em celular e desktop no DevTools.
+4. Pesquisar `pode segurar a bola?` e `bola na linha vale?` e confirmar os resultados esperados.
+5. Abrir `/search?q=arremesso` e `/search` diretamente.
+6. Navegar com `Tab` e conferir foco visível em celular e desktop no DevTools.
 
 ## Limitações conhecidas
 
 - A busca considera somente regras básicas estáticas.
-- Não há sinônimos, correção ortográfica, autocomplete ou busca no servidor.
+- Não há sinônimos livres, correção ortográfica, autocomplete ou busca no servidor.
 - Quando o catálogo crescer, a estratégia local deverá ser reavaliada.

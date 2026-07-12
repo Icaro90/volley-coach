@@ -88,11 +88,11 @@ SearchResultsPage
 
 - `SearchForm`: componente controlado para digitar e enviar o termo, com mensagem local para uma submissão vazia.
 - `SearchResultsPage`: lê `q` da URL e apresenta o resultado derivado, sem armazená-lo em estado React.
-- `searchRules`: função pura em `frontend/src/features/search/utils/searchRules.ts`, responsável por normalizar texto e filtrar regras.
+- `searchRules`: função pura em `frontend/src/features/search/utils/searchRules.ts`, responsável por normalizar texto, remover palavras funcionais e filtrar regras.
 
 ### Normalização
 
-Antes da comparação, termo e campos pesquisáveis são convertidos para minúsculas, recebem `trim()` e têm marcas diacríticas removidas por normalização Unicode. Assim, `pontuacao` encontra `Pontuação` sem introduzir uma biblioteca de busca.
+Antes da comparação, termo e campos pesquisáveis são convertidos para minúsculas, recebem `trim()`, têm marcas diacríticas removidas e removem pontuação. A busca compara palavras relevantes contra título, resumo, explicação e termos alternativos controlados por regra. Assim, `pontuacao` encontra `Pontuação` e `bola na linha vale?` encontra a regra de bola dentro ou fora sem introduzir uma biblioteca de busca.
 
 ### Evolução prevista
 

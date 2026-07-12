@@ -14,7 +14,7 @@ Manter o termo somente em `useState` faria o resultado depender da sessão atual
 
 Usar `/search?q=termo` como representação da busca. A página de resultados lê `q` com `useSearchParams` do React Router e calcula os resultados por uma função pura local.
 
-A busca normaliza maiúsculas/minúsculas e acentos antes de comparar título, resumo e explicação das regras. O formulário mantém apenas o estado temporário de digitação; resultados não são armazenados em estado global.
+A busca normaliza maiúsculas/minúsculas, acentos e pontuação antes de comparar palavras relevantes contra título, resumo, explicação e termos alternativos controlados das regras. O formulário mantém apenas o estado temporário de digitação; resultados não são armazenados em estado global.
 
 ## Consequências
 
@@ -24,6 +24,7 @@ A busca normaliza maiúsculas/minúsculas e acentos antes de comparar título, r
 - A lógica de busca é testável sem componentes React ou roteador.
 - Não introduz backend, chamadas de rede ou dependências adicionais.
 - A normalização atende dúvidas digitadas sem acentos.
+- Termos alternativos cobrem dúvidas frequentes sem introduzir sinônimos livres ou IA.
 
 ### Negativas
 

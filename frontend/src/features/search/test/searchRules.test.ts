@@ -6,6 +6,10 @@ describe('normalizeSearchText', () => {
   test('removes accents, ignores case and trims whitespace', () => {
     expect(normalizeSearchText('  PONTUAÇÃO  ')).toBe('pontuacao')
   })
+
+  test('removes punctuation from a question', () => {
+    expect(normalizeSearchText('Bola na linha vale?')).toBe('bola na linha vale')
+  })
 })
 
 describe('searchRules', () => {
@@ -19,6 +23,18 @@ describe('searchRules', () => {
 
   test('searches the explanation in addition to the title and summary', () => {
     expect(searchRules(rules, 'linha de fundo').map((rule) => rule.id)).toContain('service')
+  })
+
+  test('finds a rule from a common natural-language question about holding the ball', () => {
+    expect(searchRules(rules, 'pode segurar a bola?').map((rule) => rule.id)).toContain(
+      'ball-handling',
+    )
+  })
+
+  test('finds a rule from a common natural-language question about the line', () => {
+    expect(searchRules(rules, 'bola na linha vale?').map((rule) => rule.id)).toContain(
+      'ball-in-or-out',
+    )
   })
 
   test('returns no results for an empty query', () => {

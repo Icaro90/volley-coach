@@ -17,7 +17,7 @@ Validação da feature `003-search`, realizada antes da revisão da Pull Request
 | Resultado com detalhe | `RuleListItem` exibe título, resumo e link para `/rules/:ruleId` | Aprovado por inspeção de código |
 | Sem resultado | Mensagem clara e link para `/rules` | Aprovado por inspeção de código |
 | Busca vazia | Formulário não navega com espaço em branco; `/search` sem `q` orienta e oferece links para Home e regras | Aprovado por inspeção de código |
-| Responsividade e teclado | Layout responsivo e foco global existem; requer confirmação no navegador | Pendente de verificação manual |
+| Responsividade e teclado | Layout responsivo e foco global existem | Aprovado em verificação manual em celular e desktop |
 | Sem rede ou backend | Busca usa somente dados estáticos e função local | Aprovado por inspeção de código |
 
 ## Verificações automatizadas
@@ -31,14 +31,14 @@ npm run build
 | Comando | Resultado nesta validação | Observação |
 | --- | --- | --- |
 | `npm run lint` | Aprovado | Executado com sucesso. |
-| `npm run test` | Pendente de execução local | A sandbox bloqueou o processo nativo usado pelo Vite/Tailwind (`spawn EPERM`) antes de os testes iniciarem. |
-| `npm run build` | Pendente de execução local | A mesma limitação da sandbox impediu o carregamento do binário nativo do Tailwind. |
+| `npm run test` | Aprovado | Executado com sucesso no ambiente local do desenvolvedor. |
+| `npm run build` | Aprovado | Executado com sucesso no ambiente local do desenvolvedor. |
 
-Os dois comandos pendentes devem ser executados no terminal local do desenvolvedor antes de aprovar a Pull Request. O erro observado é de infraestrutura do ambiente controlado, não uma falha de asserção ou de compilação da feature.
+Os comandos foram executados com sucesso no ambiente local do desenvolvedor. O bloqueio anterior era exclusivo da infraestrutura do ambiente controlado.
 
-## Verificação manual necessária
+## Verificação manual realizada
 
-Com `npm run dev`, confirmar:
+Com `npm run dev`, foram confirmados:
 
 1. Na Home, enviar `pontuacao` por Enter e verificar `/search?q=pontuacao`.
 2. Abrir um resultado e confirmar a navegação para o detalhe da regra.
@@ -46,6 +46,8 @@ Com `npm run dev`, confirmar:
 4. Pesquisar `pode segurar a bola?` e `bola na linha vale?` e confirmar os resultados esperados.
 5. Abrir `/search?q=arremesso` e `/search` diretamente.
 6. Navegar com `Tab` e conferir foco visível em celular e desktop no DevTools.
+
+Todos os cenários foram aprovados, sem problemas de navegação, teclado, foco visível ou responsividade.
 
 ## Limitações conhecidas
 

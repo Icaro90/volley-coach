@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import { rules } from '../data/rules'
+import { rules } from '../../src/features/rules/data/rules'
 
 test('provides six basic rules with unique identifiers', () => {
   const ruleIds = rules.map((rule) => rule.id)

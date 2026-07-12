@@ -27,7 +27,7 @@ O backend NestJS, o Prisma e o PostgreSQL permanecem previstos para quando uma f
 | `/` | Apresentar a Home e os atalhos de aprendizagem | Implementada nesta feature |
 | `/rules` | Consultar regras básicas | Implementada na feature `002-rules` |
 | `/search` | Exibir resultados de uma busca de regras | Implementada na feature `003-search` |
-| `/rotation` | Explicar rodízio | Destino temporário até a spec própria |
+| `/rotation` | Explicar rodízio | Implementada na feature `004-rotation` |
 | `/quiz` | Iniciar quiz | Destino temporário até a spec própria |
 
 ## Consulta de regras básicas
@@ -51,7 +51,7 @@ Route `/rules/:ruleId`     -> detalhe de uma regra
 
 Cada regra possui um identificador estável para a URL, título, descrição curta, explicação, exemplo prático, resultado da jogada e metadados da fonte. A ilustração é referenciada como um recurso local e precisa de texto alternativo descritivo.
 
-Os dados ficam em `frontend/src/features/rules/data/rules.ts` e os diagramas vetoriais simples em `frontend/src/features/rules/assets/rules/`. Essa separação evita que componentes de apresentação conheçam detalhes de conteúdo ou de arquivos estáticos.
+Os dados ficam em `frontend/src/features/rules/data/rules.ts` e os diagramas vetoriais simples em `frontend/src/features/rules/assets/`. Essa separação evita que componentes de apresentação conheçam detalhes de conteúdo ou de arquivos estáticos.
 
 ### Fonte e revisão do conteúdo
 
@@ -100,23 +100,57 @@ O contrato da função local isola a interface da estratégia de busca. Quando o
 
 ## Estrutura do frontend
 
-O frontend é organizado por feature. Cada feature mantém próximas as páginas, componentes, dados, assets, utilitários e testes que pertencem ao mesmo domínio.
+O código de produção do frontend é organizado por feature. Cada feature mantém próximas as páginas, componentes, dados, assets e utilitários que pertencem ao mesmo domínio. Os testes ficam em uma pasta técnica única, na raiz do pacote frontend, e são agrupados pela feature que cobrem.
 
 ```text
 frontend/src/
 ├── app/                         # composição global de rotas
 ├── features/
 │   ├── home/                    # Home, atalhos e seus dados
-│   ├── rules/                   # lista, detalhe, conteúdo, SVGs e testes de regras
-│   └── search/                  # formulário, resultados, utilitário e testes de busca
+│   ├── rules/                   # lista, detalhe, conteúdo e SVGs
+│   ├── search/                  # formulário, resultados e utilitário
+│   └── rotation/                # página, componentes, dados e utilitário
 ├── shared/
 │   ├── components/              # componentes reutilizados entre features
 │   └── pages/                   # páginas temporárias reutilizáveis
 ├── index.css                    # estilos globais mínimos
 └── main.tsx                     # ponto de entrada React
+
+frontend/test/
+├── rules/                       # testes da feature rules
+├── search/                      # testes da feature search
+└── rotation/                    # testes da feature rotation
 ```
 
-Uma peça deve ficar dentro da feature enquanto tiver um único contexto de negócio. Ela só deve ir para `shared` quando for reutilizada por mais de uma feature e não carregar regra de negócio específica. Essa regra evita um diretório global de componentes sem dono claro.
+Uma peça de produção deve ficar dentro da feature enquanto tiver um único contexto de negócio. Ela só deve ir para `shared` quando for reutilizada por mais de uma feature e não carregar regra de negócio específica. Essa regra evita um diretório global de componentes sem dono claro. Testes ficam fora de `src` para separar o código distribuído da infraestrutura de verificação, mas mantêm o mesmo nome de feature para preservar a rastreabilidade.
+
+## Rodízio
+
+A feature `004-rotation` também permanece no frontend. Ela representa uma formação de seis posições e permite observar a próxima formação sem simular uma partida completa.
+
+```text
+Route `/rotation`
+      |
+      v
+RotationPage
+      |
+      +-- formação inicial tipada
+      +-- função pura de avançar uma posição
+      +-- estado local do índice de rodízio (0 a 5)
+      +-- diagrama de quadra renderizado por CSS/HTML
+```
+
+### Modelo e estado
+
+Os dados definem a formação inicial e os metadados visuais de cada posição (número, nome e local na quadra). A transformação que avança uma rodada deve ser uma função pura, testada sem React: recebe a formação atual e devolve a próxima, preservando os seis participantes.
+
+`RotationPage` guarda somente o índice da formação exibida em `useState`. Esse estado é local porque não precisa sobreviver a uma atualização de página, ser compartilhado por URL ou ser usado em outra rota. `Reiniciar` restaura o índice para zero; o diagrama e o texto de estado são valores derivados dele.
+
+### Interface e acessibilidade
+
+O diagrama será construído com HTML e CSS responsivo, e não com uma imagem ou canvas. Isso permite que cada posição tenha texto real, que o layout seja legível em telas pequenas e que leitores de tela recebam uma descrição da formação. Os controles serão botões semânticos, com foco visível e texto que informa qual rodízio está sendo exibido.
+
+Não haverá estado global, TanStack Query, backend ou persistência. Caso uma versão futura passe a salvar formações, exercícios ou progresso por pessoa usuária, essa decisão deverá ser reavaliada.
 
 ## Decisões de qualidade
 

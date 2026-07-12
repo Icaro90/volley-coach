@@ -146,6 +146,42 @@ O frontend usa Vitest para testar comportamentos que podem falhar sem serem perc
 
 Os testes de componente usam React Testing Library e `jsdom`. Eles verificam o que a pessoa encontra e faz na interface, sem depender da implementação interna. Classes Tailwind, espaçamentos e SVGs estáticos não possuem testes unitários próprios; essas escolhas são verificadas na validação manual de responsividade e acessibilidade.
 
+## Release do MVP
+
+O frontend é publicado como uma SPA estática na Vercel. O projeto Vercel usa `frontend/` como diretório raiz, executa `npm run build` e publica `dist/`. A integração com GitHub cria deploys de preview para branches e publica produção quando mudanças chegam à `main`.
+
+Como React Router resolve as rotas no cliente, `frontend/vercel.json` reescreve solicitações para `index.html`. Isso permite abrir diretamente `/rules`, `/search`, `/rotation` ou `/quiz` sem receber 404 do servidor estático.
+
+```text
+Pull Request para main
+      |
+      v
+GitHub Actions: npm ci -> test -> lint -> build
+      |
+      v
+Merge na main
+      |
+      v
+Vercel: build do frontend -> deploy de produção
+      |
+      v
+Smoke test pela URL pública
+```
+
+### Integração contínua
+
+O workflow fica em `.github/workflows/frontend-quality.yml` e é executado em Pull Requests para `main` e em pushes para `main`. Ele trabalha em `frontend/`, fixa Node 24.11.0, usa `npm ci` e cache do npm baseado em `frontend/package-lock.json`, depois executa `npm run test`, `npm run lint` e `npm run build` nessa ordem.
+
+O Node 24.11.0 mantém desenvolvimento local e CI alinhados. O workflow tem apenas a permissão `contents: read`; não faz deploy nem acessa secrets.
+
+### Responsabilidades das plataformas
+
+- **GitHub Actions:** qualidade e feedback objetivo em Pull Requests.
+- **Vercel:** hospedagem estática, HTTPS, previews e produção por integração Git.
+- **Pessoa desenvolvedora:** conectar a conta Vercel, confirmar o diretório `frontend/`, registrar a URL pública e executar o smoke test após cada release.
+
+Não haverá token da Vercel versionado ou deploy via CLI neste fluxo. A conexão Git gerenciada pela Vercel evita segredos no repositório e mantém o pipeline de qualidade independente do deploy.
+
 ## Rodízio
 
 A feature `004-rotation` também permanece no frontend. Ela representa uma formação de seis posições e permite observar a próxima formação sem simular uma partida completa.

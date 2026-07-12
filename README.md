@@ -21,10 +21,12 @@ Ficam fora do MVP: login, favoritos, progresso, scout, IA, CMS, backend e banco 
 | Feature | Status | Responsabilidade |
 | --- | --- | --- |
 | `001-home` | Concluída | Apresentar o app, atalhos e busca. |
-| `002-rules` | Concluída | Listar e detalhar seis regras com diagramas SVG. |
+| `002-rules` | Concluída | Listar e detalhar regras com diagramas SVG. |
 | `003-search` | Concluída | Buscar regras por termo em `/search?q=...`. |
 | `004-rotation` | Concluída | Explicar posições e ordem em quadra. |
-| `005-quiz` | Em validação | Reforçar o aprendizado com perguntas rápidas. |
+| `005-quiz` | Concluída | Reforçar o aprendizado com perguntas rápidas. |
+| `007-additional-rules` | Concluída | Ampliar o catálogo para dez regras. |
+| `006-release-prep` | Em desenvolvimento | Publicar o MVP e automatizar verificações de qualidade. |
 
 O conteúdo de vôlei de quadra é baseado na [FIVB Official Volleyball Rules 2025–2028](https://www.fivb.com/volleyball/the-game/official-volleyball-rules/). As explicações do app são uma simplificação educativa.
 
@@ -37,20 +39,21 @@ O conteúdo de vôlei de quadra é baseado na [FIVB Official Volleyball Rules 20
 - React Router;
 - Vitest para testes unitários;
 - Oxlint para análise estática.
+- GitHub Actions para CI de testes, lint e build.
 
 ### Planejada
 
 - NestJS, Prisma e PostgreSQL quando houver dados dinâmicos;
 - TanStack Query quando existir API;
-- Docker, GitHub Actions e hospedagem em Vercel/Render ou Railway.
+- Docker e hospedagem em Vercel/Render ou Railway.
 
 ## Como executar
 
-Pré-requisitos: Node.js 20+ e npm.
+Pré-requisitos: Node.js 24 e npm.
 
 ```bash
 cd frontend
-npm install
+npm ci
 npm run dev
 ```
 
@@ -67,6 +70,41 @@ O Vite exibirá a URL local da aplicação, normalmente `http://localhost:5173`.
 | `npm run preview` | Serve localmente o build de produção. |
 
 Antes de uma Pull Request, execute `npm run test`, `npm run lint` e `npm run build`.
+
+## Deploy e release
+
+### URL de produção
+
+
+[https://volley-coach-rho.vercel.app/](https://volley-coach-rho.vercel.app/)
+
+### Configuração inicial na Vercel
+
+1. Conecte a conta Vercel ao repositório GitHub do projeto e importe o repositório.
+2. Defina **Root Directory** como `frontend`.
+3. Use o preset de framework Vite; o build gera `dist/` com `npm run build`.
+4. Não configure variáveis de ambiente ou tokens: o MVP é estático e não requer secrets.
+5. Conclua a importação. Branches recebem previews e a `main` publica a produção.
+
+O arquivo `frontend/vercel.json` faz o fallback das rotas da SPA para `index.html`. Isso permite abrir URLs como `/rules` diretamente ou atualizar a página sem receber 404 da hospedagem.
+
+### Integração contínua
+
+O workflow [Frontend quality](.github/workflows/frontend-quality.yml) executa em Pull Requests destinadas à `main` e em pushes para a `main`. Ele fixa Node 24.11.0, usa `npm ci`, cache npm e roda testes, lint e build. Uma falha em qualquer etapa reprova o job.
+
+### Smoke test após deploy
+
+Depois que a Vercel publicar uma preview ou produção, valide no navegador:
+
+1. Abra `/` e confirme Home, atalhos e formulário de busca.
+2. Pesquise `saque` e confirme a navegação para `/search?q=saque` com resultado correspondente.
+3. Abra `/rules` e um detalhe, por exemplo `/rules/scoring`; atualize a página para confirmar o fallback da SPA.
+4. Abra diretamente `/rotation`, avance um rodízio e reinicie a formação.
+5. Abra diretamente `/quiz`, responda uma pergunta e confirme o feedback.
+6. Abra `/rules/block` e `/rules/back-row-attack` diretamente para validar as rotas adicionadas após o MVP inicial.
+7. Faça uma verificação rápida em celular e desktop, sem corte de conteúdo ou rolagem horizontal.
+
+Registre a URL publicada e o resultado desse roteiro na validação da Spec 006 antes de encerrar a release.
 
 ## Rotas atuais
 

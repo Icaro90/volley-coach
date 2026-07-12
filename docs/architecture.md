@@ -231,7 +231,7 @@ RotationPage
 
 Os cenários ficam em dados TypeScript locais e possuem identificação, relação ensinada, explicação, consequência e referência FIVB. Um componente específico de exemplo de posição os renderiza com HTML/CSS responsivo, destacando visualmente a relação avaliada sem representar coordenadas reais dos pés.
 
-`getServer` será uma função pura que deriva a pessoa responsável pelo próximo saque a partir da posição `1` da formação atual. Ela será testada junto de `rotateFormation`: ao recuperar o direito de saque, a rotação move a pessoa da posição `2` para `1`, que passa a ser identificada como sacadora.
+`getServer` é uma função pura que deriva a pessoa responsável pelo próximo saque a partir da posição `1` da formação atual. Ela é testada junto de `rotateFormation`: ao recuperar o direito de saque, a rotação move a pessoa da posição `2` para `1`, que passa a ser identificada como sacadora.
 
 Os testes cobrirão os dados dos cenários, a derivação da pessoa que saca e a renderização acessível das explicações na página. O estado continuará limitado a `rotationStep`; não haverá estado para arbitragem, persistência ou coordenadas livres.
 

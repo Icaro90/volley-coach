@@ -2,8 +2,11 @@
 
 Todas as tarefas pertencem à branch `feat/008-position-faults` e passam pelo fluxo **Backlog → Todo → Doing → Review → Done** no GitHub Projects.
 
+**Status da execução:** todas as cinco issues foram concluídas e a feature está pronta para revisão da Pull Request.
+
 ## Issue 1 — Revisar conteúdo de posição e ordem de saque
 
+- **Status:** Concluída
 - **Estimativa:** 1h a 1h30
 - **Coluna inicial:** Backlog
 - **Dependências:** nenhuma
@@ -14,6 +17,7 @@ Todas as tarefas pertencem à branch `feat/008-position-faults` e passam pelo fl
 
 ## Issue 2 — Modelar cenários e derivar a pessoa que saca
 
+- **Status:** Concluída
 - **Estimativa:** 1h a 1h30
 - **Coluna inicial:** Backlog
 - **Dependências:** Issue 1
@@ -24,6 +28,7 @@ Todas as tarefas pertencem à branch `feat/008-position-faults` e passam pelo fl
 
 ## Issue 3 — Exibir exemplos de posição na página de rodízio
 
+- **Status:** Concluída
 - **Estimativa:** 1h30 a 2h
 - **Coluna inicial:** Backlog
 - **Dependências:** Issue 2
@@ -34,6 +39,7 @@ Todas as tarefas pertencem à branch `feat/008-position-faults` e passam pelo fl
 
 ## Issue 4 — Cobrir integração e regressão da experiência de rodízio
 
+- **Status:** Concluída
 - **Estimativa:** 1h a 1h30
 - **Coluna inicial:** Backlog
 - **Dependências:** Issues 2 e 3
@@ -44,6 +50,7 @@ Todas as tarefas pertencem à branch `feat/008-position-faults` e passam pelo fl
 
 ## Issue 5 — Validar o fluxo de posição e saque
 
+- **Status:** Concluída
 - **Estimativa:** 1h a 1h30
 - **Coluna inicial:** Backlog
 - **Dependências:** Issue 4

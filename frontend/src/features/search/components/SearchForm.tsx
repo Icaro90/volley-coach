@@ -26,14 +26,14 @@ export function SearchForm() {
         Pesquisar uma regra
       </label>
       <div className="flex flex-col gap-3 sm:flex-row">
-        <div className="flex flex-1 items-center gap-3 rounded-xl border border-slate-300 bg-white px-4 py-3 shadow-sm">
-          <span aria-hidden="true" className="text-slate-500">
+        <div className="flex flex-1 items-center gap-3 rounded-xl border border-border bg-surface px-4 py-3 shadow-sm">
+          <span aria-hidden="true" className="text-muted">
             🔎
           </span>
           <input
             aria-describedby={error ? 'search-error' : undefined}
             aria-invalid={Boolean(error)}
-            className="w-full bg-transparent text-slate-900 outline-none placeholder:text-slate-500"
+            className="w-full bg-transparent text-foreground outline-none placeholder:text-muted"
             id="rule-search"
             name="query"
             onChange={(event) => setQuery(event.target.value)}
@@ -43,7 +43,7 @@ export function SearchForm() {
           />
         </div>
         <button
-          className="rounded-xl bg-orange-600 px-5 py-3 font-semibold text-white transition hover:bg-orange-700"
+          className="rounded-xl bg-accent-strong px-5 py-3 font-semibold text-accent-foreground transition hover:bg-accent"
           type="submit"
         >
           Buscar

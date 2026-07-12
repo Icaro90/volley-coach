@@ -6,7 +6,7 @@ Todas as tarefas pertencem à branch `chore/009-homologation-and-back-navigation
 
 ## Issue 1 — Validar qualidade em todo commit e promover `hom`
 
-- **Status:** Pendente
+- **Status:** Em validação externa
 - **Estimativa:** 1h a 1h30
 - **Coluna inicial:** Backlog
 - **Dependências:** nenhuma
@@ -17,7 +17,7 @@ Todas as tarefas pertencem à branch `chore/009-homologation-and-back-navigation
 
 ## Issue 2 — Restringir deploys automáticos da Vercel
 
-- **Status:** Pendente
+- **Status:** Em validação externa
 - **Estimativa:** 30 min a 1h
 - **Coluna inicial:** Backlog
 - **Dependências:** nenhuma
@@ -28,7 +28,7 @@ Todas as tarefas pertencem à branch `chore/009-homologation-and-back-navigation
 
 ## Issue 3 — Criar botão compartilhado de retorno
 
-- **Status:** Pendente
+- **Status:** Concluída
 - **Estimativa:** 1h a 1h30
 - **Coluna inicial:** Backlog
 - **Dependências:** nenhuma
@@ -39,7 +39,7 @@ Todas as tarefas pertencem à branch `chore/009-homologation-and-back-navigation
 
 ## Issue 4 — Aplicar retorno consistente às páginas
 
-- **Status:** Pendente
+- **Status:** Concluída
 - **Estimativa:** 1h a 1h30
 - **Coluna inicial:** Backlog
 - **Dependências:** Issue 3
@@ -50,7 +50,7 @@ Todas as tarefas pertencem à branch `chore/009-homologation-and-back-navigation
 
 ## Issue 5 — Testar e validar o fluxo de entrega e navegação
 
-- **Status:** Pendente
+- **Status:** Em validação externa
 - **Estimativa:** 1h a 2h
 - **Coluna inicial:** Backlog
 - **Dependências:** Issues 1, 2, 3 e 4

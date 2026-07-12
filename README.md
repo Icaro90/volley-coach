@@ -28,7 +28,8 @@ Ficam fora do MVP: login, favoritos, progresso, scout, IA, CMS, backend e banco 
 | `007-additional-rules` | Concluída | Ampliar o catálogo para dez regras. |
 | `008-position-faults` | Concluída | Explicar faltas de posição e ordem de saque. |
 | `006-release-prep` | Concluída | Publicar o MVP e automatizar verificações de qualidade. |
-| `009-homologation-and-back-navigation` | Em especificação | Controlar ambientes de entrega e padronizar retornos entre páginas. |
+| `009-homologation-and-back-navigation` | Concluída | Controlar ambientes de entrega e padronizar retornos entre páginas. |
+| `010-dark-mode` | Concluída | Tema escuro padrão, tema claro opcional e preferência local. |
 
 O conteúdo de vôlei de quadra é baseado na [FIVB Official Volleyball Rules 2025–2028](https://www.fivb.com/volleyball/the-game/official-volleyball-rules/). As explicações do app são uma simplificação educativa.
 
@@ -167,7 +168,8 @@ frontend/src/
 │       ├── data/
 │       └── utils/
 ├── shared/
-│   └── components/                # sem regra de negócio específica
+│   ├── components/                # sem regra de negócio específica
+│   └── theme/                     # tema transversal e preferência local
 ├── index.css                      # estilos globais mínimos
 └── main.tsx                       # entrada React
 
@@ -193,6 +195,7 @@ Exemplos:
 - A busca usa `/search?q=...` como fonte de verdade; a URL pode ser atualizada, compartilhada e navegada pelo histórico.
 - A busca ignora caixa e acentos: `pontuacao` encontra `Pontuação`.
 - Não há estado global: resultados são derivados da URL e dos dados locais.
+- Tema visual é a única exceção transversal: tema escuro padrão, tema claro opcional e preferência local no navegador.
 
 As decisões completas estão em [docs/architecture.md](docs/architecture.md) e nos [ADRs](docs/adr/).
 

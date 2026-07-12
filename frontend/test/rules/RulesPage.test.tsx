@@ -1,12 +1,13 @@
-import { render, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router'
 import { describe, expect, test } from 'vitest'
 import { rules } from '../../src/features/rules/data/rules'
 import { RulesPage } from '../../src/features/rules/pages/RulesPage'
+import { renderWithAppProviders } from '../renderWithAppProviders'
 
 describe('RulesPage', () => {
   test('lists every available basic rule with a link to its detail page', () => {
-    render(
+    renderWithAppProviders(
       <MemoryRouter>
         <RulesPage />
       </MemoryRouter>,

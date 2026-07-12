@@ -2,8 +2,11 @@
 
 Todas as tarefas pertencem à branch `feat/007-additional-rules` e começam na coluna **Backlog** do GitHub Projects. Mover uma tarefa para **Doing** apenas quando suas dependências estiverem concluídas.
 
+**Status da execução:** todas as cinco issues foram concluídas e a feature está pronta para revisão da Pull Request.
+
 ## Issue 1 — Revisar fontes e preparar conteúdo das novas regras
 
+- **Status:** Concluída
 - **Estimativa:** 1h30 a 2h
 - **Coluna inicial:** Backlog
 - **Dependências:** nenhuma
@@ -14,6 +17,7 @@ Todas as tarefas pertencem à branch `feat/007-additional-rules` e começam na c
 
 ## Issue 2 — Adicionar invasão e bloqueio ao catálogo
 
+- **Status:** Concluída
 - **Estimativa:** 1h30 a 2h
 - **Coluna inicial:** Backlog
 - **Dependências:** Issue 1
@@ -24,6 +28,7 @@ Todas as tarefas pertencem à branch `feat/007-additional-rules` e começam na c
 
 ## Issue 3 — Adicionar substituição e ataque de fundo ao catálogo
 
+- **Status:** Concluída
 - **Estimativa:** 1h30 a 2h
 - **Coluna inicial:** Backlog
 - **Dependências:** Issue 1
@@ -34,6 +39,7 @@ Todas as tarefas pertencem à branch `feat/007-additional-rules` e começam na c
 
 ## Issue 4 — Validar integração de lista, detalhe e busca
 
+- **Status:** Concluída
 - **Estimativa:** 1h a 1h30
 - **Coluna inicial:** Backlog
 - **Dependências:** Issues 2 e 3
@@ -44,6 +50,7 @@ Todas as tarefas pertencem à branch `feat/007-additional-rules` e começam na c
 
 ## Issue 5 — Validar fluxo completo das regras adicionais
 
+- **Status:** Concluída
 - **Estimativa:** 1h a 1h30
 - **Coluna inicial:** Backlog
 - **Dependências:** Issue 4

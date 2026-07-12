@@ -4,6 +4,8 @@
 
 Validação da feature `007-additional-rules`, realizada antes da revisão da Pull Request.
 
+**Status da validação:** concluída — critérios de aceite, testes automatizados e verificação manual aprovados.
+
 ## Critérios de aceite
 
 | Critério | Evidência | Resultado |
@@ -24,10 +26,10 @@ Validação da feature `007-additional-rules`, realizada antes da revisão da Pu
 
 | Verificação | Resultado | Evidência |
 | --- | --- | --- |
-| Lint | Aprovado | `npm run lint` executado com sucesso na Issue 4. |
-| Tipos | Aprovado | `npx tsc -b` executado com sucesso na Issue 4. |
-| Testes | Aprovado | 14 arquivos e 56 testes aprovados na Issue 4. |
-| Build de produção | Aprovado | `npm run build` executado com sucesso na Issue 4. |
+| Lint | Aprovado | Executado com sucesso após os ajustes do code review. |
+| Tipos | Aprovado | Executado com sucesso após os ajustes do code review. |
+| Testes | Aprovado | 14 arquivos e 56 testes aprovados após os ajustes do code review. |
+| Build de produção | Aprovado | Executado com sucesso após os ajustes do code review. |
 
 ## Roteiro de verificação manual
 

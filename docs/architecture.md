@@ -32,7 +32,7 @@ O backend NestJS, o Prisma e o PostgreSQL permanecem previstos para quando uma f
 
 ## Consulta de regras básicas
 
-A feature `002-rules` permanece inteiramente no frontend. O catálogo de regras é mantido em uma fonte de dados estática tipada, sem API ou banco de dados. Ele começou com seis regras e será ampliado para dez na feature `007-additional-rules`.
+A feature `002-rules` permanece inteiramente no frontend. O catálogo de regras é mantido em uma fonte de dados estática tipada, sem API ou banco de dados. Ele possui dez regras: as seis iniciais e quatro adicionadas na feature `007-additional-rules`.
 
 ```text
 Route `/rules`             -> lista de regras
@@ -59,13 +59,13 @@ O conteúdo desta feature referencia as **Official Volleyball Rules 2025–2028*
 
 ### Expansão do catálogo
 
-A feature `007-additional-rules` estende o mesmo tipo `VolleyballRule`, o array `rules.ts` e a pasta `assets/` da feature. Novos identificadores entram no union `RuleId`, e cada regra recebe os mesmos campos obrigatórios e um diagrama SVG local.
+A feature `007-additional-rules` estendeu o mesmo tipo `VolleyballRule`, o array `rules.ts` e a pasta `assets/` da feature. Os novos identificadores entraram no union `RuleId`, e cada regra recebeu os mesmos campos obrigatórios e um diagrama SVG local.
 
 `RulesPage` e `RuleDetailPage` não exigem nova arquitetura: ambas já derivam sua interface a partir do catálogo. A busca local também passa a encontrar as regras novas automaticamente porque `searchRules` recebe o array completo e compara título, resumo, explicação e termos alternativos controlados.
 
-O teste de integridade do catálogo deve passar de seis para dez regras, e os testes de busca devem cobrir ao menos um termo de cada regra adicionada. A criação dos quatro SVGs segue a decisão registrada na ADR 002.
+O teste de integridade do catálogo valida dez regras, e os testes de busca cobrem ao menos um termo de cada regra adicionada. A criação dos quatro SVGs segue a decisão registrada na ADR 002.
 
-Invasão, bloqueio e ataque de fundo serão revisados contra as regras FIVB pertinentes antes de escrever o conteúdo. Para substituições, a revisão deve confirmar se há orientação ou teste oficial vigente aplicável à publicação, pois a FIVB anunciou testes de quantidade de substituições para competições de 2026.
+Invasão, bloqueio e ataque de fundo foram revisados contra as regras FIVB pertinentes antes da escrita do conteúdo. Para substituições, a revisão registrou a orientação oficial vigente e os testes de quantidade de substituições anunciados pela FIVB para competições de 2026.
 
 ### Rotas e estado de erro
 

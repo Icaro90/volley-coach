@@ -7,9 +7,9 @@ type LearningShortcutCardProps = {
 
 export function LearningShortcutCard({ shortcut }: LearningShortcutCardProps) {
   return (
-    <li>
+    <li className="h-full">
       <Link
-        className="block rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition hover:border-orange-300 hover:shadow-md"
+        className="flex h-full flex-col rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition hover:border-orange-300 hover:shadow-md"
         to={shortcut.path}
       >
         <span aria-hidden="true" className="text-2xl">

@@ -12,7 +12,7 @@ O produto transforma regras técnicas em explicações curtas, exemplos de quadr
 - buscar regras por termos de dúvida;
 - visualizar diagramas didáticos;
 - entender o rodízio com uma quadra interativa;
-- preparar a próxima funcionalidade de quiz.
+- responder perguntas rápidas para reforçar as regras.
 
 Ficam fora do MVP: login, favoritos, progresso, scout, IA, CMS, backend e banco de dados.
 
@@ -24,7 +24,7 @@ Ficam fora do MVP: login, favoritos, progresso, scout, IA, CMS, backend e banco 
 | `002-rules` | Concluída | Listar e detalhar seis regras com diagramas SVG. |
 | `003-search` | Concluída | Buscar regras por termo em `/search?q=...`. |
 | `004-rotation` | Concluída | Explicar posições e ordem em quadra. |
-| Quiz | Planejada | Reforçar o aprendizado com perguntas rápidas. |
+| `005-quiz` | Em validação | Reforçar o aprendizado com perguntas rápidas. |
 
 O conteúdo de vôlei de quadra é baseado na [FIVB Official Volleyball Rules 2025–2028](https://www.fivb.com/volleyball/the-game/official-volleyball-rules/). As explicações do app são uma simplificação educativa.
 
@@ -77,7 +77,7 @@ Antes de uma Pull Request, execute `npm run test`, `npm run lint` e `npm run bui
 | `/rules/:ruleId` | Detalhe da regra, exemplo, diagrama e fonte. |
 | `/search?q=termo` | Resultados da busca local. |
 | `/rotation` | Página interativa para entender posições e ordem de rodízio. |
-| `/quiz` | Página temporária até a feature de quiz. |
+| `/quiz` | Quiz interativo sobre regras básicas. |
 
 ## Estrutura do repositório
 
@@ -116,8 +116,7 @@ frontend/src/
 │       ├── data/
 │       └── utils/
 ├── shared/
-│   ├── components/                # sem regra de negócio específica
-│   └── pages/                     # páginas temporárias reutilizáveis
+│   └── components/                # sem regra de negócio específica
 ├── index.css                      # estilos globais mínimos
 └── main.tsx                       # entrada React
 

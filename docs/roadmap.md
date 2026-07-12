@@ -16,6 +16,12 @@ O Volley Coach ajuda jogadores iniciantes de vôlei de quadra a compreender regr
 
 O MVP está concluído: as cinco features acima permitem consultar regras, pesquisar conteúdo, visualizar diagramas, entender o rodízio e responder perguntas curtas.
 
+## Release do MVP
+
+| Ordem | Iniciativa | Estado |
+| --- | --- | --- |
+| 006 | Preparação de release | Em especificação |
+
 ## Futuras versões
 
 - Login e progresso de aprendizagem.

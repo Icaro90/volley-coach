@@ -28,6 +28,14 @@ npm run lint
 npm run build
 ```
 
+| Comando | Resultado nesta validação | Observação |
+| --- | --- | --- |
+| `npm run lint` | Aprovado | Executado com sucesso. |
+| `npm run test` | Pendente de execução local | A sandbox bloqueou o processo nativo usado pelo Vite/Tailwind (`spawn EPERM`) antes de os testes iniciarem. |
+| `npm run build` | Pendente de execução local | A mesma limitação da sandbox impediu o carregamento do binário nativo do Tailwind. |
+
+Os dois comandos pendentes devem ser executados no terminal local do desenvolvedor antes de aprovar a Pull Request. O erro observado é de infraestrutura do ambiente controlado, não uma falha de asserção ou de compilação da feature.
+
 ## Verificação manual necessária
 
 Com `npm run dev`, confirmar:

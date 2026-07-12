@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import { MemoryRouter, Route, Routes } from 'react-router'
 import { describe, expect, test } from 'vitest'
+import { rules } from '../../src/features/rules/data/rules'
 import { SearchResultsPage } from '../../src/features/search/pages/SearchResultsPage'
 
 function renderSearchResults(path: string) {
@@ -38,5 +39,25 @@ describe('SearchResultsPage', () => {
 
     expect(screen.getByRole('heading', { name: 'Nenhuma regra encontrada' })).toBeDefined()
     expect(screen.getByRole('link', { name: 'Ver todas as regras' })).toHaveAttribute('href', '/rules')
+  })
+
+  test.each([
+    ['pé do outro lado', 'center-line-invasion'],
+    ['bloquear saque', 'block'],
+    ['troca de jogador', 'substitution'],
+    ['atacar do fundo', 'back-row-attack'],
+  ])('finds %s and links to its detail URL', (query, ruleId) => {
+    renderSearchResults(`/search?q=${encodeURIComponent(query)}`)
+
+    const expectedRule = rules.find((rule) => rule.id === ruleId)
+
+    if (!expectedRule) {
+      throw new Error(`A regra ${ruleId} deveria existir no catálogo de testes.`)
+    }
+
+    expect(screen.getByRole('heading', { name: expectedRule.title }).closest('a')).toHaveAttribute(
+      'href',
+      `/rules/${ruleId}`,
+    )
   })
 })

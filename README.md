@@ -11,7 +11,8 @@ O produto transforma regras técnicas em explicações curtas, exemplos de quadr
 - consultar regras básicas;
 - buscar regras por termos de dúvida;
 - visualizar diagramas didáticos;
-- preparar as próximas funcionalidades de rodízio e quiz.
+- entender o rodízio com uma quadra interativa;
+- preparar a próxima funcionalidade de quiz.
 
 Ficam fora do MVP: login, favoritos, progresso, scout, IA, CMS, backend e banco de dados.
 
@@ -21,8 +22,8 @@ Ficam fora do MVP: login, favoritos, progresso, scout, IA, CMS, backend e banco 
 | --- | --- | --- |
 | `001-home` | Concluída | Apresentar o app, atalhos e busca. |
 | `002-rules` | Concluída | Listar e detalhar seis regras com diagramas SVG. |
-| `003-search` | Em desenvolvimento | Buscar regras por termo em `/search?q=...`. |
-| Rodízio | Planejada | Explicar posições e ordem em quadra. |
+| `003-search` | Concluída | Buscar regras por termo em `/search?q=...`. |
+| `004-rotation` | Concluída | Explicar posições e ordem em quadra. |
 | Quiz | Planejada | Reforçar o aprendizado com perguntas rápidas. |
 
 O conteúdo de vôlei de quadra é baseado na [FIVB Official Volleyball Rules 2025–2028](https://www.fivb.com/volleyball/the-game/official-volleyball-rules/). As explicações do app são uma simplificação educativa.
@@ -75,7 +76,7 @@ Antes de uma Pull Request, execute `npm run test`, `npm run lint` e `npm run bui
 | `/rules` | Lista das regras básicas. |
 | `/rules/:ruleId` | Detalhe da regra, exemplo, diagrama e fonte. |
 | `/search?q=termo` | Resultados da busca local. |
-| `/rotation` | Página temporária até a feature de rodízio. |
+| `/rotation` | Página interativa para entender posições e ordem de rodízio. |
 | `/quiz` | Página temporária até a feature de quiz. |
 
 ## Estrutura do repositório
@@ -105,9 +106,14 @@ frontend/src/
 │   │   ├── components/
 │   │   ├── data/
 │   │   └── assets/
-│   └── search/
+│   ├── search/
 │       ├── pages/
 │       ├── components/
+│       └── utils/
+│   └── rotation/
+│       ├── pages/
+│       ├── components/
+│       ├── data/
 │       └── utils/
 ├── shared/
 │   ├── components/                # sem regra de negócio específica
@@ -126,6 +132,7 @@ Exemplos:
 - `features/rules/data/rules.ts`: conteúdo e fonte das regras;
 - `features/rules/assets/`: diagramas SVG das regras;
 - `features/search/utils/searchRules.ts`: busca pura e normalizada;
+- `features/rotation/utils/rotateFormation.ts`: transformação pura da formação de rodízio;
 - `shared/components/AppHeader.tsx`: componente usado por múltiplas features.
 
 ## Arquitetura atual

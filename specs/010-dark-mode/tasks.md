@@ -2,11 +2,11 @@
 
 Todas as tarefas pertencem à branch `feat/010-dark-mode` e passam pelo fluxo **Backlog → Todo → Doing → Review → Done** no GitHub Projects.
 
-**Status da execução:** planejamento concluído; implementação ainda não iniciada.
+**Status da execução:** implementação concluída; aguardando validação visual manual e encerramento da feature.
 
 ## Issue 1 — Definir tokens semânticos e bootstrap do tema
 
-- **Status:** Pendente
+- **Status:** Concluída
 - **Estimativa:** 1h a 1h30
 - **Coluna inicial:** Backlog
 - **Dependências:** nenhuma
@@ -17,7 +17,7 @@ Todas as tarefas pertencem à branch `feat/010-dark-mode` e passam pelo fluxo **
 
 ## Issue 2 — Implementar estado e persistência do tema
 
-- **Status:** Pendente
+- **Status:** Concluída
 - **Estimativa:** 1h a 1h30
 - **Coluna inicial:** Backlog
 - **Dependências:** Issue 1
@@ -28,7 +28,7 @@ Todas as tarefas pertencem à branch `feat/010-dark-mode` e passam pelo fluxo **
 
 ## Issue 3 — Disponibilizar alternância acessível no cabeçalho
 
-- **Status:** Pendente
+- **Status:** Concluída
 - **Estimativa:** 45 min a 1h
 - **Coluna inicial:** Backlog
 - **Dependências:** Issue 2
@@ -39,7 +39,7 @@ Todas as tarefas pertencem à branch `feat/010-dark-mode` e passam pelo fluxo **
 
 ## Issue 4 — Migrar Home, regras e busca para a paleta semântica
 
-- **Status:** Pendente
+- **Status:** Concluída
 - **Estimativa:** 1h30 a 2h
 - **Coluna inicial:** Backlog
 - **Dependências:** Issue 1
@@ -50,7 +50,7 @@ Todas as tarefas pertencem à branch `feat/010-dark-mode` e passam pelo fluxo **
 
 ## Issue 5 — Migrar rodízio e quiz para a paleta semântica
 
-- **Status:** Pendente
+- **Status:** Concluída
 - **Estimativa:** 1h30 a 2h
 - **Coluna inicial:** Backlog
 - **Dependências:** Issue 1
@@ -61,7 +61,7 @@ Todas as tarefas pertencem à branch `feat/010-dark-mode` e passam pelo fluxo **
 
 ## Issue 6 — Cobrir comportamento e validar a experiência completa
 
-- **Status:** Pendente
+- **Status:** Em validação manual
 - **Estimativa:** 1h30 a 2h
 - **Coluna inicial:** Backlog
 - **Dependências:** Issues 2, 3, 4 e 5

@@ -4,10 +4,11 @@ export function ThemeToggle() {
   const { theme, toggleTheme } = useTheme()
   const isDarkTheme = theme === 'dark'
   const nextThemeLabel = isDarkTheme ? 'Ativar tema claro' : 'Ativar tema escuro'
+  const currentThemeLabel = isDarkTheme ? 'Tema escuro ativo' : 'Tema claro ativo'
 
   return (
     <button
-      aria-label={nextThemeLabel}
+      aria-label={`${currentThemeLabel}. ${nextThemeLabel}`}
       aria-pressed={isDarkTheme}
       className="ml-auto inline-flex items-center gap-2 rounded-lg border border-border bg-surface px-3 py-2 text-sm font-semibold text-foreground shadow-sm transition hover:bg-surface-raised"
       onClick={toggleTheme}

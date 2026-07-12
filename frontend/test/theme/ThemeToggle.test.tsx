@@ -19,18 +19,34 @@ describe('ThemeToggle', () => {
       </ThemeProvider>,
     )
 
-    const toggle = screen.getByRole('button', { name: 'Ativar tema claro' })
+    const toggle = screen.getByRole('button', { name: 'Tema escuro ativo. Ativar tema claro' })
 
     expect(toggle).toHaveAttribute('aria-pressed', 'true')
     expect(document.documentElement.dataset.theme).toBe('dark')
 
     await user.click(toggle)
 
-    expect(screen.getByRole('button', { name: 'Ativar tema escuro' })).toHaveAttribute(
+    expect(screen.getByRole('button', { name: 'Tema claro ativo. Ativar tema escuro' })).toHaveAttribute(
       'aria-pressed',
       'false',
     )
     expect(document.documentElement.dataset.theme).toBe('light')
     expect(localStorage.getItem('volley-coach.theme')).toBe('light')
+  })
+
+  test('restores the saved light theme when the provider starts', () => {
+    localStorage.setItem('volley-coach.theme', 'light')
+
+    render(
+      <ThemeProvider>
+        <ThemeToggle />
+      </ThemeProvider>,
+    )
+
+    expect(screen.getByRole('button', { name: 'Tema claro ativo. Ativar tema escuro' })).toHaveAttribute(
+      'aria-pressed',
+      'false',
+    )
+    expect(document.documentElement.dataset.theme).toBe('light')
   })
 })

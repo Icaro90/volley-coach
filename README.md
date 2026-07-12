@@ -94,6 +94,8 @@ O arquivo `frontend/vercel.json` faz o fallback das rotas da SPA para `index.htm
 
 O workflow [Frontend quality](.github/workflows/frontend-quality.yml) executa a cada push, em qualquer branch. Ele fixa Node 24.11.0, usa `npm ci`, cache npm e roda testes, lint e build. Uma falha em qualquer etapa reprova o job. Quando uma mudança chega a `hom`, o workflow abre, se necessário, uma Pull Request de promoção para `main`; o merge continua manual.
 
+Para permitir essa criação automática, em **Settings → Actions → General → Workflow permissions**, habilite **Allow GitHub Actions to create and approve pull requests**. O workflow não aprova nem faz merge de Pull Requests; a opção apenas autoriza o `GITHUB_TOKEN` a abrir a PR de promoção.
+
 ### Fluxo de entrega
 
 1. Crie uma branch `feature/...` a partir de `hom`.

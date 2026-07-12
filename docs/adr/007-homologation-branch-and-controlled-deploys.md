@@ -19,6 +19,7 @@ Adotar `hom` como branch de homologação e manter `main` como branch de produç
 - Após um push em `hom`, o GitHub Actions criará uma Pull Request de `hom` para `main` somente se ainda não houver uma aberta com a mesma origem e destino.
 - A PR automática não será mesclada automaticamente. A validação manual da homologação e a revisão continuam necessárias antes do merge em `main`.
 - O job de criação da PR receberá `pull-requests: write`; os demais jobs manterão apenas `contents: read`.
+- Nas configurações do repositório, GitHub Actions deverá estar autorizado a criar Pull Requests com `GITHUB_TOKEN`.
 
 O fluxo esperado é `feature/*` → `hom` → `main`. Novas features devem partir de `hom`, para que integrem a versão que será homologada.
 
@@ -37,6 +38,7 @@ O fluxo esperado é `feature/*` → `hom` → `main`. Novas features devem parti
 - A pessoa desenvolvedora precisa manter `hom` atualizada e abrir Pull Requests de feature para ela.
 - A configuração do projeto Vercel precisa associar a branch `hom` ao ambiente de homologação.
 - O workflow precisa de uma permissão adicional e limitada para criar Pull Requests.
+- A pessoa proprietária precisa habilitar essa capacidade nas configurações de Actions do repositório antes da primeira promoção.
 - Uma PR de promoção pode ficar desatualizada se novos commits chegarem em `hom` durante a revisão; ela deverá ser revisada novamente antes do merge.
 
 ## Alternativas consideradas

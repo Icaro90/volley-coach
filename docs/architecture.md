@@ -174,7 +174,7 @@ Vercel: deploy de produção
 
 O workflow fica em `.github/workflows/frontend-quality.yml` e é executado a cada `push`, independentemente da branch. Ele trabalha em `frontend/`, fixa Node 24.11.0, usa `npm ci` e cache do npm baseado em `frontend/package-lock.json`, depois executa `npm run test`, `npm run lint` e `npm run build` nessa ordem.
 
-Quando o push é em `hom`, um job separado verifica se já existe uma Pull Request aberta de `hom` para `main` e cria uma quando necessário. Esse job recebe somente a permissão adicional `pull-requests: write`. Ele não faz merge automático, não acessa a Vercel e não substitui a revisão humana após a homologação.
+Quando o push é em `hom`, um job separado verifica se já existe uma Pull Request aberta de `hom` para `main` e cria uma quando necessário. Esse job recebe somente a permissão adicional `pull-requests: write`. O repositório também precisa habilitar, em **Settings → Actions → General**, a permissão para GitHub Actions criar Pull Requests. Ele não faz merge automático, não acessa a Vercel e não substitui a revisão humana após a homologação.
 
 O Node 24.11.0 mantém desenvolvimento local e CI alinhados. O workflow tem apenas a permissão `contents: read`; não faz deploy nem acessa secrets.
 

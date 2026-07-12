@@ -12,7 +12,7 @@ O Volley Coach ajuda jogadores iniciantes de vôlei de quadra a compreender regr
 | 002 | Regras básicas | Concluída |
 | 003 | Busca de regras | Concluída |
 | 004 | Rodízio | Concluída |
-| 005 | Quiz rápido | Planejada |
+| 005 | Quiz rápido | Em especificação |
 
 O MVP será considerado funcional quando as cinco features acima permitirem consultar regras, pesquisar conteúdo, visualizar diagramas, entender o rodízio e responder perguntas curtas.
 

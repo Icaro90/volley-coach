@@ -27,7 +27,7 @@ O backend NestJS, o Prisma e o PostgreSQL permanecem previstos para quando uma f
 | `/` | Apresentar a Home e os atalhos de aprendizagem | Implementada nesta feature |
 | `/rules` | Consultar regras básicas | Implementada na feature `002-rules` |
 | `/search` | Exibir resultados de uma busca de regras | Implementada na feature `003-search` |
-| `/rotation` | Explicar rodízio | Destino temporário até a spec própria |
+| `/rotation` | Explicar rodízio | Planejada na feature `004-rotation` |
 | `/quiz` | Iniciar quiz | Destino temporário até a spec própria |
 
 ## Consulta de regras básicas
@@ -108,7 +108,8 @@ frontend/src/
 ├── features/
 │   ├── home/                    # Home, atalhos e seus dados
 │   ├── rules/                   # lista, detalhe, conteúdo, SVGs e testes de regras
-│   └── search/                  # formulário, resultados, utilitário e testes de busca
+│   ├── search/                  # formulário, resultados, utilitário e testes de busca
+│   └── rotation/                # página, componentes, dados e testes de rodízio
 ├── shared/
 │   ├── components/              # componentes reutilizados entre features
 │   └── pages/                   # páginas temporárias reutilizáveis
@@ -117,6 +118,34 @@ frontend/src/
 ```
 
 Uma peça deve ficar dentro da feature enquanto tiver um único contexto de negócio. Ela só deve ir para `shared` quando for reutilizada por mais de uma feature e não carregar regra de negócio específica. Essa regra evita um diretório global de componentes sem dono claro.
+
+## Rodízio
+
+A feature `004-rotation` também permanece no frontend. Ela representa uma formação de seis posições e permite observar a próxima formação sem simular uma partida completa.
+
+```text
+Route `/rotation`
+      |
+      v
+RotationPage
+      |
+      +-- formação inicial tipada
+      +-- função pura de avançar uma posição
+      +-- estado local do índice de rodízio (0 a 5)
+      +-- diagrama de quadra renderizado por CSS/HTML
+```
+
+### Modelo e estado
+
+Os dados definem a formação inicial e os metadados visuais de cada posição (número, nome e local na quadra). A transformação que avança uma rodada deve ser uma função pura, testada sem React: recebe a formação atual e devolve a próxima, preservando os seis participantes.
+
+`RotationPage` guarda somente o índice da formação exibida em `useState`. Esse estado é local porque não precisa sobreviver a uma atualização de página, ser compartilhado por URL ou ser usado em outra rota. `Reiniciar` restaura o índice para zero; o diagrama e o texto de estado são valores derivados dele.
+
+### Interface e acessibilidade
+
+O diagrama será construído com HTML e CSS responsivo, e não com uma imagem ou canvas. Isso permite que cada posição tenha texto real, que o layout seja legível em telas pequenas e que leitores de tela recebam uma descrição da formação. Os controles serão botões semânticos, com foco visível e texto que informa qual rodízio está sendo exibido.
+
+Não haverá estado global, TanStack Query, backend ou persistência. Caso uma versão futura passe a salvar formações, exercícios ou progresso por pessoa usuária, essa decisão deverá ser reavaliada.
 
 ## Decisões de qualidade
 

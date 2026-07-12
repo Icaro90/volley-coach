@@ -1,10 +1,10 @@
 import { Route, Routes } from 'react-router'
 import { HomePage } from '../features/home/HomePage'
+import { QuizPage } from '../features/quiz/pages/QuizPage'
 import { RotationPage } from '../features/rotation/pages/RotationPage'
 import { RuleDetailPage } from '../features/rules/pages/RuleDetailPage'
 import { RulesPage } from '../features/rules/pages/RulesPage'
 import { SearchResultsPage } from '../features/search/pages/SearchResultsPage'
-import { PlaceholderPage } from '../shared/pages/PlaceholderPage'
 
 function App() {
   return (
@@ -14,15 +14,7 @@ function App() {
       <Route path="/rules/:ruleId" element={<RuleDetailPage />} />
       <Route path="/search" element={<SearchResultsPage />} />
       <Route path="/rotation" element={<RotationPage />} />
-      <Route
-        path="/quiz"
-        element={
-          <PlaceholderPage
-            title="Quiz rápido"
-            description="Em breve, teste seus conhecimentos sobre vôlei."
-          />
-        }
-      />
+      <Route path="/quiz" element={<QuizPage />} />
     </Routes>
   )
 }

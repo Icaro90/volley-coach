@@ -28,7 +28,7 @@ O backend NestJS, o Prisma e o PostgreSQL permanecem previstos para quando uma f
 | `/rules` | Consultar regras básicas | Implementada na feature `002-rules` |
 | `/search` | Exibir resultados de uma busca de regras | Implementada na feature `003-search` |
 | `/rotation` | Explicar rodízio | Implementada na feature `004-rotation` |
-| `/quiz` | Praticar regras básicas por perguntas | Planejada na feature `005-quiz` |
+| `/quiz` | Praticar regras básicas por perguntas | Implementada na feature `005-quiz` |
 
 ## Consulta de regras básicas
 

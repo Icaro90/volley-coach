@@ -1,10 +1,7 @@
 name: Frontend quality
 
 on:
-  pull_request:
-    branches: [main]
   push:
-    branches: [main]
 
 permissions:
   contents: read
@@ -39,3 +36,33 @@ jobs:
 
       - name: Build frontend
         run: npm run build
+
+  promote-hom:
+    name: Promote hom to main
+    if: github.ref == 'refs/heads/hom'
+    needs: quality
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    concurrency:
+      group: promote-hom-to-main
+      cancel-in-progress: false
+
+    steps:
+      - name: Create promotion pull request when needed
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          existing_pull_request="$(gh pr list --repo "$GITHUB_REPOSITORY" --base main --head hom --state open --json number --jq 'length')"
+
+          if [ "$existing_pull_request" -gt 0 ]; then
+            echo "A promotion pull request from hom to main is already open."
+            exit 0
+          fi
+
+          gh pr create \
+            --repo "$GITHUB_REPOSITORY" \
+            --base main \
+            --head hom \
+            --title "chore: promote hom to main" \
+            --body "Automated promotion pull request created after a successful hom validation. Review the homologation deployment before merging."

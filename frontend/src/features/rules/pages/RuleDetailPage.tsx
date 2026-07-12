@@ -1,5 +1,6 @@
-import { Link, useParams } from 'react-router'
+import { useParams } from 'react-router'
 import { AppHeader } from '../../../shared/components/AppHeader'
+import { BackLink } from '../../../shared/components/BackLink'
 import { rules } from '../data/rules'
 
 function formatReviewDate(date: string) {
@@ -21,9 +22,9 @@ export function RuleDetailPage() {
           <p className="mt-3 text-slate-600">
             Esta regra não está disponível na consulta de regras básicas.
           </p>
-          <Link className="mt-6 inline-block font-semibold text-orange-700 underline" to="/rules">
-            Voltar para as regras básicas
-          </Link>
+          <div className="mt-6">
+            <BackLink to="/rules">Voltar para as regras básicas</BackLink>
+          </div>
         </main>
       </div>
     )
@@ -34,9 +35,7 @@ export function RuleDetailPage() {
       <AppHeader />
 
       <main className="mx-auto max-w-2xl px-5 py-12 sm:px-8 sm:py-16">
-        <Link className="text-sm font-semibold text-orange-700 underline" to="/rules">
-          Voltar para as regras básicas
-        </Link>
+        <BackLink to="/rules">Voltar para as regras básicas</BackLink>
         <h1 className="mt-6 text-4xl font-bold tracking-tight text-slate-900">{rule.title}</h1>
         <p className="mt-4 text-lg leading-8 text-slate-600">{rule.summary}</p>
 

@@ -2,6 +2,7 @@ import { Link, useSearchParams } from 'react-router'
 import { RuleListItem } from '../../rules/components/RuleListItem'
 import { rules } from '../../rules/data/rules'
 import { AppHeader } from '../../../shared/components/AppHeader'
+import { BackLink } from '../../../shared/components/BackLink'
 import { searchRules } from '../utils/searchRules'
 
 export function SearchResultsPage() {
@@ -19,9 +20,7 @@ export function SearchResultsPage() {
             Use o campo da Home para encontrar uma regra básica de vôlei.
           </p>
           <div className="mt-6 flex flex-wrap gap-4">
-            <Link className="font-semibold text-orange-700 underline" to="/">
-              Voltar para a Home
-            </Link>
+            <BackLink to="/">Voltar para a Home</BackLink>
             <Link className="font-semibold text-orange-700 underline" to="/rules">
               Ver todas as regras
             </Link>
@@ -35,9 +34,7 @@ export function SearchResultsPage() {
     <div className="min-h-screen bg-slate-50">
       <AppHeader />
       <main className="mx-auto max-w-2xl px-5 py-12 sm:px-8 sm:py-16">
-        <Link className="text-sm font-semibold text-orange-700 underline" to="/">
-          Voltar para a Home
-        </Link>
+        <BackLink to="/">Voltar para a Home</BackLink>
         <h1 className="mt-6 text-4xl font-bold tracking-tight text-slate-900">
           Resultados da busca
         </h1>

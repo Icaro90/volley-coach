@@ -148,37 +148,41 @@ Os testes de componente usam React Testing Library e `jsdom`. Eles verificam o q
 
 ## Release do MVP
 
-O frontend é publicado como uma SPA estática na Vercel. O projeto Vercel usa `frontend/` como diretório raiz, executa `npm run build` e publica `dist/`. A integração com GitHub cria deploys de preview para branches e publica produção quando mudanças chegam à `main`.
+O frontend é publicado como uma SPA estática na Vercel. O projeto Vercel usa `frontend/` como diretório raiz, executa `npm run build` e publica `dist/`. A branch `hom` representa o ambiente de homologação, enquanto `main` representa produção. A Vercel publica automaticamente somente essas duas branches; branches de feature não recebem Preview Deployment automático.
 
 Como React Router resolve as rotas no cliente, `frontend/vercel.json` reescreve solicitações para `index.html`. Isso permite abrir diretamente `/rules`, `/search`, `/rotation` ou `/quiz` sem receber 404 do servidor estático.
 
 ```text
-Pull Request para main
+feature/* --push--> GitHub Actions: npm ci -> test -> lint -> build
       |
       v
-GitHub Actions: npm ci -> test -> lint -> build
+merge em hom --> Vercel: deploy de homologação
+      |                  |
+      |                  v
+      |             validação manual
+      v
+GitHub Actions cria PR hom -> main (se ainda não existir)
       |
       v
-Merge na main
+revisão e merge manual em main
       |
       v
-Vercel: build do frontend -> deploy de produção
-      |
-      v
-Smoke test pela URL pública
+Vercel: deploy de produção
 ```
 
 ### Integração contínua
 
-O workflow fica em `.github/workflows/frontend-quality.yml` e é executado em Pull Requests para `main` e em pushes para `main`. Ele trabalha em `frontend/`, fixa Node 24.11.0, usa `npm ci` e cache do npm baseado em `frontend/package-lock.json`, depois executa `npm run test`, `npm run lint` e `npm run build` nessa ordem.
+O workflow fica em `.github/workflows/frontend-quality.yml` e é executado a cada `push`, independentemente da branch. Ele trabalha em `frontend/`, fixa Node 24.11.0, usa `npm ci` e cache do npm baseado em `frontend/package-lock.json`, depois executa `npm run test`, `npm run lint` e `npm run build` nessa ordem.
+
+Quando o push é em `hom`, um job separado verifica se já existe uma Pull Request aberta de `hom` para `main` e cria uma quando necessário. Esse job recebe somente a permissão adicional `pull-requests: write`. O repositório também precisa habilitar, em **Settings → Actions → General**, a permissão para GitHub Actions criar Pull Requests. Ele não faz merge automático, não acessa a Vercel e não substitui a revisão humana após a homologação.
 
 O Node 24.11.0 mantém desenvolvimento local e CI alinhados. O workflow tem apenas a permissão `contents: read`; não faz deploy nem acessa secrets.
 
 ### Responsabilidades das plataformas
 
-- **GitHub Actions:** qualidade e feedback objetivo em Pull Requests.
-- **Vercel:** hospedagem estática, HTTPS, previews e produção por integração Git.
-- **Pessoa desenvolvedora:** conectar a conta Vercel, confirmar o diretório `frontend/`, registrar a URL pública e executar o smoke test após cada release.
+- **GitHub Actions:** qualidade para todo commit e criação controlada da PR de promoção de `hom` para `main`.
+- **Vercel:** hospedagem estática, HTTPS, homologação em `hom` e produção em `main` por integração Git.
+- **Pessoa desenvolvedora:** conectar a conta Vercel, confirmar o diretório `frontend/`, configurar a URL de homologação da branch `hom`, registrar as URLs e executar o smoke test antes do merge em `main`.
 
 Não haverá token da Vercel versionado ou deploy via CLI neste fluxo. A conexão Git gerenciada pela Vercel evita segredos no repositório e mantém o pipeline de qualidade independente do deploy.
 

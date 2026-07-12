@@ -2,8 +2,11 @@
 
 Todas as tarefas pertencem à branch `chore/006-release-prep`. Elas devem passar pelo fluxo **Backlog → Todo → Doing → Review → Done** no GitHub Projects.
 
+**Status da execução:** todas as quatro issues foram concluídas e a release do MVP está publicada em produção.
+
 ## Issue 1 — Configurar fallback de rotas para a SPA na Vercel
 
+- **Status:** Concluída
 - **Estimativa:** 30 min a 1h
 - **Coluna inicial:** Backlog
 - **Dependências:** nenhuma
@@ -14,6 +17,7 @@ Todas as tarefas pertencem à branch `chore/006-release-prep`. Elas devem passar
 
 ## Issue 2 — Criar workflow de qualidade no GitHub Actions
 
+- **Status:** Concluída
 - **Estimativa:** 1h a 1h30
 - **Coluna inicial:** Backlog
 - **Dependências:** nenhuma
@@ -24,6 +28,7 @@ Todas as tarefas pertencem à branch `chore/006-release-prep`. Elas devem passar
 
 ## Issue 3 — Documentar processo de deploy e smoke test
 
+- **Status:** Concluída
 - **Estimativa:** 1h a 1h30
 - **Coluna inicial:** Backlog
 - **Dependências:** Issues 1 e 2
@@ -34,6 +39,7 @@ Todas as tarefas pertencem à branch `chore/006-release-prep`. Elas devem passar
 
 ## Issue 4 — Configurar Vercel e validar a publicação pública
 
+- **Status:** Concluída
 - **Estimativa:** 1h a 2h
 - **Coluna inicial:** Backlog
 - **Dependências:** Issues 1, 2 e 3

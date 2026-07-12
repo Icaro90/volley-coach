@@ -2,7 +2,7 @@
 
 ## Status
 
-**Preview aprovado. Produção pendente de nova publicação após o merge da Spec 006 na `main`.**
+**Concluída — preview, CI, rotas diretas e smoke test manual de produção aprovados.**
 
 ## Evidências de preview
 
@@ -20,8 +20,8 @@
 ## Produção
 
 - **URL estável:** `https://volley-coach-rho.vercel.app/`
-- Antes do merge, somente `/` responde com sucesso; rotas profundas retornam `404`, pois a produção ainda representa a `main` sem `frontend/vercel.json`.
-- Após o merge, a Vercel deve publicar novamente a `main`. Repetir as rotas de preview e a verificação manual na URL estável antes de marcar esta spec como concluída.
+- A publicação da `main` após a PR #12 responde HTTP `200` nas rotas `/`, `/rules`, `/rules/block`, `/search?q=saque`, `/rotation` e `/quiz`.
+- O fallback de SPA está ativo em produção. A verificação visual e interativa foi repetida e aprovada no domínio estável.
 
 ## Critérios de aceite
 
@@ -32,8 +32,9 @@
 | Fallback de rotas da SPA | Preview responde `200` em todas as rotas diretas testadas | Aprovado no preview |
 | Home, busca, regras, rodízio e quiz | Smoke test manual realizado no preview | Aprovado no preview |
 | Responsividade | Smoke test manual realizado em celular e desktop no preview | Aprovado no preview |
-| Produção pública com HTTPS | Domínio estável existe, mas aguarda publicação da `main` com a configuração de fallback | Pendente após merge |
-| Smoke test em produção | Depende da nova publicação de produção | Pendente após merge |
+| Produção pública com HTTPS | `https://volley-coach-rho.vercel.app/` publicada a partir da `main` após a PR #12 | Aprovado |
+| Rotas diretas em produção | `/`, `/rules`, `/rules/block`, `/search?q=saque`, `/rotation` e `/quiz` respondem HTTP `200` | Aprovado |
+| Smoke test manual em produção | Home, busca, rodízio, quiz e responsividade confirmados no domínio estável | Aprovado em verificação manual |
 
 ## Limitações conhecidas
 

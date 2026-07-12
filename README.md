@@ -104,18 +104,21 @@ frontend/src/
 │   │   ├── pages/
 │   │   ├── components/
 │   │   ├── data/
-│   │   ├── assets/
-│   │   └── test/
+│   │   └── assets/
 │   └── search/
 │       ├── pages/
 │       ├── components/
-│       ├── utils/
-│       └── test/
+│       └── utils/
 ├── shared/
 │   ├── components/                # sem regra de negócio específica
 │   └── pages/                     # páginas temporárias reutilizáveis
 ├── index.css                      # estilos globais mínimos
 └── main.tsx                       # entrada React
+
+frontend/test/
+├── rules/                          # testes da feature rules
+├── search/                         # testes da feature search
+└── rotation/                       # testes da feature rotation
 ```
 
 Exemplos:
@@ -175,8 +178,8 @@ refactor(frontend): organize code by feature
 
 1. Leia a spec e os ADRs relacionados antes de alterar uma feature.
 2. Preserve os limites entre `app`, `features` e `shared`.
-3. Coloque dados, assets, componentes e testes dentro da feature dona.
-4. Prefira funções puras para transformação e busca; teste-as em `features/<tema>/test`.
+3. Coloque páginas, dados, assets, componentes e utilitários dentro da feature dona; mantenha seus testes correspondentes em `frontend/test/<tema>/`.
+4. Prefira funções puras para transformação e busca; teste-as em `frontend/test/<tema>/`.
 5. Não introduza backend, estado global ou bibliotecas de consulta sem necessidade comprovada.
 6. Atualize README, arquitetura, specs e ADRs quando uma rota, estrutura ou decisão mudar.
 

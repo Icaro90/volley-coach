@@ -100,24 +100,29 @@ O contrato da função local isola a interface da estratégia de busca. Quando o
 
 ## Estrutura do frontend
 
-O frontend é organizado por feature. Cada feature mantém próximas as páginas, componentes, dados, assets, utilitários e testes que pertencem ao mesmo domínio.
+O código de produção do frontend é organizado por feature. Cada feature mantém próximas as páginas, componentes, dados, assets e utilitários que pertencem ao mesmo domínio. Os testes ficam em uma pasta técnica única, na raiz do pacote frontend, e são agrupados pela feature que cobrem.
 
 ```text
 frontend/src/
 ├── app/                         # composição global de rotas
 ├── features/
 │   ├── home/                    # Home, atalhos e seus dados
-│   ├── rules/                   # lista, detalhe, conteúdo, SVGs e testes de regras
-│   ├── search/                  # formulário, resultados, utilitário e testes de busca
-│   └── rotation/                # página, componentes, dados e testes de rodízio
+│   ├── rules/                   # lista, detalhe, conteúdo e SVGs
+│   ├── search/                  # formulário, resultados e utilitário
+│   └── rotation/                # página, componentes, dados e utilitário
 ├── shared/
 │   ├── components/              # componentes reutilizados entre features
 │   └── pages/                   # páginas temporárias reutilizáveis
 ├── index.css                    # estilos globais mínimos
 └── main.tsx                     # ponto de entrada React
+
+frontend/test/
+├── rules/                       # testes da feature rules
+├── search/                      # testes da feature search
+└── rotation/                    # testes da feature rotation
 ```
 
-Uma peça deve ficar dentro da feature enquanto tiver um único contexto de negócio. Ela só deve ir para `shared` quando for reutilizada por mais de uma feature e não carregar regra de negócio específica. Essa regra evita um diretório global de componentes sem dono claro.
+Uma peça de produção deve ficar dentro da feature enquanto tiver um único contexto de negócio. Ela só deve ir para `shared` quando for reutilizada por mais de uma feature e não carregar regra de negócio específica. Essa regra evita um diretório global de componentes sem dono claro. Testes ficam fora de `src` para separar o código distribuído da infraestrutura de verificação, mas mantêm o mesmo nome de feature para preservar a rastreabilidade.
 
 ## Rodízio
 

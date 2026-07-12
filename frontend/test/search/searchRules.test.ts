@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest'
-import { rules } from '../../rules/data/rules'
-import { normalizeSearchText, searchRules } from '../utils/searchRules'
+import { rules } from '../../src/features/rules/data/rules'
+import { normalizeSearchText, searchRules } from '../../src/features/search/utils/searchRules'
 
 describe('normalizeSearchText', () => {
   test('removes accents, ignores case and trims whitespace', () => {

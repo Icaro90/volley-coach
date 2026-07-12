@@ -12,7 +12,7 @@ Validação da feature `004-rotation`, realizada antes da revisão da Pull Reque
 | Quadra e seis posições | `RotationCourt` renderiza as posições 4, 3, 2, 5, 6 e 1 com texto real | Aprovado por inspeção de código |
 | Perspectiva da quadra | A interface identifica o lado da equipe, a rede e a separação entre frente e fundo | Aprovado por inspeção de código |
 | Momento do rodízio | O texto explica que a equipe gira ao recuperar o direito de sacar | Aprovado por inspeção de código e fonte FIVB |
-| Sentido horário | `rotateFormation` move 2 para 1, 1 para 6 e as demais posições na sequência oficial | Aprovado por testes unitários definidos e fonte FIVB |
+| Sentido horário | `rotateFormation` move 2 para 1, 1 para 6 e as demais posições na sequência oficial | Aprovado por inspeção de código e fonte FIVB; pendente de execução local dos testes unitários |
 | Avançar rodízio | O botão atualiza `rotationStep`, deriva a formação e anuncia o novo estado | Aprovado por inspeção de código |
 | Reiniciar | O botão restaura `rotationStep` para zero e fica desabilitado na formação inicial | Aprovado por inspeção de código |
 | Acessibilidade por teclado | Links e botões são elementos semânticos; foco global visível está definido | Pendente de verificação manual |

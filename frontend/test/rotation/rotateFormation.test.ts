@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest'
-import { initialFormation } from '../data/rotation'
-import { rotateFormation } from '../utils/rotateFormation'
+import { initialFormation } from '../../src/features/rotation/data/rotation'
+import { rotateFormation } from '../../src/features/rotation/utils/rotateFormation'
 
 describe('rotateFormation', () => {
   test('moves each player one position clockwise after gaining the right to serve', () => {

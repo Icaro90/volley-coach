@@ -29,7 +29,7 @@ export function RotationCourt({ formation, formationLabel }: RotationCourtProps)
           </p>
         </div>
 
-        <ol className="mt-3 grid grid-cols-3 gap-2 rounded-xl border-2 border-orange-300 bg-orange-50 p-2 sm:gap-3 sm:p-3">
+        <ul className="mt-3 grid grid-cols-3 gap-2 rounded-xl border-2 border-orange-300 bg-orange-50 p-2 sm:gap-3 sm:p-3">
           {courtPositions.map((position) => (
             <li
               className="min-h-28 rounded-lg border border-orange-200 bg-white p-3 text-center shadow-sm"
@@ -44,7 +44,7 @@ export function RotationCourt({ formation, formationLabel }: RotationCourtProps)
               <p className="mt-1 text-xs text-slate-600">{position.name}</p>
             </li>
           ))}
-        </ol>
+        </ul>
 
         <p className="mt-3 text-center text-xs text-slate-600">
           Frente: posições 4, 3 e 2 · Fundo: posições 5, 6 e 1

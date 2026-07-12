@@ -22,6 +22,12 @@ O MVP está concluído: as cinco features acima permitem consultar regras, pesqu
 | --- | --- | --- |
 | 006 | Preparação de release | Em especificação |
 
+## Evolução pós-MVP
+
+| Ordem | Feature | Estado |
+| --- | --- | --- |
+| 007 | Regras adicionais | Concluída |
+
 ## Futuras versões
 
 - Login e progresso de aprendizagem.

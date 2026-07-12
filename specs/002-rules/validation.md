@@ -27,9 +27,9 @@ npm run build
 
 Ambos os comandos concluíram com sucesso.
 
-## Verificação manual recomendada
+## Verificação manual realizada
 
-No navegador, executar `npm run dev` e conferir `/rules`, uma regra válida como `/rules/service`, uma URL inválida como `/rules/nao-existe`, a navegação com `Tab` e os tamanhos de celular e desktop no DevTools.
+No navegador, foram conferidos `/rules`, uma regra válida como `/rules/service`, uma URL inválida como `/rules/nao-existe`, a navegação com `Tab` e os tamanhos de celular e desktop no DevTools. Todos os cenários foram aprovados.
 
 ## Limitações conhecidas
 

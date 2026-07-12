@@ -122,7 +122,8 @@ frontend/src/
 │   ├── rotation/                # página, componentes, dados e utilitário
 │   └── quiz/                    # página, componentes, dados e reducer
 ├── shared/
-│   └── components/              # componentes reutilizados entre features
+│   ├── components/              # componentes reutilizados entre features
+│   └── theme/                   # tema transversal, provider e persistência local
 ├── index.css                    # estilos globais mínimos
 └── main.tsx                     # ponto de entrada React
 
@@ -134,6 +135,33 @@ frontend/test/
 ```
 
 Uma peça de produção deve ficar dentro da feature enquanto tiver um único contexto de negócio. Ela só deve ir para `shared` quando for reutilizada por mais de uma feature e não carregar regra de negócio específica. Essa regra evita um diretório global de componentes sem dono claro. Testes ficam fora de `src` para separar o código distribuído da infraestrutura de verificação, mas mantêm o mesmo nome de feature para preservar a rastreabilidade.
+
+## Tema visual
+
+A feature `010-dark-mode` introduz um tema escuro como padrão e um tema claro opcional. O estado visual é transversal à aplicação, mas não é estado de produto: ele não representa regras, progresso ou dados da pessoa usuária. Por isso, um contexto React pequeno em `shared/theme/` é apropriado e não exige uma biblioteca de estado global.
+
+```text
+index.html
+      |
+      +-- aplica data-theme salvo (ou dark) antes do React
+      v
+ThemeProvider
+      |
+      +-- estado atual: dark | light
+      +-- document.documentElement.dataset.theme
+      +-- localStorage: volley-coach.theme
+      v
+ThemeToggle no AppHeader
+      |
+      v
+tokens semânticos no index.css -> todas as features
+```
+
+`index.css` define variáveis CSS para os papéis visuais — canvas, superfície, superfície elevada, texto, texto secundário, borda, destaque e foco. O escuro é definido em `:root`; `[data-theme="light"]` substitui apenas os valores dos tokens. O Tailwind CSS v4 expõe os papéis por `@theme inline`, para que componentes usem utilitários semânticos em vez de valores específicos de uma paleta.
+
+O bootstrap no `index.html` lê a preferência de modo defensivo e aplica `data-theme` antes de o CSS ser exibido. Se não houver preferência, ou se `localStorage` falhar, aplica `dark`. O provider mantém o atributo, o estado React e o armazenamento sincronizados depois da inicialização.
+
+Testes devem cobrir leitura e escrita da preferência, tema padrão, alternância, atributo no documento e nome acessível do controle. A revisão manual cobre contraste, estados de foco e responsividade em todas as rotas.
 
 ## Estratégia de testes
 
@@ -274,7 +302,7 @@ Não haverá aleatoriedade no MVP: a ordem fixa torna o aprendizado e os testes 
 
 - Mobile-first: a interface é desenhada primeiro para telas pequenas e depois adaptada a telas maiores.
 - Acessibilidade básica desde o início: controles semânticos, foco visível e uso por teclado.
-- Sem estado global: esta tela não possui estado compartilhado que justifique uma solução global.
+- Sem estado global de produto: features não possuem estado de negócio compartilhado que justifique uma solução global. O único contexto transversal atual é a preferência visual de tema, limitada a `shared/theme/`.
 - Sem TanStack Query por enquanto: não há comunicação assíncrona com servidor. A biblioteca será introduzida quando houver uma API para consultar.
 
 ## Evolução prevista

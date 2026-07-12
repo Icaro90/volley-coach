@@ -167,7 +167,8 @@ frontend/src/
 │       ├── data/
 │       └── utils/
 ├── shared/
-│   └── components/                # sem regra de negócio específica
+│   ├── components/                # sem regra de negócio específica
+│   └── theme/                     # tema transversal e preferência local
 ├── index.css                      # estilos globais mínimos
 └── main.tsx                       # entrada React
 
@@ -193,6 +194,7 @@ Exemplos:
 - A busca usa `/search?q=...` como fonte de verdade; a URL pode ser atualizada, compartilhada e navegada pelo histórico.
 - A busca ignora caixa e acentos: `pontuacao` encontra `Pontuação`.
 - Não há estado global: resultados são derivados da URL e dos dados locais.
+- Tema visual é a única exceção transversal: tema escuro padrão, tema claro opcional e preferência local no navegador.
 
 As decisões completas estão em [docs/architecture.md](docs/architecture.md) e nos [ADRs](docs/adr/).
 

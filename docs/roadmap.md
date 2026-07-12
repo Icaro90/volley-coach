@@ -27,7 +27,7 @@ O MVP está concluído: as cinco features acima permitem consultar regras, pesqu
 | Ordem | Feature | Estado |
 | --- | --- | --- |
 | 007 | Regras adicionais | Concluída |
-| 008 | Faltas de posição e ordem de saque | Em revisão |
+| 008 | Faltas de posição e ordem de saque | Concluída |
 
 ## Futuras versões
 

@@ -4,6 +4,8 @@
 
 **Concluída — verificações automatizadas e roteiro manual aprovados.**
 
+**Publicação:** a rota `/rotation` respondeu HTTP `200` em produção após o merge da PR #13 na `main`.
+
 ## Critérios de aceite
 
 | Critério | Evidência | Resultado |

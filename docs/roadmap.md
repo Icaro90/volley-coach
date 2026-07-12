@@ -20,7 +20,7 @@ O MVP está concluído: as cinco features acima permitem consultar regras, pesqu
 
 | Ordem | Feature | Estado |
 | --- | --- | --- |
-| 007 | Regras adicionais | Em revisão |
+| 007 | Regras adicionais | Concluída |
 
 ## Futuras versões
 

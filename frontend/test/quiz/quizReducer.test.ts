@@ -37,6 +37,27 @@ describe('quizReducer', () => {
     expect(quizReducer(feedbackState, { type: 'confirmAnswer' })).toBe(feedbackState)
   })
 
+  test('shows feedback without increasing the score for an incorrect answer', () => {
+    const questionState = quizReducer(initialQuizState, { type: 'start' })
+    const incorrectOption = quizQuestions[0].options.find(
+      (option) => option.id !== quizQuestions[0].correctOptionId,
+    )
+
+    if (!incorrectOption) {
+      throw new Error('A pergunta de teste deve possuir uma alternativa incorreta.')
+    }
+
+    const withIncorrectAnswer = quizReducer(questionState, {
+      type: 'selectOption',
+      optionId: incorrectOption.id,
+    })
+
+    expect(quizReducer(withIncorrectAnswer, { type: 'confirmAnswer' })).toMatchObject({
+      phase: 'feedback',
+      score: 0,
+    })
+  })
+
   test('moves to the next question only after feedback and clears the selected answer', () => {
     const questionState = quizReducer(initialQuizState, { type: 'start' })
     const feedbackState = answerCurrentQuestionCorrectly(questionState)

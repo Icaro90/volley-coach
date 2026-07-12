@@ -53,6 +53,7 @@ describe('QuizPage', () => {
     }
 
     expect(screen.getByRole('heading', { name: 'Você acertou 5 de 5 perguntas' })).toBeDefined()
+    expect(screen.getByText('Aproveitamento: 100%')).toBeDefined()
     expect(screen.getByRole('link', { name: 'Consultar regras básicas' })).toHaveAttribute(
       'href',
       '/rules',

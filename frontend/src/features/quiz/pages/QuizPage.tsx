@@ -18,6 +18,10 @@ function getResultMessage(score: number) {
   return 'Bom começo! Consulte as regras e tente novamente quando quiser.'
 }
 
+function getScorePercentage(score: number) {
+  return Math.round((score / quizQuestions.length) * 100)
+}
+
 export function QuizPage() {
   const [state, dispatch] = useReducer(quizReducer, initialQuizState)
   const currentQuestion = quizQuestions[state.currentQuestionIndex]
@@ -83,6 +87,9 @@ export function QuizPage() {
             <h1 className="mt-3 text-3xl font-bold text-slate-900" id="result-title">
               Você acertou {state.score} de {quizQuestions.length} perguntas
             </h1>
+            <p className="mt-2 text-lg font-semibold text-slate-800">
+              Aproveitamento: {getScorePercentage(state.score)}%
+            </p>
             <p className="mt-4 leading-7 text-slate-700">{getResultMessage(state.score)}</p>
 
             <div className="mt-8 flex flex-wrap gap-3">

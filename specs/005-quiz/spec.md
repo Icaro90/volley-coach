@@ -28,7 +28,7 @@ Jogador ou jogadora iniciante de vôlei de quadra, em momento de estudo ou após
 - A página apresenta uma pergunta por vez, com enunciado e alternativas claras.
 - A pessoa não consegue avançar sem selecionar uma alternativa.
 - Após responder, a interface informa se a resposta está correta ou incorreta, mostra a resposta correta e apresenta uma explicação curta.
-- A pontuação é atualizada corretamente e o resultado final mostra os acertos de `0` a `5`.
+- A pontuação é atualizada corretamente e o resultado final mostra os acertos de `0` a `5` e a porcentagem de aproveitamento.
 - A pessoa pode reiniciar o quiz depois do resultado, sem recarregar a página.
 - O resultado final oferece um caminho para `/rules`.
 - Os controles podem ser usados por teclado, possuem rótulos acessíveis e funcionam em celular e desktop.

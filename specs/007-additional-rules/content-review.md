@@ -1,6 +1,6 @@
 # Revisão de conteúdo — Regras adicionais
 
-**Data da revisão:** 2026-07-12  
+**Data da revisão:** 2026-07-12
 **Fonte principal:** [FIVB Official Volleyball Rules 2025–2028](https://www.fivb.com/wp-content/uploads/2025/01/FIVB-Volleyball_Rules2025_2028-EN.pdf)
 
 Este documento separa a decisão de conteúdo da implementação em React. Na próxima etapa, os textos abaixo serão convertidos para o contrato `VolleyballRule` em `rules.ts`.

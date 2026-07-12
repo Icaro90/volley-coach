@@ -48,9 +48,8 @@ export function searchRules(rules: VolleyballRule[], query: string) {
 
   return rules.filter((rule) => {
     const searchableText = [rule.title, rule.summary, rule.explanation, ...rule.searchTerms].join(' ')
+    const searchableTokens = new Set(normalizeSearchText(searchableText).split(' '))
 
-    const normalizedText = normalizeSearchText(searchableText)
-
-    return searchTokens.every((token) => normalizedText.includes(token))
+    return searchTokens.every((token) => searchableTokens.has(token))
   })
 }

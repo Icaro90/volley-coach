@@ -16,7 +16,7 @@ Validação da feature `007-additional-rules`, realizada antes da revisão da Pu
 | URLs diretas | Testes renderizam as quatro novas rotas em `/rules/:ruleId`, com título, diagrama acessível e link de retorno | Aprovado por teste automatizado |
 | Busca pelos quatro temas | Testes de busca e de página localizam os termos controlados e seus links de detalhe | Aprovado por teste automatizado |
 | Acessibilidade básica | Diagramas possuem texto alternativo; links de lista e retorno são elementos semânticos | Aprovado por teste automatizado e inspeção de código |
-| Responsividade e clareza visual | Diagramas e conteúdo devem ser conferidos em celular e desktop | Pendente de verificação manual |
+| Responsividade e clareza visual | Diagramas e conteúdo foram conferidos em celular e desktop, sem corte ou rolagem horizontal | Aprovado em verificação manual |
 | Sem backend ou rede | Catálogo e SVGs são arquivos locais; nenhuma rota, chamada HTTP ou estado global foi adicionada | Aprovado por inspeção de código |
 | Fonte oficial | Metadados usam FIVB 2025–2028, regras relevantes e revisão em 2026-07-12 | Aprovado por revisão de conteúdo |
 
@@ -39,6 +39,8 @@ Com o servidor de desenvolvimento do frontend em execução, confirmar:
 4. Voltar por teclado com `Tab` até o link de retorno em cada detalhe e confirmar a navegação para `/rules`.
 5. Pesquisar `pé do outro lado`, `bloquear saque`, `troca de jogador` e `atacar do fundo`; confirmar que a regra esperada aparece e abre o detalhe correto.
 6. Conferir no celular e desktop que títulos, exemplos, consequências e fonte não sobrepõem nem cortam conteúdo.
+
+Todos os cenários foram aprovados em verificação manual, sem problemas de navegação, foco visível, corte de conteúdo ou rolagem horizontal.
 
 ## Limitações conhecidas
 

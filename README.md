@@ -116,8 +116,7 @@ frontend/src/
 │       ├── data/
 │       └── utils/
 ├── shared/
-│   ├── components/                # sem regra de negócio específica
-│   └── pages/                     # páginas temporárias reutilizáveis
+│   └── components/                # sem regra de negócio específica
 ├── index.css                      # estilos globais mínimos
 └── main.tsx                       # entrada React
 

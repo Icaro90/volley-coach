@@ -112,8 +112,7 @@ frontend/src/
 │   ├── rotation/                # página, componentes, dados e utilitário
 │   └── quiz/                    # página, componentes, dados e reducer
 ├── shared/
-│   ├── components/              # componentes reutilizados entre features
-│   └── pages/                   # páginas temporárias reutilizáveis
+│   └── components/              # componentes reutilizados entre features
 ├── index.css                    # estilos globais mínimos
 └── main.tsx                     # ponto de entrada React
 
@@ -179,13 +178,14 @@ QuizPage
       +-- quizReducer (função pura)
       +-- estado: intro | question | feedback | result
       +-- índice atual, resposta selecionada e pontuação
+      +-- porcentagem de aproveitamento derivada da pontuação
 ```
 
 ### Modelo e transições
 
 Cada pergunta terá identificador estável, enunciado, alternativas, identificador da alternativa correta, explicação e referência à fonte FIVB. O conteúdo ficará em `frontend/src/features/quiz/data/questions.ts`, separado da interface.
 
-`quizReducer` concentrará as transições: iniciar, selecionar alternativa, confirmar resposta, avançar e reiniciar. A página apenas dispara ações e renderiza o estado resultante. Isso evita estados impossíveis, como avançar antes de responder ou alterar uma resposta após o feedback.
+`quizReducer` concentrará as transições: iniciar, selecionar alternativa, confirmar resposta, avançar e reiniciar. A página apenas dispara ações e renderiza o estado resultante. Isso evita estados impossíveis, como avançar antes de responder ou alterar uma resposta após o feedback. A porcentagem de aproveitamento é calculada no resultado a partir de `pontuação / total de perguntas`; ela não é armazenada no estado para evitar duplicação.
 
 `useReducer` é apropriado porque índice, resposta, pontuação e fase mudam juntos. Para um único campo transitório, `useState` seria mais simples; neste fluxo, o reducer torna as regras explícitas e facilmente testáveis.
 

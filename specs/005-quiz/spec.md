@@ -19,7 +19,7 @@ Jogador ou jogadora iniciante de vôlei de quadra, em momento de estudo ou após
 3. Lê uma pergunta por vez e escolhe uma entre as alternativas disponíveis.
 4. Recebe feedback imediato: se acertou, qual era a resposta correta e uma explicação simples.
 5. Avança até responder as cinco perguntas.
-6. Vê a quantidade de acertos, uma mensagem de incentivo e pode reiniciar o quiz ou consultar as regras básicas.
+6. Vê a quantidade de acertos, a porcentagem de aproveitamento, uma mensagem de incentivo e pode reiniciar o quiz ou consultar as regras básicas.
 
 ## Critérios de aceite
 

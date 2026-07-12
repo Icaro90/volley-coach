@@ -39,7 +39,7 @@ Todas as tarefas pertencem à branch `feat/005-quiz` e começam na coluna **Back
 - **Dependências:** Issues 2 e 3
 - **Objetivo:** substituir o placeholder de `/quiz` por `QuizPage`, conectando introdução, pergunta, feedback, resultado, reinício e link para regras básicas.
 - **Aprendizado:** a página compõe dados, reducer e componentes; ela é o equivalente mais próximo de um controller de interface, mas sem colocar regras de transição dentro do JSX.
-- **Critérios de conclusão:** rota abre a página real; uma pergunta é exibida por vez; resultado mostra `0` a `5` acertos; reinício não recarrega a página; link para `/rules` funciona; testes cobrem o fluxo essencial.
+- **Critérios de conclusão:** rota abre a página real; uma pergunta é exibida por vez; resultado mostra `0` a `5` acertos e a porcentagem de aproveitamento; reinício não recarrega a página; link para `/rules` funciona; testes cobrem o fluxo essencial.
 - **Commit sugerido:** `feat(quiz): add interactive quick quiz page`
 
 ## Issue 5 — Validar o fluxo completo do quiz

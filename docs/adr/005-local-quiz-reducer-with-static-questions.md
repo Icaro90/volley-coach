@@ -14,7 +14,7 @@ Não há requisito de persistência, aleatoriedade, colaboração ou compartilha
 
 Manter as perguntas em um módulo TypeScript tipado dentro da feature `quiz`. Modelar o fluxo com `useReducer`, usando um reducer puro que recebe o estado atual e uma ação e devolve o próximo estado.
 
-O estado terá uma fase explícita (`intro`, `question`, `feedback` ou `result`), índice da pergunta, alternativa selecionada e pontuação. Perguntas serão apresentadas em ordem fixa e a pontuação não será persistida.
+O estado terá uma fase explícita (`intro`, `question`, `feedback` ou `result`), índice da pergunta, alternativa selecionada e pontuação. A porcentagem de aproveitamento será derivada de `pontuação / total de perguntas` somente ao apresentar o resultado, sem compor o estado. Perguntas serão apresentadas em ordem fixa e a pontuação não será persistida.
 
 ## Consequências
 
@@ -24,6 +24,7 @@ O estado terá uma fase explícita (`intro`, `question`, `feedback` ou `result`)
 - O reducer evita combinações inválidas de estado, como exibir resultado antes de responder todas as perguntas.
 - Perguntas estáticas não exigem backend, banco de dados, chamadas de rede ou TanStack Query.
 - Ordem fixa facilita a revisão de conteúdo, a repetição do exercício e os testes automatizados.
+- Calcular a porcentagem a partir da pontuação evita manter dois valores que poderiam divergir.
 
 ### Negativas
 

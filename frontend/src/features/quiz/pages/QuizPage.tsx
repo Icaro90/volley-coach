@@ -1,6 +1,7 @@
 import { useReducer } from 'react'
 import { Link } from 'react-router'
 import { AppHeader } from '../../../shared/components/AppHeader'
+import { BackLink } from '../../../shared/components/BackLink'
 import { QuizFeedback } from '../components/QuizFeedback'
 import { QuizQuestion } from '../components/QuizQuestion'
 import { quizQuestions } from '../data/questions'
@@ -31,9 +32,7 @@ export function QuizPage() {
       <AppHeader />
 
       <main className="mx-auto max-w-2xl px-5 py-12 sm:px-8 sm:py-16">
-        <Link className="text-sm font-semibold text-orange-700 underline" to="/">
-          Voltar para a Home
-        </Link>
+        <BackLink to="/">Voltar para a Home</BackLink>
 
         {state.phase === 'intro' && (
           <section className="mt-8" aria-labelledby="quiz-title">

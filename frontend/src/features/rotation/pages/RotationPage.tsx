@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { Link } from 'react-router'
 import { AppHeader } from '../../../shared/components/AppHeader'
+import { BackLink } from '../../../shared/components/BackLink'
 import { PositionScenarioCard } from '../components/PositionScenarioCard'
 import { RotationCourt } from '../components/RotationCourt'
 import { positionScenarios, positionScenarioSource } from '../data/positionScenarios'
@@ -46,9 +46,7 @@ export function RotationPage() {
       <AppHeader />
 
       <main className="mx-auto max-w-2xl px-5 py-12 sm:px-8 sm:py-16">
-        <Link className="text-sm font-semibold text-orange-700 underline" to="/">
-          Voltar para a Home
-        </Link>
+        <BackLink to="/">Voltar para a Home</BackLink>
 
         <p className="mt-6 text-sm font-semibold tracking-wide text-orange-700 uppercase">
           Posições em quadra

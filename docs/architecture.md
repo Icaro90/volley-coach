@@ -210,6 +210,31 @@ O diagrama será construído com HTML e CSS responsivo, e não com uma imagem ou
 
 Não haverá estado global, TanStack Query, backend ou persistência. Caso uma versão futura passe a salvar formações, exercícios ou progresso por pessoa usuária, essa decisão deverá ser reavaliada.
 
+### Faltas de posição e ordem de saque
+
+A feature `008-position-faults` estende a mesma rota `/rotation` e a decisão da ADR 004. Ela não cria um validador de escalação real: usa cenários estáticos revisados para ensinar as relações entre frente/fundo e direita/esquerda no instante do saque.
+
+```text
+RotationPage
+      |
+      +-- formação atual derivada de rotationStep
+      |      |
+      |      +-- getServer(formation) -> pessoa na posição 1
+      |
+      +-- cenários didáticos estáticos de posição
+      |      |
+      |      +-- exemplo válido
+      |      +-- exemplo de falta de posição
+      |
+      +-- componentes HTML/CSS com texto real
+```
+
+Os cenários ficam em dados TypeScript locais e possuem identificação, relação ensinada, explicação, consequência e referência FIVB. Um componente específico de exemplo de posição os renderiza com HTML/CSS responsivo, destacando visualmente a relação avaliada sem representar coordenadas reais dos pés.
+
+`getServer` é uma função pura que deriva a pessoa responsável pelo próximo saque a partir da posição `1` da formação atual. Ela é testada junto de `rotateFormation`: ao recuperar o direito de saque, a rotação move a pessoa da posição `2` para `1`, que passa a ser identificada como sacadora.
+
+Os testes cobrirão os dados dos cenários, a derivação da pessoa que saca e a renderização acessível das explicações na página. O estado continuará limitado a `rotationStep`; não haverá estado para arbitragem, persistência ou coordenadas livres.
+
 ## Quiz rápido
 
 A feature `005-quiz` permanece no frontend e pratica cinco regras básicas já presentes no catálogo local. As perguntas não são buscadas em rede e a pontuação existe somente durante a sessão atual da página.

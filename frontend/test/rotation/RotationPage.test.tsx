@@ -31,6 +31,9 @@ describe('RotationPage', () => {
     expect(screen.getByRole('heading', { name: 'Entenda o rodízio' })).toBeDefined()
     expect(getPlayerAtPosition(1).getByText('Jogador A')).toBeDefined()
     expect(getPlayerAtPosition(2).getByText('Jogador B')).toBeDefined()
+    expect(
+      screen.getByText('Formação inicial: Jogador A está na posição 1 e será a próxima pessoa a sacar.'),
+    ).toBeDefined()
     expect(screen.getByRole('button', { name: 'Reiniciar' })).toHaveProperty('disabled', true)
   })
 
@@ -42,7 +45,9 @@ describe('RotationPage', () => {
 
     expect(getPlayerAtPosition(1).getByText('Jogador B')).toBeDefined()
     expect(getPlayerAtPosition(6).getByText('Jogador A')).toBeDefined()
-    expect(screen.getByText('Rodízio 1: cada jogador avançou uma posição no sentido horário.')).toBeDefined()
+    expect(
+      screen.getByText('Rodízio 1: Jogador B está na posição 1 e será a próxima pessoa a sacar.'),
+    ).toBeDefined()
     expect(screen.getByRole('button', { name: 'Reiniciar' })).toHaveProperty('disabled', false)
   })
 
@@ -55,5 +60,20 @@ describe('RotationPage', () => {
 
     expect(getPlayerAtPosition(1).getByText('Jogador A')).toBeDefined()
     expect(screen.getByRole('button', { name: 'Reiniciar' })).toHaveProperty('disabled', true)
+  })
+
+  test('explains position rules and renders all educational scenarios', () => {
+    renderRotationPage()
+
+    expect(screen.getByRole('heading', { name: 'Posição é conferida no saque' })).toBeDefined()
+    expect(
+      screen.getByText(/Depois do golpe de saque, todas as pessoas podem se movimentar na quadra/),
+    ).toBeDefined()
+    expect(screen.getByRole('heading', { name: 'Entenda as faltas de posição' })).toBeDefined()
+    expect(screen.getByRole('heading', { name: 'Frente e fundo na ordem correta' })).toBeDefined()
+    expect(screen.getByRole('heading', { name: 'Fundo adiantado além da frente' })).toBeDefined()
+    expect(screen.getByRole('heading', { name: 'Ordem lateral invertida' })).toBeDefined()
+    expect(screen.getByRole('heading', { name: 'Falta de posição ou falta de rodízio?' })).toBeDefined()
+    expect(screen.getByText('A pessoa errada executa o saque fora da ordem de rodízio.')).toBeDefined()
   })
 })

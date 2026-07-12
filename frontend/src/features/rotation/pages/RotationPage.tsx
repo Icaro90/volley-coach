@@ -1,8 +1,11 @@
 import { useState } from 'react'
 import { Link } from 'react-router'
 import { AppHeader } from '../../../shared/components/AppHeader'
+import { PositionScenarioCard } from '../components/PositionScenarioCard'
 import { RotationCourt } from '../components/RotationCourt'
-import { initialFormation, rotationSource, type RotationFormation } from '../data/rotation'
+import { positionScenarios, positionScenarioSource } from '../data/positionScenarios'
+import { initialFormation, type RotationFormation } from '../data/rotation'
+import { getServer } from '../utils/getServer'
 import { rotateFormation } from '../utils/rotateFormation'
 
 const rotationsPerCycle = 6
@@ -26,12 +29,13 @@ function formatReviewDate(date: string) {
 export function RotationPage() {
   const [rotationStep, setRotationStep] = useState(0)
   const formation = getFormationAt(rotationStep)
+  const server = getServer(formation)
   const formationLabel =
     rotationStep === 0 ? 'Formação inicial' : `Rodízio ${rotationStep} de ${rotationsPerCycle - 1}`
   const statusMessage =
     rotationStep === 0
-      ? 'Formação inicial: Jogador A está na posição 1 e será o próximo a sacar.'
-      : `Rodízio ${rotationStep}: cada jogador avançou uma posição no sentido horário.`
+      ? `Formação inicial: ${server} está na posição 1 e será a próxima pessoa a sacar.`
+      : `Rodízio ${rotationStep}: ${server} está na posição 1 e será a próxima pessoa a sacar.`
 
   function handleAdvanceRotation() {
     setRotationStep((currentStep) => (currentStep + 1) % rotationsPerCycle)
@@ -65,6 +69,17 @@ export function RotationPage() {
           </p>
         </section>
 
+        <section className="mt-4 rounded-xl border border-blue-200 bg-blue-50 p-5" aria-labelledby="position-tip-title">
+          <h2 className="text-lg font-semibold text-slate-900" id="position-tip-title">
+            Posição é conferida no saque
+          </h2>
+          <p className="mt-2 leading-7 text-slate-700">
+            No instante do saque, a equipe que recebe deve respeitar as relações entre frente,
+            fundo, esquerda e direita. Depois do golpe de saque, todas as pessoas podem se
+            movimentar na quadra.
+          </p>
+        </section>
+
         <div className="mt-8">
           <RotationCourt formation={formation} formationLabel={formationLabel} />
         </div>
@@ -91,22 +106,54 @@ export function RotationPage() {
           </button>
         </div>
 
+        <section className="mt-12" aria-labelledby="position-scenarios-title">
+          <h2 className="text-2xl font-bold text-slate-900" id="position-scenarios-title">
+            Entenda as faltas de posição
+          </h2>
+          <p className="mt-3 leading-7 text-slate-700">
+            A posição não é um ponto fixo da quadra. O que importa é a relação entre as pessoas
+            no instante em que o saque é golpeado.
+          </p>
+
+          <div className="mt-6 space-y-4">
+            {positionScenarios.map((scenario) => (
+              <PositionScenarioCard key={scenario.id} scenario={scenario} />
+            ))}
+          </div>
+        </section>
+
+        <section className="mt-8 rounded-xl border border-slate-200 bg-white p-5" aria-labelledby="fault-difference-title">
+          <h2 className="text-lg font-semibold text-slate-900" id="fault-difference-title">
+            Falta de posição ou falta de rodízio?
+          </h2>
+          <dl className="mt-4 space-y-4 leading-7 text-slate-700">
+            <div>
+              <dt className="font-semibold text-slate-900">Falta de posição</dt>
+              <dd>As relações entre atletas da equipe receptora estão incorretas no saque.</dd>
+            </div>
+            <div>
+              <dt className="font-semibold text-slate-900">Falta de rodízio</dt>
+              <dd>A pessoa errada executa o saque fora da ordem de rodízio.</dd>
+            </div>
+          </dl>
+        </section>
+
         <footer className="mt-10 border-t border-slate-200 pt-6 text-sm leading-6 text-slate-600">
           <p>
             Fonte:{' '}
             <a
               className="font-semibold text-orange-700 underline"
-              href={rotationSource.url}
+              href={positionScenarioSource.url}
               rel="noreferrer"
               target="_blank"
             >
-              {rotationSource.title} ({rotationSource.edition})
+              {positionScenarioSource.title} ({positionScenarioSource.edition})
             </a>
             .
           </p>
           <p className="mt-1">
-            Regras consultadas: {rotationSource.relevantRules.join(', ')}. Conteúdo revisado em{' '}
-            {formatReviewDate(rotationSource.reviewedAt)}.
+            Regras consultadas: {positionScenarioSource.relevantRules.join(', ')}. Conteúdo revisado em{' '}
+            {formatReviewDate(positionScenarioSource.reviewedAt)}.
           </p>
         </footer>
       </main>

@@ -1,11 +1,12 @@
-import { render, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 import { MemoryRouter, Route, Routes } from 'react-router'
 import { describe, expect, test } from 'vitest'
 import { rules } from '../../src/features/rules/data/rules'
 import { RuleDetailPage } from '../../src/features/rules/pages/RuleDetailPage'
+import { renderWithAppProviders } from '../renderWithAppProviders'
 
 function renderRuleDetail(path: string) {
-  return render(
+  return renderWithAppProviders(
     <MemoryRouter initialEntries={[path]}>
       <Routes>
         <Route element={<RuleDetailPage />} path="/rules/:ruleId" />

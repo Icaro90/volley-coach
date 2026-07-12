@@ -1,12 +1,13 @@
-import { render, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { MemoryRouter } from 'react-router'
 import { describe, expect, test } from 'vitest'
 import { quizQuestions } from '../../src/features/quiz/data/questions'
 import { QuizPage } from '../../src/features/quiz/pages/QuizPage'
+import { renderWithAppProviders } from '../renderWithAppProviders'
 
 function renderQuizPage() {
-  return render(
+  return renderWithAppProviders(
     <MemoryRouter>
       <QuizPage />
     </MemoryRouter>,

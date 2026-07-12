@@ -1,3 +1,5 @@
+import { ThemeToggle } from './ThemeToggle'
+
 export function AppHeader() {
   return (
     <header className="border-b border-slate-200 bg-white">
@@ -6,6 +8,7 @@ export function AppHeader() {
           🏐
         </span>
         <span className="font-semibold text-slate-900">Regras de Vôlei</span>
+        <ThemeToggle />
       </div>
     </header>
   )

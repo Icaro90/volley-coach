@@ -1,13 +1,14 @@
-import { cleanup, render, screen, within } from '@testing-library/react'
+import { cleanup, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { afterEach, describe, expect, test } from 'vitest'
 import { MemoryRouter } from 'react-router'
 import { RotationPage } from '../../src/features/rotation/pages/RotationPage'
+import { renderWithAppProviders } from '../renderWithAppProviders'
 
 afterEach(cleanup)
 
 function renderRotationPage() {
-  return render(
+  return renderWithAppProviders(
     <MemoryRouter>
       <RotationPage />
     </MemoryRouter>,

@@ -1,11 +1,12 @@
-import { render, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 import { MemoryRouter, Route, Routes } from 'react-router'
 import { describe, expect, test } from 'vitest'
 import { rules } from '../../src/features/rules/data/rules'
 import { SearchResultsPage } from '../../src/features/search/pages/SearchResultsPage'
+import { renderWithAppProviders } from '../renderWithAppProviders'
 
 function renderSearchResults(path: string) {
-  return render(
+  return renderWithAppProviders(
     <MemoryRouter initialEntries={[path]}>
       <Routes>
         <Route element={<SearchResultsPage />} path="/search" />

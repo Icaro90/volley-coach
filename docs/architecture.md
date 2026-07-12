@@ -124,6 +124,17 @@ frontend/test/
 
 Uma peça de produção deve ficar dentro da feature enquanto tiver um único contexto de negócio. Ela só deve ir para `shared` quando for reutilizada por mais de uma feature e não carregar regra de negócio específica. Essa regra evita um diretório global de componentes sem dono claro. Testes ficam fora de `src` para separar o código distribuído da infraestrutura de verificação, mas mantêm o mesmo nome de feature para preservar a rastreabilidade.
 
+## Estratégia de testes
+
+O frontend usa Vitest para testar comportamentos que podem falhar sem serem percebidos apenas pelo TypeScript:
+
+- dados estáticos que formam contratos do produto, como regras e atalhos da Home;
+- funções puras, como busca normalizada e transformação da formação de rodízio;
+- estados de página definidos nas specs, como busca vazia, sem resultados e identificador de regra inválido;
+- interações de pessoa usuária, como enviar a busca, avançar o rodízio e reiniciar a formação.
+
+Os testes de componente usam React Testing Library e `jsdom`. Eles verificam o que a pessoa encontra e faz na interface, sem depender da implementação interna. Classes Tailwind, espaçamentos e SVGs estáticos não possuem testes unitários próprios; essas escolhas são verificadas na validação manual de responsividade e acessibilidade.
+
 ## Rodízio
 
 A feature `004-rotation` também permanece no frontend. Ela representa uma formação de seis posições e permite observar a próxima formação sem simular uma partida completa.

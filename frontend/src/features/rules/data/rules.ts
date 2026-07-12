@@ -1,5 +1,7 @@
 import ballHandlingDiagram from '../assets/ball-handling.svg'
 import ballInOrOutDiagram from '../assets/ball-in-or-out.svg'
+import blockDiagram from '../assets/block.svg'
+import centerLineInvasionDiagram from '../assets/center-line-invasion.svg'
 import netContactDiagram from '../assets/net-contact.svg'
 import scoringDiagram from '../assets/scoring.svg'
 import serviceDiagram from '../assets/service.svg'
@@ -12,6 +14,8 @@ export type RuleId =
   | 'ball-handling'
   | 'net-contact'
   | 'ball-in-or-out'
+  | 'center-line-invasion'
+  | 'block'
 
 type RuleSource = {
   title: string
@@ -156,6 +160,47 @@ export const rules: VolleyballRule[] = [
     source: {
       ...fivbSource,
       relevantRules: ['8.3', '8.4'],
+    },
+  },
+  {
+    id: 'center-line-invasion',
+    title: 'Invasão da linha central',
+    summary: 'Cruzar a linha central só é permitido sem invadir totalmente nem atrapalhar o adversário.',
+    explanation:
+      'É permitido passar por baixo da rede somente se isso não atrapalhar a jogada adversária. O pé pode tocar a quadra do outro lado quando uma parte dele ainda está sobre ou em contato com a linha central. Cruzar completamente com o pé ou interferir na ação adversária é falta.',
+    searchTerms: ['invasão', 'invadir', 'linha central', 'passar por baixo da rede', 'pé do outro lado'],
+    example:
+      'Ao cair após um ataque, o jogador pisa completamente na quadra adversária e impede a movimentação de quem vai defender.',
+    outcome: 'É falta de invasão e o adversário recebe o ponto.',
+    diagram: {
+      src: centerLineInvasionDiagram,
+      alt: 'Comparação entre pé parcialmente sobre a linha central e pé totalmente na quadra adversária.',
+    },
+    source: {
+      ...fivbSource,
+      relevantRules: ['11.2.1', '11.2.2', '11.4.2', '11.4.3'],
+      reviewedAt: '2026-07-12',
+    },
+  },
+  {
+    id: 'block',
+    title: 'Bloqueio',
+    summary: 'O toque no bloqueio não entra na contagem dos três toques.',
+    explanation:
+      'Bloqueio é a ação perto da rede para interceptar a bola que vem do adversário. Apenas jogadores da linha da frente completam um bloqueio. Quando a bola toca o bloqueio, esse contato não conta como um dos três toques da equipe.',
+    searchTerms: ['bloqueio', 'bloquear', 'bloqueio conta', 'três toques após bloqueio', 'bloquear saque'],
+    example:
+      'A bola toca as mãos do bloqueador e volta. A equipe ainda pode fazer recepção, levantamento e ataque.',
+    outcome:
+      'A equipe ainda tem três toques; bloquear o saque ou completar o bloqueio com jogador de fundo ou líbero é falta.',
+    diagram: {
+      src: blockDiagram,
+      alt: 'Jogador bloqueando junto à rede e três toques disponíveis para a equipe.',
+    },
+    source: {
+      ...fivbSource,
+      relevantRules: ['14.1.1', '14.1.3', '14.4.1', '14.5', '14.6.2'],
+      reviewedAt: '2026-07-12',
     },
   },
 ]

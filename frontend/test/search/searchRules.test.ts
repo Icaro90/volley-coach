@@ -37,6 +37,16 @@ describe('searchRules', () => {
     )
   })
 
+  test('finds the invasion rule from a controlled alternative term', () => {
+    expect(searchRules(rules, 'pé do outro lado').map((rule) => rule.id)).toContain(
+      'center-line-invasion',
+    )
+  })
+
+  test('finds the block rule from a controlled alternative term', () => {
+    expect(searchRules(rules, 'bloquear saque').map((rule) => rule.id)).toContain('block')
+  })
+
   test('returns no results for an empty query', () => {
     expect(searchRules(rules, '   ')).toEqual([])
   })

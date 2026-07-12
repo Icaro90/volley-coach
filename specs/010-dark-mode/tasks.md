@@ -2,7 +2,7 @@
 
 Todas as tarefas pertencem à branch `feat/010-dark-mode` e passam pelo fluxo **Backlog → Todo → Doing → Review → Done** no GitHub Projects.
 
-**Status da execução:** implementação concluída; aguardando validação visual manual e encerramento da feature.
+**Status da execução:** todas as seis issues foram concluídas e a feature está pronta para revisão da Pull Request.
 
 ## Issue 1 — Definir tokens semânticos e bootstrap do tema
 
@@ -61,7 +61,7 @@ Todas as tarefas pertencem à branch `feat/010-dark-mode` e passam pelo fluxo **
 
 ## Issue 6 — Cobrir comportamento e validar a experiência completa
 
-- **Status:** Em validação manual
+- **Status:** Concluída
 - **Estimativa:** 1h30 a 2h
 - **Coluna inicial:** Backlog
 - **Dependências:** Issues 2, 3, 4 e 5

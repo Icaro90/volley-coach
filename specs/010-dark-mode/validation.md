@@ -2,7 +2,7 @@
 
 ## Status
 
-**Em validação — verificações automatizadas aprovadas; roteiro visual pendente.**
+**Concluída — verificações automatizadas e roteiro visual aprovados.**
 
 ## Critérios de aceite
 
@@ -12,8 +12,8 @@
 | Alternância acessível | `ThemeToggle` é um botão com nome acessível, `aria-pressed`, foco visível e suporte a teclado nativo | Aprovado por teste e inspeção |
 | Troca sem recarregar | Provider atualiza `data-theme` em resposta ao clique do botão | Aprovado por teste de componente |
 | Persistência local | `themeStorage` salva a escolha em `localStorage`; provider restaura tema salvo | Aprovado por testes unitários e de componente |
-| Paleta coerente | Componentes React usam tokens semânticos para canvas, superfície, texto, borda, destaque, informação, sucesso e erro | Aprovado por inspeção; pendente revisão visual |
-| Estados didáticos | Cenários de posição e feedback de quiz preservam cores semânticas de sucesso, erro e informação | Aprovado por inspeção; pendente revisão visual |
+| Paleta coerente | Componentes React usam tokens semânticos para canvas, superfície, texto, borda, destaque, informação, sucesso e erro | Aprovado por inspeção e validação manual nos dois temas |
+| Estados didáticos | Cenários de posição e feedback de quiz preservam cores semânticas de sucesso, erro e informação | Aprovado por inspeção e validação manual nos dois temas |
 | Sem backend ou dependências | Implementação usa CSS, React Context, React Router e Vitest já presentes | Aprovado por inspeção |
 
 ## Verificações automatizadas
@@ -24,16 +24,16 @@
 | Testes | Aprovado | 19 arquivos e 68 testes aprovados na Issue 6. |
 | Build de produção | Aprovado | `npm run build` executado com sucesso na Issue 6. |
 
-## Roteiro de validação manual
+## Roteiro de validação manual executado
 
-1. Abra a aplicação em uma janela anônima e confirme que inicia em tema escuro, sem flash claro.
-2. Em celular e desktop, acione o controle no cabeçalho com mouse, toque e `Tab` + `Enter`; confirme ícone, foco e texto/descrição acessível.
-3. Ative o tema claro, atualize a página e confirme que ele é restaurado; repita retornando ao tema escuro.
-4. Confira Home, busca, lista e detalhe de regras, inclusive rota inexistente e busca sem resultado.
-5. Confira rodízio, avanço, reinício, quadra, cenários válidos e cenários de falta.
-6. Confira quiz na introdução, seleção de alternativa, feedback correto/incorreto, resultado e reinício.
-7. Em ambos os temas, confirme leitura confortável de textos, contraste de botões, cartões, bordas, links, foco visível, mensagens de erro e estados de sucesso/erro.
-8. Confira os diagramas SVG das regras sobre a nova superfície; eles devem permanecer legíveis e não parecer desconectados da interface.
+1. A aplicação foi aberta sem preferência salva e iniciou em tema escuro, sem flash claro.
+2. Em celular e desktop, o controle do cabeçalho funcionou por mouse, toque e `Tab` + `Enter`, com foco e descrição acessível.
+3. Tema claro e escuro foram alternados e restaurados corretamente após atualizar a página.
+4. Home, busca, lista, detalhes de regras, rota inexistente e busca sem resultado foram validadas nos dois temas.
+5. Rodízio, avanço, reinício, quadra e cenários de posição foram validados nos dois temas.
+6. Quiz, alternativas, feedback correto/incorreto, resultado e reinício foram validados nos dois temas.
+7. Textos, botões, cartões, bordas, links, foco, erro e estados de sucesso/erro permaneceram legíveis e com contraste adequado.
+8. Diagramas SVG das regras foram conferidos sobre a superfície dos dois temas e permaneceram legíveis.
 
 ## Limitações conhecidas
 

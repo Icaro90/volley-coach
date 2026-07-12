@@ -29,7 +29,7 @@ O MVP está concluído: as cinco features acima permitem consultar regras, pesqu
 | 007 | Regras adicionais | Concluída |
 | 008 | Faltas de posição e ordem de saque | Concluída |
 | 009 | Homologação e navegação de retorno | Concluída |
-| 010 | Modo noturno | Em especificação |
+| 010 | Modo noturno | Concluída |
 
 ## Futuras versões
 

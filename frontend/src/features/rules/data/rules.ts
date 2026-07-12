@@ -1,9 +1,9 @@
-import ballHandlingDiagram from '../assets/rules/ball-handling.svg'
-import ballInOrOutDiagram from '../assets/rules/ball-in-or-out.svg'
-import netContactDiagram from '../assets/rules/net-contact.svg'
-import scoringDiagram from '../assets/rules/scoring.svg'
-import serviceDiagram from '../assets/rules/service.svg'
-import threeHitsDiagram from '../assets/rules/three-hits.svg'
+import ballHandlingDiagram from '../assets/ball-handling.svg'
+import ballInOrOutDiagram from '../assets/ball-in-or-out.svg'
+import netContactDiagram from '../assets/net-contact.svg'
+import scoringDiagram from '../assets/scoring.svg'
+import serviceDiagram from '../assets/service.svg'
+import threeHitsDiagram from '../assets/three-hits.svg'
 
 export type RuleId =
   | 'scoring'

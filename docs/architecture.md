@@ -51,7 +51,7 @@ Route `/rules/:ruleId`     -> detalhe de uma regra
 
 Cada regra possui um identificador estável para a URL, título, descrição curta, explicação, exemplo prático, resultado da jogada e metadados da fonte. A ilustração é referenciada como um recurso local e precisa de texto alternativo descritivo.
 
-Os dados ficam em `frontend/src/features/rules/data/rules.ts` e os diagramas vetoriais simples em `frontend/src/features/rules/assets/rules/`. Essa separação evita que componentes de apresentação conheçam detalhes de conteúdo ou de arquivos estáticos.
+Os dados ficam em `frontend/src/features/rules/data/rules.ts` e os diagramas vetoriais simples em `frontend/src/features/rules/assets/`. Essa separação evita que componentes de apresentação conheçam detalhes de conteúdo ou de arquivos estáticos.
 
 ### Fonte e revisão do conteúdo
 

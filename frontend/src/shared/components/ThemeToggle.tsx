@@ -10,7 +10,7 @@ export function ThemeToggle() {
     <button
       aria-label={`${currentThemeLabel}. ${nextThemeLabel}`}
       aria-pressed={isDarkTheme}
-      className="ml-auto inline-flex items-center gap-2 rounded-lg border border-border bg-surface px-3 py-2 text-sm font-semibold text-foreground shadow-sm transition hover:bg-surface-raised"
+      className="ml-auto inline-flex items-center justify-center gap-2 rounded-lg border border-border bg-surface px-3 py-2 text-sm font-semibold text-foreground shadow-sm transition hover:bg-surface-raised sm:w-36"
       onClick={toggleTheme}
       title={nextThemeLabel}
       type="button"

@@ -2,11 +2,11 @@
 
 Todas as tarefas pertencem à branch `chore/009-homologation-and-back-navigation` e passam pelo fluxo **Backlog → Todo → Doing → Review → Done** no GitHub Projects.
 
-**Status da execução:** planejamento concluído; implementação ainda não iniciada.
+**Status da execução:** todas as cinco issues foram concluídas e a mudança está publicada em produção.
 
 ## Issue 1 — Validar qualidade em todo commit e promover `hom`
 
-- **Status:** Em validação externa
+- **Status:** Concluída
 - **Estimativa:** 1h a 1h30
 - **Coluna inicial:** Backlog
 - **Dependências:** nenhuma
@@ -17,7 +17,7 @@ Todas as tarefas pertencem à branch `chore/009-homologation-and-back-navigation
 
 ## Issue 2 — Restringir deploys automáticos da Vercel
 
-- **Status:** Em validação externa
+- **Status:** Concluída
 - **Estimativa:** 30 min a 1h
 - **Coluna inicial:** Backlog
 - **Dependências:** nenhuma
@@ -50,7 +50,7 @@ Todas as tarefas pertencem à branch `chore/009-homologation-and-back-navigation
 
 ## Issue 5 — Testar e validar o fluxo de entrega e navegação
 
-- **Status:** Em validação externa
+- **Status:** Concluída
 - **Estimativa:** 1h a 2h
 - **Coluna inicial:** Backlog
 - **Dependências:** Issues 1, 2, 3 e 4

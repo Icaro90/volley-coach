@@ -2,17 +2,19 @@
 
 ## Status
 
-**Em validação — verificações locais aprovadas; evidências de GitHub e Vercel pendentes.**
+**Concluída — verificações automatizadas, validação externa e roteiro manual aprovados.**
+
+**Publicação:** homologação confirmada em `hom` e produção confirmada após o merge manual em `main`.
 
 ## Critérios de aceite
 
 | Critério | Evidência | Resultado |
 | --- | --- | --- |
-| Qualidade em todo commit | Workflow usa o evento `push` sem filtro de branch e executa testes, lint e build | Aprovado por inspeção; pendente confirmar execução remota em uma branch de feature |
-| Promoção de `hom` | Job `promote-hom` depende de `quality`, só executa em `hom` e consulta PR aberta antes de criar outra | Aprovado por inspeção; pendente habilitar criação de PRs por Actions e confirmar criação remota |
+| Qualidade em todo commit | Workflow usa o evento `push` sem filtro de branch e executa testes, lint e build | Aprovado por execução remota em branch de feature e em `hom` |
+| Promoção de `hom` | Job `promote-hom` depende de `quality`, só executa em `hom` e consulta PR aberta antes de criar outra | Aprovado: GitHub Actions autorizado a criar PRs e uma PR de `hom` para `main` foi aberta automaticamente |
 | Sem merge automático | Workflow usa apenas `gh pr create`; não possui comando ou permissão de merge | Aprovado por inspeção |
-| Deploys Vercel controlados | `vercel.json` desabilita `**` e habilita `hom` e `main` | Aprovado por inspeção; pendente confirmar no painel da Vercel |
-| Retornos consistentes | `BackLink` é reutilizado em regras, detalhe, busca, rodízio e quiz | Aprovado por teste e inspeção; pendente validação visual |
+| Deploys Vercel controlados | `vercel.json` desabilita `**` e habilita `hom` e `main` | Aprovado: branch de feature não publicou; `hom` publicou homologação e `main`, produção |
+| Retornos consistentes | `BackLink` é reutilizado em regras, detalhe, busca, rodízio e quiz | Aprovado por teste, inspeção e validação visual em celular e desktop |
 | Link semântico e destino correto | `BackLink` renderiza `Link` do React Router com texto acessível e `href` recebido | Aprovado por teste unitário |
 | Sem dependências ou backend | Alterações usam React Router, GitHub Actions e Vercel já existentes | Aprovado por inspeção |
 
@@ -24,17 +26,16 @@
 | Testes | Aprovado | 17 arquivos e 62 testes aprovados nesta Issue. |
 | Build de produção | Aprovado | `npm run build` executado com sucesso nesta Issue. |
 
-## Roteiro de validação manual e externa
+## Roteiro de validação manual e externa executado
 
-1. Confirme que `hom` foi criada a partir de `main` e que ambas possuem ruleset com bloqueio de exclusão.
-2. Em **Settings → Actions → General → Workflow permissions**, habilite **Allow GitHub Actions to create and approve pull requests**. O workflow não aprovará ou mesclará Pull Requests.
-3. Envie um commit para uma branch de feature e confirme no GitHub Actions que o job `quality` executou testes, lint e build, sem job de promoção.
-4. Confirme na Vercel que essa branch de feature não gerou deploy automático.
-5. Faça merge de uma Pull Request em `hom` e confirme que a Vercel publicou a homologação.
-6. Confirme que o workflow abriu uma única Pull Request de `hom` para `main` após o job `quality` passar.
-7. Envie outro commit para `hom` enquanto a PR estiver aberta e confirme que o job não criou uma duplicata.
-8. Revise e faça merge manual da PR em `main`; confirme o deploy de produção na Vercel.
-9. Em celular e desktop, abra regras, detalhe, busca, rodízio e quiz; confirme o botão de retorno, o foco visível com `Tab` e os destinos contextuais.
+1. `hom` foi criada a partir de `main`; `hom` e `main` receberam ruleset com bloqueio de exclusão.
+2. A opção para GitHub Actions criar Pull Requests foi habilitada nas configurações do repositório.
+3. Um push em branch de feature executou o job `quality` com sucesso e não executou o job de promoção.
+4. A Vercel não publicou deploy automático para a branch de feature.
+5. O merge em `hom` publicou a homologação na Vercel.
+6. Após a qualidade passar, o workflow abriu uma única Pull Request de `hom` para `main`.
+7. A PR foi revisada e mesclada manualmente em `main`; a Vercel publicou a produção.
+8. Em celular e desktop, regras, detalhe, busca, rodízio e quiz exibiram retorno com foco visível e destinos contextuais corretos.
 
 ## Limitações conhecidas
 

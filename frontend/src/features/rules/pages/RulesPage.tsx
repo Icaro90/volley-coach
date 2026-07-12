@@ -1,5 +1,5 @@
-import { Link } from 'react-router'
 import { AppHeader } from '../../../shared/components/AppHeader'
+import { BackLink } from '../../../shared/components/BackLink'
 import { RuleListItem } from '../components/RuleListItem'
 import { rules } from '../data/rules'
 
@@ -9,9 +9,7 @@ export function RulesPage() {
       <AppHeader />
 
       <main className="mx-auto max-w-2xl px-5 py-12 sm:px-8 sm:py-16">
-        <Link className="text-sm font-semibold text-orange-700 underline" to="/">
-          Voltar para a Home
-        </Link>
+        <BackLink to="/">Voltar para a Home</BackLink>
         <h1 className="mt-6 text-4xl font-bold tracking-tight text-slate-900">
           Regras básicas
         </h1>

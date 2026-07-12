@@ -26,7 +26,9 @@ Ficam fora do MVP: login, favoritos, progresso, scout, IA, CMS, backend e banco 
 | `004-rotation` | Concluída | Explicar posições e ordem em quadra. |
 | `005-quiz` | Concluída | Reforçar o aprendizado com perguntas rápidas. |
 | `007-additional-rules` | Concluída | Ampliar o catálogo para dez regras. |
-| `006-release-prep` | Em desenvolvimento | Publicar o MVP e automatizar verificações de qualidade. |
+| `008-position-faults` | Concluída | Explicar faltas de posição e ordem de saque. |
+| `006-release-prep` | Concluída | Publicar o MVP e automatizar verificações de qualidade. |
+| `009-homologation-and-back-navigation` | Em especificação | Controlar ambientes de entrega e padronizar retornos entre páginas. |
 
 O conteúdo de vôlei de quadra é baseado na [FIVB Official Volleyball Rules 2025–2028](https://www.fivb.com/volleyball/the-game/official-volleyball-rules/). As explicações do app são uma simplificação educativa.
 
@@ -84,13 +86,24 @@ Antes de uma Pull Request, execute `npm run test`, `npm run lint` e `npm run bui
 2. Defina **Root Directory** como `frontend`.
 3. Use o preset de framework Vite; o build gera `dist/` com `npm run build`.
 4. Não configure variáveis de ambiente ou tokens: o MVP é estático e não requer secrets.
-5. Conclua a importação. Branches recebem previews e a `main` publica a produção.
+5. Conclua a importação. Configure `main` como branch de produção e `hom` como branch de homologação. O repositório limitará deploys automáticos a essas duas branches.
 
 O arquivo `frontend/vercel.json` faz o fallback das rotas da SPA para `index.html`. Isso permite abrir URLs como `/rules` diretamente ou atualizar a página sem receber 404 da hospedagem.
 
 ### Integração contínua
 
-O workflow [Frontend quality](.github/workflows/frontend-quality.yml) executa em Pull Requests destinadas à `main` e em pushes para a `main`. Ele fixa Node 24.11.0, usa `npm ci`, cache npm e roda testes, lint e build. Uma falha em qualquer etapa reprova o job.
+O workflow [Frontend quality](.github/workflows/frontend-quality.yml) executa a cada push, em qualquer branch. Ele fixa Node 24.11.0, usa `npm ci`, cache npm e roda testes, lint e build. Uma falha em qualquer etapa reprova o job. Quando uma mudança chega a `hom`, o workflow abre, se necessário, uma Pull Request de promoção para `main`; o merge continua manual.
+
+Para permitir essa criação automática, em **Settings → Actions → General → Workflow permissions**, habilite **Allow GitHub Actions to create and approve pull requests**. O workflow não aprova nem faz merge de Pull Requests; a opção apenas autoriza o `GITHUB_TOKEN` a abrir a PR de promoção.
+
+### Fluxo de entrega
+
+1. Crie uma branch `feature/...` a partir de `hom`.
+2. Todo commit recebe validação no GitHub Actions, sem deploy da Vercel.
+3. Abra e faça merge da Pull Request da feature para `hom`.
+4. Valide manualmente o deploy de homologação publicado pela Vercel.
+5. Revise e faça merge da Pull Request automática de `hom` para `main`.
+6. Confirme o deploy de produção.
 
 ### Smoke test após deploy
 
@@ -205,9 +218,9 @@ specs/00x-feature/
 
 ## Convenções de Git
 
-- Uma branch por feature, como `feat/003-search`.
+- Uma branch por feature, como `feat/003-search`, criada a partir de `hom`.
 - Commits pequenos com Conventional Commits.
-- Pull Request para `main` após validação e revisão de código.
+- Pull Request de feature para `hom`; após homologação, Pull Request de `hom` para `main`.
 - Alterações arquiteturais atualizam `docs/architecture.md` e, quando relevantes, uma ADR.
 
 Exemplos:

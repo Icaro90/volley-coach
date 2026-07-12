@@ -42,7 +42,9 @@ describe('RotationPage', () => {
 
     expect(getPlayerAtPosition(1).getByText('Jogador B')).toBeDefined()
     expect(getPlayerAtPosition(6).getByText('Jogador A')).toBeDefined()
-    expect(screen.getByText('Rodízio 1: cada jogador avançou uma posição no sentido horário.')).toBeDefined()
+    expect(
+      screen.getByText('Rodízio 1: Jogador B está na posição 1 e será a próxima pessoa a sacar.'),
+    ).toBeDefined()
     expect(screen.getByRole('button', { name: 'Reiniciar' })).toHaveProperty('disabled', false)
   })
 

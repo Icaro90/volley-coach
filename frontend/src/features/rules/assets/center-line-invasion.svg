@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 270" fill="none">
+  <title>Comparação entre pé sobre a linha central e pé totalmente na quadra adversária</title>
+  <rect width="480" height="270" rx="24" fill="#FFF7ED"/>
+  <rect x="52" y="55" width="376" height="165" rx="8" fill="#DBEAFE" stroke="#1E3A8A" stroke-width="4"/>
+  <path d="M240 55V220" stroke="#1E3A8A" stroke-width="7"/>
+  <path d="M118 76H212" stroke="#16A34A" stroke-width="7" stroke-linecap="round"/>
+  <path d="M148 95L172 119L211 135" stroke="#1D4ED8" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M201 132H247" stroke="#1D4ED8" stroke-width="15" stroke-linecap="round"/>
+  <path d="M274 76H384" stroke="#DC2626" stroke-width="7" stroke-linecap="round"/>
+  <path d="M305 95L328 119L365 135" stroke="#1D4ED8" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M355 132H402" stroke="#1D4ED8" stroke-width="15" stroke-linecap="round"/>
+  <path d="M362 159L401 198M401 159L362 198" stroke="#DC2626" stroke-width="10" stroke-linecap="round"/>
+  <text x="117" y="205" fill="#15803D" font-family="Arial, sans-serif" font-size="18" font-weight="700">sem interferir</text>
+  <text x="289" y="225" fill="#B91C1C" font-family="Arial, sans-serif" font-size="18" font-weight="700">falta</text>
+</svg>

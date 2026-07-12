@@ -41,4 +41,26 @@ describe('RuleDetailPage', () => {
       '/rules',
     )
   })
+
+  test.each([
+    'center-line-invasion',
+    'block',
+    'substitution',
+    'back-row-attack',
+  ] as const)('opens the %s rule from its direct URL with accessible content', (ruleId) => {
+    const rule = rules.find((item) => item.id === ruleId)
+
+    if (!rule) {
+      throw new Error(`A regra ${ruleId} deveria existir no catálogo de testes.`)
+    }
+
+    renderRuleDetail(`/rules/${ruleId}`)
+
+    expect(screen.getByRole('heading', { name: rule.title })).toBeDefined()
+    expect(screen.getByRole('img', { name: rule.diagram.alt })).toBeDefined()
+    expect(screen.getByRole('link', { name: 'Voltar para as regras básicas' })).toHaveAttribute(
+      'href',
+      '/rules',
+    )
+  })
 })

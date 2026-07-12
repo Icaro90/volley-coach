@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 270" fill="none">
+  <title>Bloqueio junto à rede seguido de três toques disponíveis para a equipe</title>
+  <rect width="480" height="270" rx="24" fill="#FFF7ED"/>
+  <rect x="52" y="55" width="376" height="165" rx="8" fill="#DBEAFE" stroke="#1E3A8A" stroke-width="4"/>
+  <path d="M240 45V230" stroke="#1E3A8A" stroke-width="6"/>
+  <path d="M226 65H254M226 85H254M226 105H254M226 125H254M226 145H254M226 165H254M226 185H254M226 205H254" stroke="#93C5FD" stroke-width="3"/>
+  <circle cx="190" cy="102" r="15" fill="#1D4ED8"/>
+  <path d="M190 118V163M190 130L216 104M190 130L172 104M190 163L170 195M190 163L209 195" stroke="#1D4ED8" stroke-width="9" stroke-linecap="round"/>
+  <circle cx="229" cy="91" r="13" fill="#F97316" stroke="#9A3412" stroke-width="3"/>
+  <path d="M219 89L197 89" stroke="#EA580C" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="296" cy="170" r="12" fill="#1D4ED8"/>
+  <circle cx="337" cy="142" r="12" fill="#1D4ED8"/>
+  <circle cx="381" cy="171" r="12" fill="#1D4ED8"/>
+  <path d="M308 164L326 149M348 149L369 166" stroke="#EA580C" stroke-width="5" stroke-linecap="round" stroke-dasharray="6 6"/>
+  <text x="286" y="205" fill="#15803D" font-family="Arial, sans-serif" font-size="20" font-weight="700">3 toques</text>
+</svg>

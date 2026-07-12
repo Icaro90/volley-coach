@@ -89,7 +89,7 @@ O arquivo `frontend/vercel.json` faz o fallback das rotas da SPA para `index.htm
 
 ### Integração contínua
 
-O workflow [Frontend quality](.github/workflows/frontend-quality.yml) executa em Pull Requests destinadas à `main` e em pushes para a `main`. Ele usa Node 24, `npm ci`, cache npm e roda testes, lint e build. Uma falha em qualquer etapa reprova o job.
+O workflow [Frontend quality](.github/workflows/frontend-quality.yml) executa em Pull Requests destinadas à `main` e em pushes para a `main`. Ele fixa Node 24.11.0, usa `npm ci`, cache npm e roda testes, lint e build. Uma falha em qualquer etapa reprova o job.
 
 ### Smoke test após deploy
 

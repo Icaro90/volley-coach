@@ -75,7 +75,8 @@ Antes de uma Pull Request, execute `npm run test`, `npm run lint` e `npm run bui
 
 ### URL de produção
 
-**Pendente de configuração da Vercel.** Após a primeira publicação, registre a URL aqui.
+
+[https://volley-coach-rho.vercel.app/](https://volley-coach-rho.vercel.app/)
 
 ### Configuração inicial na Vercel
 

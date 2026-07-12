@@ -148,9 +148,9 @@ Os testes de componente usam React Testing Library e `jsdom`. Eles verificam o q
 
 ## Release do MVP
 
-O frontend será publicado como uma SPA estática na Vercel. O projeto Vercel terá `frontend/` como diretório raiz, executará `npm run build` e publicará `dist/`. A integração com GitHub criará deploys de preview para branches e publicará produção quando mudanças chegarem à `main`.
+O frontend é publicado como uma SPA estática na Vercel. O projeto Vercel usa `frontend/` como diretório raiz, executa `npm run build` e publica `dist/`. A integração com GitHub cria deploys de preview para branches e publica produção quando mudanças chegam à `main`.
 
-Como React Router resolve as rotas no cliente, `frontend/vercel.json` deverá reescrever solicitações para `index.html`. Isso permite abrir diretamente `/rules`, `/search`, `/rotation` ou `/quiz` sem receber 404 do servidor estático.
+Como React Router resolve as rotas no cliente, `frontend/vercel.json` reescreve solicitações para `index.html`. Isso permite abrir diretamente `/rules`, `/search`, `/rotation` ou `/quiz` sem receber 404 do servidor estático.
 
 ```text
 Pull Request para main
@@ -170,9 +170,9 @@ Smoke test pela URL pública
 
 ### Integração contínua
 
-O workflow ficará em `.github/workflows/frontend-ci.yml` e será executado em Pull Requests para `main` e em pushes para `main`. Ele trabalhará em `frontend/`, usará Node 24, `npm ci` e cache do npm baseado em `frontend/package-lock.json`, depois executará `npm run test`, `npm run lint` e `npm run build` nessa ordem.
+O workflow fica em `.github/workflows/frontend-quality.yml` e é executado em Pull Requests para `main` e em pushes para `main`. Ele trabalha em `frontend/`, fixa Node 24.11.0, usa `npm ci` e cache do npm baseado em `frontend/package-lock.json`, depois executa `npm run test`, `npm run lint` e `npm run build` nessa ordem.
 
-O Node 24 será declarado no projeto durante a implementação para manter desenvolvimento local e CI alinhados. O workflow terá apenas a permissão `contents: read`; não fará deploy nem acessará secrets.
+O Node 24.11.0 mantém desenvolvimento local e CI alinhados. O workflow tem apenas a permissão `contents: read`; não faz deploy nem acessa secrets.
 
 ### Responsabilidades das plataformas
 

@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router'
 import { HomePage } from '../features/home/HomePage'
+import { RotationPage } from '../features/rotation/pages/RotationPage'
 import { RuleDetailPage } from '../features/rules/pages/RuleDetailPage'
 import { RulesPage } from '../features/rules/pages/RulesPage'
 import { SearchResultsPage } from '../features/search/pages/SearchResultsPage'
@@ -12,15 +13,7 @@ function App() {
       <Route path="/rules" element={<RulesPage />} />
       <Route path="/rules/:ruleId" element={<RuleDetailPage />} />
       <Route path="/search" element={<SearchResultsPage />} />
-      <Route
-        path="/rotation"
-        element={
-          <PlaceholderPage
-            title="Rodízio"
-            description="Em breve, entenda posições e a ordem em quadra."
-          />
-        }
-      />
+      <Route path="/rotation" element={<RotationPage />} />
       <Route
         path="/quiz"
         element={

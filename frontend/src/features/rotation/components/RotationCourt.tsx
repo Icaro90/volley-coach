@@ -2,9 +2,10 @@ import { courtPositions, type RotationFormation } from '../data/rotation'
 
 type RotationCourtProps = {
   formation: RotationFormation
+  formationLabel: string
 }
 
-export function RotationCourt({ formation }: RotationCourtProps) {
+export function RotationCourt({ formation, formationLabel }: RotationCourtProps) {
   return (
     <section aria-labelledby="rotation-court-title" aria-describedby="rotation-court-description">
       <div className="rounded-2xl border border-slate-300 bg-white p-4 shadow-sm sm:p-6">
@@ -18,7 +19,7 @@ export function RotationCourt({ formation }: RotationCourtProps) {
             </p>
           </div>
           <span className="rounded-full bg-blue-100 px-3 py-1 text-xs font-semibold text-blue-800">
-            Formação exibida
+            {formationLabel}
           </span>
         </div>
 

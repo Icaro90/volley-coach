@@ -27,7 +27,7 @@ O backend NestJS, o Prisma e o PostgreSQL permanecem previstos para quando uma f
 | `/` | Apresentar a Home e os atalhos de aprendizagem | Implementada nesta feature |
 | `/rules` | Consultar regras básicas | Implementada na feature `002-rules` |
 | `/search` | Exibir resultados de uma busca de regras | Implementada na feature `003-search` |
-| `/rotation` | Explicar rodízio | Planejada na feature `004-rotation` |
+| `/rotation` | Explicar rodízio | Implementada na feature `004-rotation` |
 | `/quiz` | Iniciar quiz | Destino temporário até a spec própria |
 
 ## Consulta de regras básicas

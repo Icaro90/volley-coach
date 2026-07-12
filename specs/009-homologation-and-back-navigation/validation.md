@@ -11,7 +11,7 @@
 | Qualidade em todo commit | Workflow usa o evento `push` sem filtro de branch e executa testes, lint e build | Aprovado por inspeção; pendente confirmar execução remota em uma branch de feature |
 | Promoção de `hom` | Job `promote-hom` depende de `quality`, só executa em `hom` e consulta PR aberta antes de criar outra | Aprovado por inspeção; pendente confirmar criação remota |
 | Sem merge automático | Workflow usa apenas `gh pr create`; não possui comando ou permissão de merge | Aprovado por inspeção |
-| Deploys Vercel controlados | `vercel.json` desabilita `*` e habilita `hom` e `main` | Aprovado por inspeção; pendente confirmar no painel da Vercel |
+| Deploys Vercel controlados | `vercel.json` desabilita `**` e habilita `hom` e `main` | Aprovado por inspeção; pendente confirmar no painel da Vercel |
 | Retornos consistentes | `BackLink` é reutilizado em regras, detalhe, busca, rodízio e quiz | Aprovado por teste e inspeção; pendente validação visual |
 | Link semântico e destino correto | `BackLink` renderiza `Link` do React Router com texto acessível e `href` recebido | Aprovado por teste unitário |
 | Sem dependências ou backend | Alterações usam React Router, GitHub Actions e Vercel já existentes | Aprovado por inspeção |

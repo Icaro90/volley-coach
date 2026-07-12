@@ -50,7 +50,7 @@ export function SearchForm() {
         </button>
       </div>
       {error && (
-        <p className="mt-2 text-sm text-red-700" id="search-error" role="alert">
+        <p className="mt-2 text-sm text-danger" id="search-error" role="alert">
           {error}
         </p>
       )}

@@ -21,23 +21,23 @@ export function QuizFeedback({
     <section aria-live="polite" aria-labelledby="quiz-feedback-title" role="status">
       <div
         className={`rounded-xl border p-5 ${
-          isCorrect ? 'border-green-200 bg-green-50' : 'border-red-200 bg-red-50'
+          isCorrect ? 'border-success-border bg-success-subtle' : 'border-danger-border bg-danger-subtle'
         }`}
       >
-        <h2 className="text-xl font-bold text-slate-900" id="quiz-feedback-title">
+        <h2 className="text-xl font-bold text-foreground" id="quiz-feedback-title">
           {isCorrect ? 'Resposta correta!' : 'Resposta incorreta'}
         </h2>
         {!isCorrect && selectedOption && (
-          <p className="mt-3 leading-7 text-slate-700">Sua resposta: {selectedOption.text}</p>
+          <p className="mt-3 leading-7 text-muted">Sua resposta: {selectedOption.text}</p>
         )}
-        <p className="mt-3 leading-7 text-slate-700">
+        <p className="mt-3 leading-7 text-muted">
           Resposta correta: <strong>{correctOption?.text}</strong>
         </p>
-        <p className="mt-3 leading-7 text-slate-700">{question.explanation}</p>
+        <p className="mt-3 leading-7 text-muted">{question.explanation}</p>
       </div>
 
       <button
-        className="mt-6 rounded-lg bg-orange-600 px-4 py-3 font-semibold text-white transition hover:bg-orange-700"
+        className="mt-6 rounded-lg bg-accent-strong px-4 py-3 font-semibold text-accent-foreground transition hover:bg-accent"
         onClick={onNextQuestion}
         type="button"
       >

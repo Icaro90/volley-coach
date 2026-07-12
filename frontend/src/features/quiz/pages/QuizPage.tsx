@@ -28,7 +28,7 @@ export function QuizPage() {
   const currentQuestion = quizQuestions[state.currentQuestionIndex]
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-canvas">
       <AppHeader />
 
       <main className="mx-auto max-w-2xl px-5 py-12 sm:px-8 sm:py-16">
@@ -36,18 +36,18 @@ export function QuizPage() {
 
         {state.phase === 'intro' && (
           <section className="mt-8" aria-labelledby="quiz-title">
-            <p className="text-sm font-semibold tracking-wide text-orange-700 uppercase">
+            <p className="text-sm font-semibold tracking-wide text-accent uppercase">
               Pratique as regras
             </p>
-            <h1 className="mt-3 text-4xl font-bold tracking-tight text-slate-900" id="quiz-title">
+            <h1 className="mt-3 text-4xl font-bold tracking-tight text-foreground" id="quiz-title">
               Quiz rápido
             </h1>
-            <p className="mt-4 text-lg leading-8 text-slate-600">
+            <p className="mt-4 text-lg leading-8 text-muted">
               Responda {quizQuestions.length} perguntas sobre regras básicas de vôlei e receba
               explicações a cada resposta.
             </p>
             <button
-              className="mt-8 rounded-lg bg-orange-600 px-5 py-3 font-semibold text-white transition hover:bg-orange-700"
+              className="mt-8 rounded-lg bg-accent-strong px-5 py-3 font-semibold text-accent-foreground transition hover:bg-accent"
               onClick={() => dispatch({ type: 'start' })}
               type="button"
             >
@@ -81,26 +81,26 @@ export function QuizPage() {
         )}
 
         {state.phase === 'result' && (
-          <section className="mt-8 rounded-2xl border border-orange-200 bg-orange-50 p-6" aria-labelledby="result-title">
-            <p className="text-sm font-semibold tracking-wide text-orange-700 uppercase">Quiz concluído</p>
-            <h1 className="mt-3 text-3xl font-bold text-slate-900" id="result-title">
+          <section className="mt-8 rounded-2xl border border-accent/30 bg-accent-subtle p-6" aria-labelledby="result-title">
+            <p className="text-sm font-semibold tracking-wide text-accent uppercase">Quiz concluído</p>
+            <h1 className="mt-3 text-3xl font-bold text-foreground" id="result-title">
               Você acertou {state.score} de {quizQuestions.length} perguntas
             </h1>
-            <p className="mt-2 text-lg font-semibold text-slate-800">
+            <p className="mt-2 text-lg font-semibold text-foreground">
               Aproveitamento: {getScorePercentage(state.score)}%
             </p>
-            <p className="mt-4 leading-7 text-slate-700">{getResultMessage(state.score)}</p>
+            <p className="mt-4 leading-7 text-muted">{getResultMessage(state.score)}</p>
 
             <div className="mt-8 flex flex-wrap gap-3">
               <button
-                className="rounded-lg bg-orange-600 px-4 py-3 font-semibold text-white transition hover:bg-orange-700"
+                className="rounded-lg bg-accent-strong px-4 py-3 font-semibold text-accent-foreground transition hover:bg-accent"
                 onClick={() => dispatch({ type: 'restart' })}
                 type="button"
               >
                 Reiniciar quiz
               </button>
               <Link
-                className="rounded-lg border border-slate-300 bg-white px-4 py-3 font-semibold text-slate-800 transition hover:bg-slate-100"
+                className="rounded-lg border border-border bg-surface px-4 py-3 font-semibold text-foreground transition hover:bg-surface-raised"
                 to="/rules"
               >
                 Consultar regras básicas

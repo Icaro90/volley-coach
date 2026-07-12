@@ -19,11 +19,11 @@ export function QuizQuestion({
 }: QuizQuestionProps) {
   return (
     <section aria-labelledby="quiz-question-title">
-      <p className="text-sm font-semibold text-orange-700">
+      <p className="text-sm font-semibold text-accent">
         Pergunta {questionNumber} de {totalQuestions}
       </p>
       <fieldset className="mt-4">
-        <legend className="text-xl font-bold leading-8 text-slate-900" id="quiz-question-title">
+        <legend className="text-xl font-bold leading-8 text-foreground" id="quiz-question-title">
           {question.prompt}
         </legend>
 
@@ -33,13 +33,13 @@ export function QuizQuestion({
 
             return (
               <label
-                className="flex cursor-pointer items-start gap-3 rounded-xl border border-slate-200 bg-white p-4 text-slate-800 transition has-checked:border-orange-500 has-checked:bg-orange-50"
+                className="flex cursor-pointer items-start gap-3 rounded-xl border border-border bg-surface p-4 text-foreground transition has-checked:border-accent has-checked:bg-accent-subtle"
                 htmlFor={inputId}
                 key={option.id}
               >
                 <input
                   checked={selectedOptionId === option.id}
-                  className="mt-1 h-4 w-4 accent-orange-600"
+                  className="mt-1 h-4 w-4 accent-accent-strong"
                   id={inputId}
                   name={`quiz-question-${question.id}`}
                   onChange={() => onSelectOption(option.id)}
@@ -54,7 +54,7 @@ export function QuizQuestion({
       </fieldset>
 
       <button
-        className="mt-6 rounded-lg bg-orange-600 px-4 py-3 font-semibold text-white transition hover:bg-orange-700 disabled:cursor-not-allowed disabled:opacity-50"
+        className="mt-6 rounded-lg bg-accent-strong px-4 py-3 font-semibold text-accent-foreground transition hover:bg-accent disabled:cursor-not-allowed disabled:opacity-50"
         disabled={!selectedOptionId}
         onClick={onConfirmAnswer}
         type="button"

@@ -1,5 +1,5 @@
 import { Link } from 'react-router'
-import { AppHeader } from '../components/AppHeader'
+import { AppHeader } from '../../../shared/components/AppHeader'
 import { RuleListItem } from '../components/RuleListItem'
 import { rules } from '../data/rules'
 

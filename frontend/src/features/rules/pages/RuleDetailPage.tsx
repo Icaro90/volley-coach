@@ -1,5 +1,5 @@
 import { Link, useParams } from 'react-router'
-import { AppHeader } from '../components/AppHeader'
+import { AppHeader } from '../../../shared/components/AppHeader'
 import { rules } from '../data/rules'
 
 function formatReviewDate(date: string) {

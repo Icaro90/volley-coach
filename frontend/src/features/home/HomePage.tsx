@@ -1,7 +1,7 @@
-import { AppHeader } from '../components/AppHeader'
-import { LearningShortcutCard } from '../components/LearningShortcutCard'
-import { SearchField } from '../components/SearchField'
-import { homeShortcuts } from '../data/homeShortcuts'
+import { SearchForm } from '../search/components/SearchForm'
+import { AppHeader } from '../../shared/components/AppHeader'
+import { LearningShortcutCard } from './components/LearningShortcutCard'
+import { homeShortcuts } from './data/homeShortcuts'
 
 export function HomePage() {
   return (
@@ -23,7 +23,7 @@ export function HomePage() {
           <h2 className="mb-3 text-lg font-semibold text-slate-900" id="search-title">
             Qual é a sua dúvida?
           </h2>
-          <SearchField />
+          <SearchForm />
         </section>
 
         <section className="mt-14" aria-labelledby="learning-title">

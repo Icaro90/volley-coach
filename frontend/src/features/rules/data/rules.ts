@@ -26,6 +26,7 @@ export type VolleyballRule = {
   title: string
   summary: string
   explanation: string
+  searchTerms: string[]
   example: string
   outcome: string
   diagram: {
@@ -49,6 +50,7 @@ export const rules: VolleyballRule[] = [
     summary: 'Cada rally vale um ponto.',
     explanation:
       'Uma equipe faz ponto quando a bola cai na quadra adversária, quando o adversário comete uma falta ou recebe uma penalidade. A equipe que vence o rally continua sacando ou ganha o direito de sacar.',
+    searchTerms: ['vale ponto', 'marcar ponto', 'ponto no rally'],
     example:
       'Depois de uma troca de bolas, seu ataque toca o chão dentro da quadra adversária. Sua equipe marca um ponto.',
     outcome: 'Quem vence o rally recebe um ponto.',
@@ -67,6 +69,7 @@ export const rules: VolleyballRule[] = [
     summary: 'O saque coloca a bola em jogo.',
     explanation:
       'Após a autorização do árbitro, a pessoa que saca deve golpear a bola com uma mão ou parte do braço. No instante do golpe, não pode tocar a linha de fundo nem o chão fora da zona de saque.',
+    searchTerms: ['sacar', 'linha de fundo', 'pé na linha'],
     example:
       'Ao sacar, o pé pisa na linha de fundo antes do contato com a bola. Isso é falta de saque.',
     outcome: 'Uma falta de saque dá um ponto e o direito de sacar ao adversário.',
@@ -85,6 +88,7 @@ export const rules: VolleyballRule[] = [
     summary: 'A equipe pode usar até três toques para devolver a bola.',
     explanation:
       'Cada equipe tem no máximo três toques para enviar a bola de volta ao outro lado. O contato de bloqueio não entra nessa contagem; depois de bloquear, a equipe ainda pode usar seus três toques.',
+    searchTerms: ['quatro toques', 'quantos toques', 'bloqueio conta'],
     example:
       'Após um bloqueio, a equipe faz recepção, levantamento e ataque. A jogada é válida porque o bloqueio não contou como um dos três toques.',
     outcome: 'Usar quatro toques antes de devolver a bola é falta e dá ponto ao adversário.',
@@ -103,6 +107,7 @@ export const rules: VolleyballRule[] = [
     summary: 'A bola deve rebater, sem ser carregada, e o contato precisa seguir as regras.',
     explanation:
       'A bola pode tocar qualquer parte do corpo, mas não pode ser segurada ou lançada: ela deve rebater no contato. Em regra, a mesma pessoa não pode tocar a bola duas vezes seguidas. Existem exceções, como em ações de bloqueio e no primeiro toque da equipe.',
+    searchTerms: ['segurar a bola', 'carregar a bola', 'duplo toque', 'dois toques'],
     example:
       'No levantamento, a pessoa segura a bola por um instante antes de empurrá-la. Isso caracteriza condução.',
     outcome: 'Condução ou dois toques irregulares são faltas e dão ponto ao adversário.',
@@ -121,6 +126,7 @@ export const rules: VolleyballRule[] = [
     summary: 'Tocar a rede durante a ação de jogar a bola pode ser falta.',
     explanation:
       'É falta tocar a rede entre as antenas durante uma ação de jogar a bola, como no salto, ataque, tentativa de bloqueio ou aterrissagem. Nem todo contato é falta: tocar a rede fora das antenas sem interferir na jogada, por exemplo, não é automaticamente irregular.',
+    searchTerms: ['encostar na rede', 'tocar na rede', 'rede'],
     example:
       'Ao atacar, a pessoa toca a faixa da rede entre as antenas antes de terminar a ação. É falta.',
     outcome: 'A falta na rede dá ponto ao adversário.',
@@ -139,6 +145,7 @@ export const rules: VolleyballRule[] = [
     summary: 'Se qualquer parte da bola toca a linha, a bola é dentro.',
     explanation:
       'A bola é dentro quando qualquer parte dela toca a quadra, inclusive as linhas. Ela é fora quando todas as partes que tocam o chão ficam completamente fora das linhas.',
+    searchTerms: ['bola na linha vale', 'linha vale', 'bola fora', 'bola dentro'],
     example:
       'A bola cai perto da linha de fundo e uma pequena parte dela toca a linha. A bola é dentro.',
     outcome: 'Se a bola cai dentro da quadra adversária, sua equipe marca ponto; se sai da quadra após seu toque, o ponto é do adversário.',

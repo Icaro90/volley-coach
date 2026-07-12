@@ -1,10 +1,12 @@
 import ballHandlingDiagram from '../assets/ball-handling.svg'
 import ballInOrOutDiagram from '../assets/ball-in-or-out.svg'
+import backRowAttackDiagram from '../assets/back-row-attack.svg'
 import blockDiagram from '../assets/block.svg'
 import centerLineInvasionDiagram from '../assets/center-line-invasion.svg'
 import netContactDiagram from '../assets/net-contact.svg'
 import scoringDiagram from '../assets/scoring.svg'
 import serviceDiagram from '../assets/service.svg'
+import substitutionDiagram from '../assets/substitution.svg'
 import threeHitsDiagram from '../assets/three-hits.svg'
 
 export type RuleId =
@@ -16,6 +18,8 @@ export type RuleId =
   | 'ball-in-or-out'
   | 'center-line-invasion'
   | 'block'
+  | 'substitution'
+  | 'back-row-attack'
 
 type RuleSource = {
   title: string
@@ -200,6 +204,48 @@ export const rules: VolleyballRule[] = [
     source: {
       ...fivbSource,
       relevantRules: ['14.1.1', '14.1.3', '14.4.1', '14.5', '14.6.2'],
+      reviewedAt: '2026-07-12',
+    },
+  },
+  {
+    id: 'substitution',
+    title: 'Substituição',
+    summary: 'A troca segue a posição original: titular e reserva retornam um ao outro.',
+    explanation:
+      'Substituição é a troca de uma pessoa em quadra por uma reserva quando a bola está fora de jogo. Na regra padrão, quem começou a partida pode sair uma vez no set e voltar uma vez apenas para sua posição original; a reserva que entrou só pode ser trocada por essa mesma pessoa titular.',
+    searchTerms: ['substituição', 'substituir jogador', 'troca de jogador', 'reserva', 'voltar para quadra'],
+    example:
+      'A titular da posição 4 sai para a reserva. Mais tarde, somente essa mesma titular pode voltar a ocupar essa vaga no set.',
+    outcome:
+      'Uma troca fora desses limites é irregular e deve ser corrigida; se o jogo já recomeçou, a equipe é penalizada conforme a regra oficial.',
+    diagram: {
+      src: substitutionDiagram,
+      alt: 'Jogadora em quadra e reserva trocando a posição 4.',
+    },
+    source: {
+      ...fivbSource,
+      relevantRules: ['15.5', '15.6.1', '15.6.2', '15.9'],
+      reviewedAt: '2026-07-12',
+    },
+  },
+  {
+    id: 'back-row-attack',
+    title: 'Ataque de jogadores da linha de trás',
+    summary: 'Quem está no fundo ataca acima da rede somente saltando de trás da linha de ataque.',
+    explanation:
+      'A pessoa que está na linha de trás pode atacar acima da rede se saltar de trás da linha de ataque: no impulso, seus pés não podem tocar nem ultrapassar essa linha. Depois do golpe, ela pode cair na zona de frente. Na zona de frente, só pode atacar se a bola estiver abaixo do topo da rede no momento do contato.',
+    searchTerms: ['ataque de fundo', 'ataque linha de trás', 'linha de ataque', 'atacar do fundo', 'jogador do fundo'],
+    example:
+      'Uma jogadora da linha de trás salta antes da linha de ataque e golpeia a bola acima da rede. A jogada é válida, mesmo que ela caia depois na zona de frente.',
+    outcome:
+      'Atacar acima da rede a partir da zona de frente sendo jogadora da linha de trás é falta e dá ponto ao adversário.',
+    diagram: {
+      src: backRowAttackDiagram,
+      alt: 'Jogadora da linha de trás saltando antes da linha de ataque para atacar acima da rede.',
+    },
+    source: {
+      ...fivbSource,
+      relevantRules: ['13.2.2', '13.2.3', '13.3.3'],
       reviewedAt: '2026-07-12',
     },
   },

@@ -47,6 +47,16 @@ describe('searchRules', () => {
     expect(searchRules(rules, 'bloquear saque').map((rule) => rule.id)).toContain('block')
   })
 
+  test('finds the substitution rule from a controlled alternative term', () => {
+    expect(searchRules(rules, 'troca de jogador').map((rule) => rule.id)).toContain('substitution')
+  })
+
+  test('finds the back-row attack rule from a controlled alternative term', () => {
+    expect(searchRules(rules, 'atacar do fundo').map((rule) => rule.id)).toContain(
+      'back-row-attack',
+    )
+  })
+
   test('returns no results for an empty query', () => {
     expect(searchRules(rules, '   ')).toEqual([])
   })

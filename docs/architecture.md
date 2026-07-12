@@ -28,7 +28,7 @@ O backend NestJS, o Prisma e o PostgreSQL permanecem previstos para quando uma f
 | `/rules` | Consultar regras básicas | Implementada na feature `002-rules` |
 | `/search` | Exibir resultados de uma busca de regras | Implementada na feature `003-search` |
 | `/rotation` | Explicar rodízio | Implementada na feature `004-rotation` |
-| `/quiz` | Iniciar quiz | Destino temporário até a spec própria |
+| `/quiz` | Praticar regras básicas por perguntas | Planejada na feature `005-quiz` |
 
 ## Consulta de regras básicas
 
@@ -109,7 +109,8 @@ frontend/src/
 │   ├── home/                    # Home, atalhos e seus dados
 │   ├── rules/                   # lista, detalhe, conteúdo e SVGs
 │   ├── search/                  # formulário, resultados e utilitário
-│   └── rotation/                # página, componentes, dados e utilitário
+│   ├── rotation/                # página, componentes, dados e utilitário
+│   └── quiz/                    # página, componentes, dados e reducer
 ├── shared/
 │   ├── components/              # componentes reutilizados entre features
 │   └── pages/                   # páginas temporárias reutilizáveis
@@ -119,7 +120,8 @@ frontend/src/
 frontend/test/
 ├── rules/                       # testes da feature rules
 ├── search/                      # testes da feature search
-└── rotation/                    # testes da feature rotation
+├── rotation/                    # testes da feature rotation
+└── quiz/                        # testes da feature quiz
 ```
 
 Uma peça de produção deve ficar dentro da feature enquanto tiver um único contexto de negócio. Ela só deve ir para `shared` quando for reutilizada por mais de uma feature e não carregar regra de negócio específica. Essa regra evita um diretório global de componentes sem dono claro. Testes ficam fora de `src` para separar o código distribuído da infraestrutura de verificação, mas mantêm o mesmo nome de feature para preservar a rastreabilidade.
@@ -162,6 +164,36 @@ Os dados definem a formação inicial e os metadados visuais de cada posição (
 O diagrama será construído com HTML e CSS responsivo, e não com uma imagem ou canvas. Isso permite que cada posição tenha texto real, que o layout seja legível em telas pequenas e que leitores de tela recebam uma descrição da formação. Os controles serão botões semânticos, com foco visível e texto que informa qual rodízio está sendo exibido.
 
 Não haverá estado global, TanStack Query, backend ou persistência. Caso uma versão futura passe a salvar formações, exercícios ou progresso por pessoa usuária, essa decisão deverá ser reavaliada.
+
+## Quiz rápido
+
+A feature `005-quiz` permanece no frontend e pratica cinco regras básicas já presentes no catálogo local. As perguntas não são buscadas em rede e a pontuação existe somente durante a sessão atual da página.
+
+```text
+Route `/quiz`
+      |
+      v
+QuizPage
+      |
+      +-- perguntas estáticas tipadas
+      +-- quizReducer (função pura)
+      +-- estado: intro | question | feedback | result
+      +-- índice atual, resposta selecionada e pontuação
+```
+
+### Modelo e transições
+
+Cada pergunta terá identificador estável, enunciado, alternativas, identificador da alternativa correta, explicação e referência à fonte FIVB. O conteúdo ficará em `frontend/src/features/quiz/data/questions.ts`, separado da interface.
+
+`quizReducer` concentrará as transições: iniciar, selecionar alternativa, confirmar resposta, avançar e reiniciar. A página apenas dispara ações e renderiza o estado resultante. Isso evita estados impossíveis, como avançar antes de responder ou alterar uma resposta após o feedback.
+
+`useReducer` é apropriado porque índice, resposta, pontuação e fase mudam juntos. Para um único campo transitório, `useState` seria mais simples; neste fluxo, o reducer torna as regras explícitas e facilmente testáveis.
+
+### Interface e acessibilidade
+
+Alternativas serão controles semânticos de seleção dentro de um `fieldset` com `legend` para o enunciado. O feedback será anunciado com uma região `aria-live`, e os botões terão textos que descrevem a próxima ação. A página deve manter uma pergunta visível por vez e oferecer um link para `/rules` ao final.
+
+Não haverá aleatoriedade no MVP: a ordem fixa torna o aprendizado e os testes determinísticos. Quando houver conteúdo maior ou progresso persistido, a fonte de perguntas e a estratégia de seleção poderão ser reavaliadas.
 
 ## Decisões de qualidade
 

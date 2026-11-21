@@ -20,6 +20,10 @@ React + TypeScript (frontend)
 
 O backend NestJS, o Prisma e o PostgreSQL permanecem previstos para quando uma funcionalidade exigir dados dinâmicos, como autenticação, favoritos, progresso ou gestão de conteúdo.
 
+## Aplicativo Android
+
+O app Android reutiliza o frontend React por meio do Capacitor 8. A plataforma nativa fica isolada em `mobile/android`; o `webDir` aponta para `frontend/dist`. O fluxo de desenvolvimento compila o frontend primeiro e depois sincroniza os assets para o projeto Android. Não há API, persistência nativa ou conteúdo duplicado. A configuração e as tarefas estão descritas em [specs/011-android-app](../specs/011-android-app/spec.md).
+
 ## Rotas planejadas
 
 | Rota | Responsabilidade | Estado inicial |

@@ -1,0 +1,17 @@
+# Node
+node_modules/
+**/node_modules/
+frontend/dist/
+*.log
+
+# Android / Gradle
+**/.gradle/
+**/build/
+mobile/android/local.properties
+mobile/android/.idea/
+
+# IDE and operating system
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

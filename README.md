@@ -30,6 +30,7 @@ Ficam fora do MVP: login, favoritos, progresso, scout, IA, CMS, backend e banco 
 | `006-release-prep` | Concluída | Publicar o MVP e automatizar verificações de qualidade. |
 | `009-homologation-and-back-navigation` | Concluída | Controlar ambientes de entrega e padronizar retornos entre páginas. |
 | `010-dark-mode` | Concluída | Tema escuro padrão, tema claro opcional e preferência local. |
+| `011-android-app` | Em andamento | Empacotar as features existentes em um app Android separado do frontend. |
 
 O conteúdo de vôlei de quadra é baseado na [FIVB Official Volleyball Rules 2025–2028](https://www.fivb.com/volleyball/the-game/official-volleyball-rules/). As explicações do app são uma simplificação educativa.
 
@@ -40,6 +41,7 @@ O conteúdo de vôlei de quadra é baseado na [FIVB Official Volleyball Rules 20
 - React 19, TypeScript e Vite;
 - Tailwind CSS;
 - React Router;
+- Capacitor 8 para empacotar o frontend como aplicativo Android;
 - Vitest para testes unitários;
 - Oxlint para análise estática.
 - GitHub Actions para CI de testes, lint e build.
@@ -61,6 +63,10 @@ npm run dev
 ```
 
 O Vite exibirá a URL local da aplicação, normalmente `http://localhost:5173`.
+
+### App Android
+
+O projeto Android nativo fica isolado em `mobile/` e usa o frontend de `frontend/`. Para abrir no Android Studio, instale o Android Studio e o Android SDK e siga as instruções em [mobile/README.md](mobile/README.md). Depois de alterar o frontend, gere o build web e sincronize os arquivos com o projeto nativo.
 
 ### Comandos úteis
 
@@ -137,6 +143,7 @@ Registre a URL publicada e o resultado desse roteiro na validação da Spec 006 
 docs/       # arquitetura e Architecture Decision Records (ADRs)
 specs/      # specs, tarefas e validações por feature
 frontend/   # aplicação React
+mobile/     # app Android Capacitor, separado do frontend
 README.md   # ponto de entrada de produto e engenharia
 ```
 

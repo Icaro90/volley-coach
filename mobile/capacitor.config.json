@@ -1,0 +1,9 @@
+{
+  "appId": "com.volleycoach.app",
+  "appName": "Volley Coach",
+  "webDir": "../frontend/dist",
+  "android": {
+    "backgroundColor": "#0f172a",
+    "allowMixedContent": false
+  }
+}

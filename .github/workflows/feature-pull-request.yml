@@ -1,0 +1,47 @@
+name: Feature pull request
+
+on:
+  push:
+    branches:
+      - 'feature/**'
+
+permissions:
+  contents: read
+
+jobs:
+  open-pull-request:
+    name: Open pull request to hom
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    concurrency:
+      group: feature-pr-${{ github.ref }}
+      cancel-in-progress: false
+
+    steps:
+      - name: Create pull request when one is not already open
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BRANCH_NAME: ${{ github.ref_name }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          open_pull_request="$(gh pr list \
+            --repo "$REPOSITORY" \
+            --base hom \
+            --head "$BRANCH_NAME" \
+            --state open \
+            --json number \
+            --jq 'length')"
+
+          if [ "$open_pull_request" -gt 0 ]; then
+            echo "An open pull request from $BRANCH_NAME to hom already exists. New commits are included automatically."
+            exit 0
+          fi
+
+          gh pr create \
+            --repo "$REPOSITORY" \
+            --base hom \
+            --head "$BRANCH_NAME" \
+            --title "feat: $BRANCH_NAME" \
+            --body "Automatically opened after a push to $BRANCH_NAME. Review the changes and CI results before merging into hom."

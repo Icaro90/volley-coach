@@ -17,6 +17,7 @@ React + TypeScript (frontend)
       +-- catálogos estáticos locais
       +-- rotas da aplicação
       +-- localStorage para tema, favoritos, diário e scout
+      +-- localStorage para equipe, presença, avaliação, formações, placar e histórico
       +-- Capacitor Share para compartilhamento nativo Android
 ```
 
@@ -45,6 +46,10 @@ O app Android reutiliza o frontend React por meio do Capacitor 8. A plataforma n
 | `/scout` | Criar e listar partidas | Implementada parcialmente na feature `018-match-scout` |
 | `/scout/:matchId` | Atualizar placar e consultar eventos | Implementada parcialmente na feature `018-match-scout` |
 | `/more` | Listar recursos secundários agrupados | Implementada na feature `020-essential-home-shortcuts` |
+| `/team` | Gerenciar atletas, chamadas, avaliações, desafios, planos e formações | Implementada localmente nas features `021–026` |
+| `/scoreboard` | Contar pontos/sets; histórico/scout são opcionais | Implementada nas features `031–032` |
+| `/court-mode` | Atalhos grandes e cronômetro para uso em quadra | Implementada na feature `027-court-mode` |
+| `/backup` | Exportar e importar registros locais em JSON | Implementada na feature `028-data-backup` |
 
 ## Navegação principal
 
@@ -60,6 +65,11 @@ A função `useLocalJsonState` lê e grava dados serializados defensivamente no 
 | Favoritos de regras e exercícios | `volley-coach.favorites.v1` | `FavoritesProvider` | Navegador/instalação local |
 | Diário de treino | `volley-coach.diary.v1` | `DiaryPage` | Navegador/instalação local |
 | Partidas de scout | `volley-coach.scout.v1` | `ScoutProvider` | Navegador/instalação local |
+| Elenco, presença, avaliações, desafios, planos e formações | `volley-coach.team.v1` | `TeamProvider` | Navegador/instalação local |
+| Partida ativa do placar | `volley-coach.scoreboard.v1` | `ScoreboardPage` | Navegador/instalação local |
+| Resultados opt-in do placar | `volley-coach.match-history.v1` | `ScoreboardPage` | Navegador/instalação local |
+
+Exportação/importação fica em `volley-coach-backup` JSON versionado, com pré-validação, seleção de dados e modos mesclar/substituir. A integração do placar com histórico e scout exige escolha explícita; o placar funciona sem ambos. Os dados não sincronizam entre dispositivos. A colaboração da comissão (029) ainda depende de backend/autenticação e revisão de privacidade; adaptações por categoria (030) aguardam revisão técnica/editorial qualificada.
 
 Os registros não sincronizam entre dispositivos e podem ser removidos ao limpar os dados do app. O quiz mantém somente estado da sessão. Compartilhamento está nos detalhes de regra, exercício e termo: usa Capacitor Share no Android e Web Share API na web; a cópia de URL está disponível quando a API não existe. Ainda falta fallback quando a API falha e validar que a URL compartilhada aponta ao domínio publicado.
 

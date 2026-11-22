@@ -40,6 +40,18 @@ Fora do escopo do MVP inicial: login, sincronização de progresso, IA, CMS, bac
 | `018-match-scout` | Parcial; confirmação de exclusão e testes completos pendentes | Registrar placar e eventos de partidas localmente. |
 | `019-content-sharing` | Parcial; fallback em falha e URL canônica pendentes | Compartilhar regras, exercícios e termos. |
 | `020-essential-home-shortcuts` | Implementada; APK atualizado, validação manual Android pendente | Reduzir os atalhos visíveis e organizar a navegação por destino. |
+| `021-attendance` | Implementada localmente; APK debug gerado | Abrir chamadas, marcar presença e acompanhar histórico individual. |
+| `022-athlete-profiles` | Implementada localmente; APK debug gerado | Manter fichas editáveis e arquiváveis para o elenco. |
+| `023-skill-assessment` | Implementada localmente; APK debug gerado | Registrar e consultar avaliações por fundamento. |
+| `024-weekly-challenges` | Implementada localmente; APK debug gerado | Definir metas de equipe e acompanhar progresso individual. |
+| `025-game-plan` | Implementada localmente; APK debug gerado | Organizar estratégia e vincular plano a formação e scout. |
+| `026-formation-library` | Implementada localmente; APK debug gerado | Salvar escalações, reservas e visualizar a rotação. |
+| `027-court-mode` | Implementada localmente; APK debug gerado | Usar atalhos grandes, cronômetro e opção de tela ativa na quadra. |
+| `028-data-backup` | Implementada localmente; APK debug gerado | Exportar, mesclar e restaurar dados locais via JSON. |
+| `029-coach-collaboration` | Pendente de decisão de backend, autenticação e revisão de privacidade | Compartilhar dados e sincronizar comissão técnica. |
+| `030-category-adaptation` | Pendente de revisão editorial por profissional qualificado | Adaptar exercícios ao contexto da equipe. |
+| `031-match-scoreboard` | Implementada localmente; APK debug gerado | Contar pontos e sets, desfazer ações e reabrir resultados. |
+| `032-scoreboard-history-scout` | Implementada como integração opt-in; APK debug gerado | Salvar resultados no histórico e associar ou criar scout. |
 
 O conteúdo de vôlei de quadra é baseado na [FIVB Official Volleyball Rules 2025–2028](https://www.fivb.com/volleyball/the-game/official-volleyball-rules/). As explicações do app são uma simplificação educativa.
 
@@ -90,6 +102,10 @@ O projeto Android nativo fica isolado em `mobile/` e usa o frontend de `frontend
 
 Antes de uma Pull Request, execute `npm run test`, `npm run lint` e `npm run build`.
 
+## Fluxo de branches
+
+Crie branches de trabalho a partir de `hom` e use os prefixos `feature/`, `fix/`, `docs/` ou `chore/`. Um push em `feature/**` abre automaticamente uma Pull Request para `hom`; os demais tipos de branch usam PR manual. Consulte o [fluxo de desenvolvimento](docs/development-workflow.md) para convenções, exemplos e configuração da automação.
+
 ## Deploy e release
 
 ### URL de produção
@@ -132,7 +148,7 @@ Depois que a Vercel publicar uma preview ou produção, valide no navegador:
 4. Abra diretamente `/rotation`, avance um rodízio e reinicie a formação.
 5. Abra diretamente `/quiz`, responda uma pergunta e confirme o feedback.
 6. Abra `/rules/block` e `/rules/back-row-attack` diretamente para validar as rotas adicionadas após o MVP inicial.
-7. Abra `/favorites`, `/training`, `/diary`, `/quick-reference`, `/glossary`, `/scout` e `/more`; faça uma ação básica em cada recurso.
+7. Abra `/favorites`, `/training`, `/diary`, `/quick-reference`, `/glossary`, `/scout`, `/team`, `/scoreboard`, `/court-mode`, `/backup` e `/more`; faça uma ação básica em cada recurso.
 8. Faça uma verificação rápida em celular e desktop, sem corte de conteúdo ou rolagem horizontal.
 
 Registre a URL publicada e o resultado desse roteiro na validação da Spec 006 antes de encerrar a release.
@@ -157,6 +173,10 @@ Registre a URL publicada e o resultado desse roteiro na validação da Spec 006 
 | `/scout` | Lista e criação de partidas. |
 | `/scout/:matchId` | Placar, eventos e resumo da partida. |
 | `/more` | Recursos secundários agrupados por objetivo. |
+| `/team` | Fichas, chamadas, avaliações, desafios, planos de jogo e formações locais. |
+| `/scoreboard` | Placar autônomo com sets e vínculos opt-in ao histórico/scout. |
+| `/court-mode` | Atalhos de quadra e cronômetro de treino. |
+| `/backup` | Exportação e importação validada de dados locais. |
 
 A navegação inferior persistente contém **Início**, **Buscar**, **Treinos** e **Mais**; regras, quiz e favoritos aparecem entre os atalhos principais da Home. Os recursos secundários ficam em `/more`.
 

@@ -24,6 +24,7 @@ export type ScoutMatch = {
   sets: FinishedSet[]
   events: RallyEvent[]
   createdAt: string
+  scoreboardId?: string
 }
 export type ScoutAction =
   | { type: 'point'; winner: MatchSide }
@@ -51,11 +52,11 @@ export function isScoutMatchList(value: unknown): value is ScoutMatch[] {
         typeof event.id === 'string' && isSide(event.winner) && (event.cause === null || isSide(event.cause)) &&
         ['rally-point', 'ace', 'service-error', 'attack-error', 'other-error'].includes(event.eventType) &&
         Number.isInteger(event.setNumber) && isSnapshot(event.before) && isSnapshot(event) && typeof event.createdAt === 'string',
-      ) && typeof item.createdAt === 'string'
+      ) && typeof item.createdAt === 'string' && (item.scoreboardId === undefined || typeof item.scoreboardId === 'string')
   })
 }
 
-export function createScoutMatch(input: { id: string; homeName: string; awayName: string; bestOf: 3 | 5; regularSetTarget?: number; decidingSetTarget?: number; createdAt?: string }): ScoutMatch {
+export function createScoutMatch(input: { id: string; homeName: string; awayName: string; bestOf: 3 | 5; regularSetTarget?: number; decidingSetTarget?: number; createdAt?: string; scoreboardId?: string }): ScoutMatch {
   return {
     id: input.id,
     homeName: input.homeName.trim(),
@@ -68,6 +69,7 @@ export function createScoutMatch(input: { id: string; homeName: string; awayName
     sets: [],
     events: [],
     createdAt: input.createdAt ?? new Date().toISOString(),
+    scoreboardId: input.scoreboardId,
   }
 }
 

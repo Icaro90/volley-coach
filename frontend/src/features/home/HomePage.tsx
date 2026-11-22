@@ -1,4 +1,5 @@
 import { SearchForm } from '../search/components/SearchForm'
+import { Link } from 'react-router'
 import { AppHeader } from '../../shared/components/AppHeader'
 import { LearningShortcutCard } from './components/LearningShortcutCard'
 import { homeShortcuts } from './data/homeShortcuts'
@@ -8,29 +9,29 @@ export function HomePage() {
     <div className="min-h-screen bg-canvas">
       <AppHeader />
 
-      <main className="mx-auto max-w-2xl px-5 py-16 sm:px-8 sm:py-24">
-        <p className="text-sm font-semibold tracking-wide text-accent uppercase">
-          Aprenda na prática
-        </p>
-        <h1 className="mt-3 text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-          Entenda as regras. Jogue com mais confiança.
+      <main className="mx-auto max-w-2xl px-5 pb-10 pt-9 sm:px-8 sm:pt-14">
+        <p className="text-xs font-semibold tracking-wide text-accent uppercase">Volley Coach</p>
+        <h1 className="mt-3 max-w-xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+          O que você quer praticar hoje?
         </h1>
-        <p className="mt-5 max-w-xl text-lg leading-8 text-muted">
-          Explicações simples para tirar dúvidas e aproveitar melhor cada treino e partida.
+        <p className="mt-3 max-w-xl leading-7 text-muted">
+          Regras claras e treinos práticos para levar direto à quadra.
         </p>
 
-        <section className="mt-10" aria-labelledby="search-title">
-          <h2 className="mb-3 text-lg font-semibold text-foreground" id="search-title">
-            Qual é a sua dúvida?
-          </h2>
+        <section className="mt-7" aria-label="Buscar uma regra">
           <SearchForm />
         </section>
 
-        <section className="mt-14" aria-labelledby="learning-title">
-          <h2 className="text-2xl font-bold tracking-tight text-foreground" id="learning-title">
-            O que você quer aprender hoje?
-          </h2>
-          <ul className="mt-5 grid gap-4 sm:grid-cols-3">
+        <section className="mt-9" aria-labelledby="learning-title">
+          <div className="flex items-center justify-between gap-3">
+            <h2 className="text-xl font-bold tracking-tight text-foreground" id="learning-title">
+              Comece por aqui
+            </h2>
+            <Link className="min-h-11 rounded-lg px-2 py-3 text-sm font-semibold text-accent hover:text-accent-strong" to="/more">
+              Ver tudo <span aria-hidden="true">→</span>
+            </Link>
+          </div>
+          <ul className="mt-3 grid grid-cols-2 gap-3 sm:gap-4">
             {homeShortcuts.map((shortcut) => (
               <LearningShortcutCard key={shortcut.path} shortcut={shortcut} />
             ))}

@@ -1,5 +1,7 @@
 # Validação — Quiz rápido
 
+> Registro histórico da versão inicial da feature 005. O escopo atual foi ampliado pela spec 014; consulte `specs/014-quiz-topics-and-levels/validation.md` para o estado do quiz com filtros e 45 perguntas. Os números e passos de cinco perguntas abaixo descrevem apenas a versão original.
+
 ## Escopo validado
 
 Validação da feature `005-quiz`, realizada antes da revisão da Pull Request.

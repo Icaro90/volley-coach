@@ -4,6 +4,7 @@ import { rules } from '../../rules/data/rules'
 import { AppHeader } from '../../../shared/components/AppHeader'
 import { BackLink } from '../../../shared/components/BackLink'
 import { searchRules } from '../utils/searchRules'
+import { SearchForm } from '../components/SearchForm'
 
 export function SearchResultsPage() {
   const [searchParams] = useSearchParams()
@@ -17,14 +18,10 @@ export function SearchResultsPage() {
         <main className="mx-auto max-w-2xl px-5 py-12 sm:px-8 sm:py-16">
           <h1 className="text-3xl font-bold text-foreground">Digite uma dúvida para pesquisar</h1>
           <p className="mt-3 text-muted">
-            Use o campo da Home para encontrar uma regra básica de vôlei.
+            Pesquise uma regra básica de vôlei pelo assunto ou situação.
           </p>
-          <div className="mt-6 flex flex-wrap gap-4">
-            <BackLink to="/">Voltar para a Home</BackLink>
-            <Link className="font-semibold text-accent underline hover:text-accent-strong" to="/rules">
-              Ver todas as regras
-            </Link>
-          </div>
+          <div className="mt-6"><SearchForm /></div>
+          <Link className="mt-5 inline-block font-semibold text-accent underline hover:text-accent-strong" to="/rules">Ver todas as regras</Link>
         </main>
       </div>
     )

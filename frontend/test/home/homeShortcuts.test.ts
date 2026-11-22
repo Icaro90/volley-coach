@@ -2,8 +2,8 @@ import { describe, expect, test } from 'vitest'
 import { homeShortcuts } from '../../src/features/home/data/homeShortcuts'
 
 describe('homeShortcuts', () => {
-  test('provides the three learning paths planned for the MVP', () => {
-    expect(homeShortcuts.map((shortcut) => shortcut.path)).toEqual(['/rules', '/rotation', '/quiz'])
+  test('provides exactly the four essential home destinations', () => {
+    expect(homeShortcuts.map((shortcut) => shortcut.path)).toEqual(['/rules', '/training', '/quiz', '/favorites'])
   })
 
   test('uses unique paths with a title and description for every shortcut', () => {

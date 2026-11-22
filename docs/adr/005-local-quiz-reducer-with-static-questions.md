@@ -1,5 +1,7 @@
 # ADR 005 — Quiz local com perguntas estáticas e reducer de estados
 
+> Decisão registrada para a implementação inicial de cinco perguntas. A spec 014 estendeu o catálogo para 45 perguntas com filtros por tema e dificuldade; as decisões de execução local, ordem estável e reducer continuam válidas.
+
 ## Status
 
 Aceita.

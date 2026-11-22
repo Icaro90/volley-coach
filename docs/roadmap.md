@@ -45,16 +45,18 @@ O MVP está concluído: as cinco features acima permitem consultar regras, pesqu
 | 018 | Scout simples de partida | Parcial; falta confirmação ao excluir; cobertura de cenários e teste Android pendentes |
 | 019 | Compartilhar conteúdo | Parcial; falta fallback quando compartilhamento falha e validar URL canônica |
 | 020 | Atalhos essenciais na Home | Implementada; APK debug atualizado, teste manual Android pendente |
-| 021 | Presença e disponibilidade | Especificada; desenvolvimento pendente |
-| 022 | Ficha dos atletas | Especificada; desenvolvimento pendente |
-| 023 | Avaliação por fundamento | Especificada; desenvolvimento pendente |
-| 024 | Desafios da semana | Especificada; desenvolvimento pendente |
-| 025 | Plano de jogo | Especificada; desenvolvimento pendente |
-| 026 | Biblioteca de formações | Especificada; desenvolvimento pendente |
-| 027 | Modo treino no ginásio | Especificada; desenvolvimento pendente |
-| 028 | Exportação e backup | Especificada; desenvolvimento pendente |
-| 029 | Acesso para comissão técnica | Especificada; desenvolvimento pendente |
-| 030 | Adaptações por categoria | Especificada; desenvolvimento pendente |
+| 021 | Presença e disponibilidade | Implementada localmente; teste Android manual pendente |
+| 022 | Ficha dos atletas | Implementada localmente; teste Android manual pendente |
+| 023 | Avaliação por fundamento | Implementada localmente; teste Android manual pendente |
+| 024 | Desafios da semana | Implementada localmente; teste Android manual pendente |
+| 025 | Plano de jogo | Implementada localmente; teste Android manual pendente |
+| 026 | Biblioteca de formações | Implementada localmente; teste Android manual pendente |
+| 027 | Modo treino no ginásio | Implementada localmente; teste Android manual pendente |
+| 028 | Exportação e backup | Implementada localmente; teste Android manual pendente |
+| 029 | Acesso para comissão técnica | Pendente: decisão de backend/autenticação e revisão de privacidade |
+| 030 | Adaptações por categoria | Pendente: revisão técnica/editorial qualificada |
+| 031 | Placar de partida | Implementada localmente; teste Android manual pendente |
+| 032 | Histórico e scout vinculados ao placar | Implementada com opt-in; teste Android manual pendente |
 
 ### Sequência de dependências usada
 
@@ -81,4 +83,13 @@ O MVP está concluído: as cinco features acima permitem consultar regras, pesqu
 
 Sugestão de execução: 022 primeiro; depois 021, 023, 024, 025 e 026 em paralelo conceitual; 027 pode ser desenvolvido independentemente; 028 deve começar com exportação/importação local e ampliar o formato conforme os dados evoluem; 029 depende de decisão e implementação de sincronização; 030 depende de conteúdo e perfis por categoria.
 
-As funcionalidades permanecem offline-first e sem contas ou backend. Favoritos, diário e scout usam armazenamento local no navegador/WebView. A suíte frontend passou com 22 arquivos e 76 testes; lint e build passaram. O APK debug foi atualizado com as mudanças da Home, mas ainda falta teste em aparelho/emulador. Pendências funcionais específicas estão registradas nas specs 018 e 019.
+### Próxima etapa — Placar e análise de partida
+
+| Spec | Feature | Dependências sugeridas |
+| --- | --- | --- |
+| 031 | Placar de partida | Independente; usar regras configuráveis e funcionar sozinho |
+| 032 | Histórico e scout vinculados ao placar | 031 Placar e integração com 018 Scout; opt-in por partida |
+
+Implementar primeiro o placar autônomo, com correção segura de pontos, sets e recuperação da partida em andamento. A integração 032 é opcional: o usuário pode salvar o resultado no histórico e iniciar ou associar um scout, sem tornar esses recursos obrigatórios para usar o placar.
+
+Os dados implementados permanecem offline-first e sem contas/backend. Equipe, presença, avaliação, desafios, planos, formações, placar, histórico, diário e scout usam armazenamento local e o backup pode exportá-los. A suíte frontend passou com 27 arquivos e 87 testes; lint e build passaram, restando dois avisos `react(only-export-components)` nos providers de scout e favoritos. APK debug das features locais foi gerado; teste em aparelho/emulador ainda pendente. As features 029 e 030 seguem bloqueadas pelas dependências descritas acima; pendências anteriores de 018/019 também permanecem.

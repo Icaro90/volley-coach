@@ -41,6 +41,10 @@ Para gerar um APK debug, depois de sincronizar, execute em `mobile/android`:
 
 O arquivo fica em `mobile/android/app/build/outputs/apk/debug/app-debug.apk`.
 
+Na implementação das features 021–032, uma cópia gerada foi colocada em `C:\Users\pilpa\Documents\Codex\2026-11-21\queri\outputs\Volley-Coach-debug-021-032.apk`.
+
+As features locais 021–028 e 031–032 usam o frontend compartilhado e armazenamento do WebView; gere o build web e sincronize novamente antes de compilar o APK para incorporar essas telas. O placar e os vínculos de histórico/scout são locais e o vínculo é opcional. Features 029 e 030 não estão disponíveis no APK até a definição de backend/revisão de conteúdo correspondente.
+
 O Android Studio abre o projeto em `mobile/android`. Selecione um dispositivo ou emulador e use **Run** para instalar e abrir o app. O identificador Android é `com.volleycoach.app`.
 
 O launcher icon usa um vetor de bola de vôlei nos formatos adaptativo e fallback. Edite os recursos em `android/app/src/main/res/`.

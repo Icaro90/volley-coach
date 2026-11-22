@@ -8,6 +8,7 @@ type ScoutContextValue = {
   addMatch: (match: ScoutMatch) => void
   updateMatch: (id: string, action: ScoutAction) => void
   removeMatch: (id: string) => void
+  linkScoreboard: (id: string, scoreboardId: string) => void
 }
 
 const ScoutContext = createContext<ScoutContextValue | null>(null)
@@ -20,6 +21,7 @@ export function ScoutProvider({ children }: { children: ReactNode }) {
     addMatch: (match) => setMatches((items) => [match, ...items]),
     updateMatch: (id, action) => setMatches((items) => items.map((match) => match.id === id ? scoutReducer(match, action) : match)),
     removeMatch: (id) => setMatches((items) => items.filter((match) => match.id !== id)),
+    linkScoreboard: (id, scoreboardId) => setMatches((items) => items.map((match) => match.id === id ? { ...match, scoreboardId } : match)),
   }), [matches, isSaved, setMatches])
   return <ScoutContext.Provider value={value}>{children}</ScoutContext.Provider>
 }

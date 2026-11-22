@@ -3,7 +3,7 @@ import { ThemeToggle } from './ThemeToggle'
 
 export function AppHeader() {
   const { pathname } = useLocation()
-  const morePaths = ['/more', '/rotation', '/diary', '/quick-reference', '/glossary', '/scout']
+  const morePaths = ['/more', '/rotation', '/diary', '/quick-reference', '/glossary', '/scout', '/team', '/scoreboard', '/court-mode', '/backup']
   const currentTab = pathname === '/' ? 'home' : pathname === '/search' ? 'search' : pathname.startsWith('/training') ? 'training' : morePaths.some((path) => pathname === path || pathname.startsWith(`${path}/`)) ? 'more' : null
   const links = [
     { id: 'home', label: 'Início', path: '/', icon: '⌂' },

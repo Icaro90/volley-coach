@@ -4,7 +4,7 @@ Este diretório contém o projeto Android nativo empacotado com Capacitor. A int
 
 ## Requisitos
 
-- Node.js 22 ou superior;
+- Node.js 24 ou superior (Node 24.11.0 é usado na CI);
 - Android Studio com Android SDK instalado.
 
 ## Preparar e abrir o app
@@ -33,4 +33,14 @@ cd ../mobile
 npm run android:sync
 ```
 
+Para gerar um APK debug, depois de sincronizar, execute em `mobile/android`:
+
+```bash
+./gradlew assembleDebug
+```
+
+O arquivo fica em `mobile/android/app/build/outputs/apk/debug/app-debug.apk`.
+
 O Android Studio abre o projeto em `mobile/android`. Selecione um dispositivo ou emulador e use **Run** para instalar e abrir o app. O identificador Android é `com.volleycoach.app`.
+
+O launcher icon usa um vetor de bola de vôlei nos formatos adaptativo e fallback. Edite os recursos em `android/app/src/main/res/`.

@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Disponibilizar o Volley Coach como aplicativo instalável para Android, reaproveitando as telas, o conteúdo e as interações já definidas nas specs 001–010.
+Disponibilizar o Volley Coach como aplicativo instalável para Android, reaproveitando as telas, o conteúdo e as interações web existentes.
 
 ## Usuário
 
@@ -16,8 +16,9 @@ O app usa Capacitor 8 como contêiner Android do frontend React existente. O pro
 
 - O projeto Android é separado do diretório do frontend.
 - O app tem nome `Volley Coach` e identificador `com.volleycoach.app`.
+- O launcher icon apresenta uma bola de vôlei em formato adaptativo e em fallback vetorial.
 - O build Android carrega os arquivos gerados pelo frontend.
-- As rotas Home, regras e detalhes, busca, rodízio e quiz permanecem disponíveis no app.
+- As rotas implementadas do frontend permanecem disponíveis no app.
 - A navegação e a preferência de tema existentes continuam sendo usadas.
 - O repositório documenta como sincronizar e abrir o projeto no Android Studio.
 

@@ -16,10 +16,11 @@ function renderSearchResults(path: string) {
 }
 
 describe('SearchResultsPage', () => {
-  test('guides the person when the query parameter is missing', () => {
+  test('offers a working search form when the query parameter is missing', () => {
     renderSearchResults('/search')
 
     expect(screen.getByRole('heading', { name: 'Digite uma dúvida para pesquisar' })).toBeDefined()
+    expect(screen.getByRole('searchbox', { name: 'Pesquisar uma regra' })).toBeDefined()
     expect(screen.getByRole('link', { name: 'Ver todas as regras' })).toHaveAttribute('href', '/rules')
   })
 

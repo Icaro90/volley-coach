@@ -1,12 +1,12 @@
 # Arquitetura
 
-## Estado atual do MVP
+## Estado atual da aplicação
 
-O MVP começa como uma aplicação frontend, responsável por apresentar conteúdo educativo e conduzir a pessoa entre as áreas do produto. Nesta fase, a Home não depende de API, autenticação ou persistência.
+O produto é uma aplicação React frontend-first com conteúdo educativo estático e recursos offline. Não depende de API, autenticação ou serviço remoto.
 
 Essa escolha permite validar a experiência de navegação e aprendizado antes de introduzir complexidade operacional e de domínio no backend.
 
-## Fronteiras iniciais
+## Fronteiras atuais
 
 ```text
 Pessoa usuária
@@ -14,17 +14,19 @@ Pessoa usuária
       v
 React + TypeScript (frontend)
       |
-      +-- dados estáticos locais (temporários)
+      +-- catálogos estáticos locais
       +-- rotas da aplicação
+      +-- localStorage para tema, favoritos, diário e scout
+      +-- Capacitor Share para compartilhamento nativo Android
 ```
 
-O backend NestJS, o Prisma e o PostgreSQL permanecem previstos para quando uma funcionalidade exigir dados dinâmicos, como autenticação, favoritos, progresso ou gestão de conteúdo.
+O backend NestJS, o Prisma e o PostgreSQL permanecem opções futuras para funcionalidades que precisem de dados dinâmicos ou sincronização. Favoritos, diário e scout usam armazenamento local e não exigem backend.
 
 ## Aplicativo Android
 
-O app Android reutiliza o frontend React por meio do Capacitor 8. A plataforma nativa fica isolada em `mobile/android`; o `webDir` aponta para `frontend/dist`. O fluxo de desenvolvimento compila o frontend primeiro e depois sincroniza os assets para o projeto Android. Não há API, persistência nativa ou conteúdo duplicado. A configuração e as tarefas estão descritas em [specs/011-android-app](../specs/011-android-app/spec.md).
+O app Android reutiliza o frontend React por meio do Capacitor 8. A plataforma nativa fica isolada em `mobile/android`; o `webDir` aponta para `frontend/dist`. O build compila o frontend e sincroniza os assets para o projeto Android. O WebView usa armazenamento local do próprio app. O plugin Capacitor Share abre a folha nativa. O launcher icon usa recursos vetoriais com a ilustração da bola de vôlei. A configuração está descrita em [specs/011-android-app](../specs/011-android-app/spec.md).
 
-## Rotas planejadas
+## Rotas atuais
 
 | Rota | Responsabilidade | Estado inicial |
 | --- | --- | --- |
@@ -32,7 +34,34 @@ O app Android reutiliza o frontend React por meio do Capacitor 8. A plataforma n
 | `/rules` | Consultar regras básicas | Implementada na feature `002-rules` |
 | `/search` | Exibir resultados de uma busca de regras | Implementada na feature `003-search` |
 | `/rotation` | Explicar rodízio | Implementada na feature `004-rotation` |
-| `/quiz` | Praticar regras básicas por perguntas | Implementada na feature `005-quiz` |
+| `/quiz` | Praticar perguntas filtradas por tema e dificuldade | Implementada nas features `005-quiz` e `014-quiz-topics-and-levels` |
+| `/favorites` | Consultar regras e exercícios salvos localmente | Implementada na feature `012-favorites` |
+| `/training` | Filtrar o catálogo de exercícios | Implementada na feature `013-guided-training` |
+| `/training/:exerciseId` | Consultar, favoritar e compartilhar um exercício | Implementada na feature `013-guided-training` |
+| `/diary` | Criar, editar e excluir registros de treino | Implementada na feature `015-training-diary` |
+| `/quick-reference` | Buscar respostas breves para situações comuns | Implementada na feature `016-quick-reference` |
+| `/glossary` | Buscar termos por texto e categoria | Implementada na feature `017-volleyball-glossary` |
+| `/glossary/:termId` | Consultar termo e referências relacionadas | Implementada na feature `017-volleyball-glossary` |
+| `/scout` | Criar e listar partidas | Implementada parcialmente na feature `018-match-scout` |
+| `/scout/:matchId` | Atualizar placar e consultar eventos | Implementada parcialmente na feature `018-match-scout` |
+| `/more` | Listar recursos secundários agrupados | Implementada na feature `020-essential-home-shortcuts` |
+
+## Navegação principal
+
+O cabeçalho mostra a marca e o controle de tema. A navegação inferior fixa tem quatro destinos: Início (`/`), Buscar (`/search`), Treinos (`/training`) e Mais (`/more`). A Home limita os cartões principais a Regras, Treinos, Quiz e Favoritos; `/more` agrupa Rodízio, Diário, Consulta rápida, Glossário e Scout. O botão Buscar abre um formulário mesmo quando `q` ainda não está na URL. A barra inferior reserva espaço e respeita a área segura do Android.
+
+## Persistência local e compartilhamento
+
+A função `useLocalJsonState` lê e grava dados serializados defensivamente no `localStorage`, com chaves namespaced e validação do formato.
+
+| Dado | Chave | Consumidor | Escopo |
+| --- | --- | --- | --- |
+| Preferência visual | `volley-coach.theme` | `ThemeProvider` | Navegador/instalação local |
+| Favoritos de regras e exercícios | `volley-coach.favorites.v1` | `FavoritesProvider` | Navegador/instalação local |
+| Diário de treino | `volley-coach.diary.v1` | `DiaryPage` | Navegador/instalação local |
+| Partidas de scout | `volley-coach.scout.v1` | `ScoutProvider` | Navegador/instalação local |
+
+Os registros não sincronizam entre dispositivos e podem ser removidos ao limpar os dados do app. O quiz mantém somente estado da sessão. Compartilhamento está nos detalhes de regra, exercício e termo: usa Capacitor Share no Android e Web Share API na web; a cópia de URL está disponível quando a API não existe. Ainda falta fallback quando a API falha e validar que a URL compartilhada aponta ao domínio publicado.
 
 ## Consulta de regras básicas
 
@@ -120,22 +149,34 @@ O código de produção do frontend é organizado por feature. Cada feature mant
 frontend/src/
 ├── app/                         # composição global de rotas
 ├── features/
-│   ├── home/                    # Home, atalhos e seus dados
+│   ├── home/                    # Home, atalhos, página Mais e dados
 │   ├── rules/                   # lista, detalhe, conteúdo e SVGs
 │   ├── search/                  # formulário, resultados e utilitário
 │   ├── rotation/                # página, componentes, dados e utilitário
-│   └── quiz/                    # página, componentes, dados e reducer
+│   ├── quiz/                    # catálogo por tema/nível e sessão
+│   ├── favorites/               # lista de favoritos
+│   ├── training/                # catálogo e detalhes de exercícios
+│   ├── diary/                   # registros de sessões
+│   ├── quick-reference/         # consulta compacta de regras
+│   ├── glossary/                # busca e detalhes de termos
+│   └── scout/                   # placar, eventos e partidas
 ├── shared/
-│   ├── components/              # componentes reutilizados entre features
-│   └── theme/                   # tema transversal, provider e persistência local
+│   ├── components/              # navegação, tema e compartilhamento
+│   ├── favorites/               # provider e controle compartilhado
+│   ├── storage/                 # persistência JSON defensiva
+│   └── theme/                   # tema e preferência local
 ├── index.css                    # estilos globais mínimos
 └── main.tsx                     # ponto de entrada React
 
 frontend/test/
+├── home/                          # testes dos atalhos
+├── theme/                         # armazenamento e alternância do tema
 ├── rules/                       # testes da feature rules
 ├── search/                      # testes da feature search
 ├── rotation/                    # testes da feature rotation
-└── quiz/                        # testes da feature quiz
+├── quiz/                        # testes do catálogo e sessão de quiz
+├── scout/                       # testes do reducer de partida
+└── shared/                      # testes de armazenamento local
 ```
 
 Uma peça de produção deve ficar dentro da feature enquanto tiver um único contexto de negócio. Ela só deve ir para `shared` quando for reutilizada por mais de uma feature e não carregar regra de negócio específica. Essa regra evita um diretório global de componentes sem dono claro. Testes ficam fora de `src` para separar o código distribuído da infraestrutura de verificação, mas mantêm o mesmo nome de feature para preservar a rastreabilidade.
@@ -182,7 +223,7 @@ Os testes de componente usam React Testing Library e `jsdom`. Eles verificam o q
 
 O frontend é publicado como uma SPA estática na Vercel. O projeto Vercel usa `frontend/` como diretório raiz, executa `npm run build` e publica `dist/`. A branch `hom` representa o ambiente de homologação, enquanto `main` representa produção. A Vercel publica automaticamente somente essas duas branches; branches de feature não recebem Preview Deployment automático.
 
-Como React Router resolve as rotas no cliente, `frontend/vercel.json` reescreve solicitações para `index.html`. Isso permite abrir diretamente `/rules`, `/search`, `/rotation` ou `/quiz` sem receber 404 do servidor estático.
+Como React Router resolve as rotas no cliente, `frontend/vercel.json` reescreve solicitações para `index.html`. Isso permite abrir diretamente qualquer rota da aplicação sem receber 404 do servidor estático.
 
 ```text
 feature/* --push--> GitHub Actions: npm ci -> test -> lint -> build
@@ -273,7 +314,7 @@ Os testes cobrirão os dados dos cenários, a derivação da pessoa que saca e a
 
 ## Quiz rápido
 
-A feature `005-quiz` permanece no frontend e pratica cinco regras básicas já presentes no catálogo local. As perguntas não são buscadas em rede e a pontuação existe somente durante a sessão atual da página.
+A feature `005-quiz`, estendida pela `014-quiz-topics-and-levels`, permanece no frontend e pratica perguntas em cinco temas e três níveis. As 45 perguntas ficam locais e a pontuação existe somente durante a sessão atual da página.
 
 ```text
 Route `/quiz`
@@ -281,7 +322,8 @@ Route `/quiz`
       v
 QuizPage
       |
-      +-- perguntas estáticas tipadas
+      +-- perguntas locais tipadas por tema e dificuldade
+      +-- filtro antes da sessão
       +-- quizReducer (função pura)
       +-- estado: intro | question | feedback | result
       +-- índice atual, resposta selecionada e pontuação
@@ -300,13 +342,13 @@ Cada pergunta terá identificador estável, enunciado, alternativas, identificad
 
 Alternativas serão controles semânticos de seleção dentro de um `fieldset` com `legend` para o enunciado. O feedback será anunciado com uma região `aria-live`, e os botões terão textos que descrevem a próxima ação. A página deve manter uma pergunta visível por vez e oferecer um link para `/rules` ao final.
 
-Não haverá aleatoriedade no MVP: a ordem fixa torna o aprendizado e os testes determinísticos. Quando houver conteúdo maior ou progresso persistido, a fonte de perguntas e a estratégia de seleção poderão ser reavaliadas.
+Não há aleatoriedade na sessão: a ordem fixa do catálogo filtrado torna o aprendizado e os testes determinísticos. Quando houver mais conteúdo, a estratégia de seleção poderá ser reavaliada.
 
 ## Decisões de qualidade
 
 - Mobile-first: a interface é desenhada primeiro para telas pequenas e depois adaptada a telas maiores.
 - Acessibilidade básica desde o início: controles semânticos, foco visível e uso por teclado.
-- Sem estado global de produto: features não possuem estado de negócio compartilhado que justifique uma solução global. O único contexto transversal atual é a preferência visual de tema, limitada a `shared/theme/`.
+- Estado compartilhado fica limitado a Context providers pequenos para tema, favoritos e scout; o diário usa estado local da página com persistência defensiva.
 - Sem TanStack Query por enquanto: não há comunicação assíncrona com servidor. A biblioteca será introduzida quando houver uma API para consultar.
 
 ## Evolução prevista

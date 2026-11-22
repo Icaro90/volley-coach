@@ -102,6 +102,10 @@ O projeto Android nativo fica isolado em `mobile/` e usa o frontend de `frontend
 
 Antes de uma Pull Request, execute `npm run test`, `npm run lint` e `npm run build`.
 
+## Fluxo de branches
+
+Crie branches de trabalho a partir de `hom` e use os prefixos `feature/`, `fix/`, `docs/` ou `chore/`. Um push em `feature/**` abre automaticamente uma Pull Request para `hom`; os demais tipos de branch usam PR manual. Consulte o [fluxo de desenvolvimento](docs/development-workflow.md) para convenções, exemplos e configuração da automação.
+
 ## Deploy e release
 
 ### URL de produção

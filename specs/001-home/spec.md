@@ -1,5 +1,7 @@
 # Spec 001 — Home
 
+> A organização original de três atalhos foi substituída pela spec 020: a Home atual prioriza Regras, Treinos, Quiz e Favoritos, com os demais destinos na navegação inferior e em **Mais**.
+
 ## Objetivo
 
 Oferecer uma tela inicial simples que ajude jogadores iniciantes a encontrar rapidamente o conteúdo que desejam aprender sobre regras de vôlei.

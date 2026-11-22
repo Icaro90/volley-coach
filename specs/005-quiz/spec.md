@@ -1,5 +1,7 @@
 # Spec 005 — Quiz rápido
 
+> A spec 014 estendeu esta versão inicial de cinco perguntas: o quiz atual possui 45 perguntas, filtros por tema e dificuldade e sessão calculada sobre o conjunto filtrado.
+
 ## Objetivo
 
 Permitir que jogadores iniciantes reforcem o entendimento das regras básicas de vôlei respondendo a um quiz curto, recebendo feedback imediato e vendo seu resultado ao final.

@@ -1,5 +1,7 @@
 # Validação — Home
 
+> Registro histórico da Home original. A organização atual, com quatro atalhos essenciais, navegação inferior e página **Mais**, está validada em `specs/020-essential-home-shortcuts/validation.md`.
+
 ## Escopo validado
 
 Validação final da feature `001-home`, realizada antes da revisão da Pull Request.

@@ -1,6 +1,8 @@
 import { useParams } from 'react-router'
 import { AppHeader } from '../../../shared/components/AppHeader'
 import { BackLink } from '../../../shared/components/BackLink'
+import { FavoriteToggle } from '../../../shared/favorites/FavoriteToggle'
+import { ShareButton } from '../../../shared/components/ShareButton'
 import { rules } from '../data/rules'
 
 function formatReviewDate(date: string) {
@@ -36,7 +38,10 @@ export function RuleDetailPage() {
 
       <main className="mx-auto max-w-2xl px-5 py-12 sm:px-8 sm:py-16">
         <BackLink to="/rules">Voltar para as regras básicas</BackLink>
-        <h1 className="mt-6 text-4xl font-bold tracking-tight text-foreground">{rule.title}</h1>
+        <div className="mt-6 flex flex-wrap items-start justify-between gap-3">
+          <h1 className="text-4xl font-bold tracking-tight text-foreground">{rule.title}</h1>
+          <div className="flex flex-wrap gap-2"><FavoriteToggle id={rule.id} label={rule.title} type="rule" /><ShareButton title={rule.title} text={rule.summary} path={`/rules/${rule.id}`} /></div>
+        </div>
         <p className="mt-4 text-lg leading-8 text-muted">{rule.summary}</p>
 
         <figure className="mt-8 overflow-hidden rounded-2xl border border-accent/30 bg-accent-subtle p-3 sm:p-5">

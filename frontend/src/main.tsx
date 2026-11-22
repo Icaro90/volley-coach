@@ -6,13 +6,14 @@ import App from './app/App.tsx'
 import { ThemeProvider } from './shared/theme/ThemeProvider.tsx'
 import { FavoritesProvider } from './shared/favorites/FavoritesProvider.tsx'
 import { ScoutProvider } from './features/scout/state/ScoutProvider.tsx'
+import { TeamProvider } from './features/team/state/TeamProvider.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ThemeProvider>
       <BrowserRouter>
         <FavoritesProvider>
-          <ScoutProvider><App /></ScoutProvider>
+          <ScoutProvider><TeamProvider><App /></TeamProvider></ScoutProvider>
         </FavoritesProvider>
       </BrowserRouter>
     </ThemeProvider>

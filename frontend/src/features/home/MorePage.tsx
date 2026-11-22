@@ -17,6 +17,15 @@ const sections = [
       { title: 'Scout de partida', description: 'Placar e eventos do jogo', path: '/scout', icon: '📊' },
     ],
   },
+  {
+    title: 'Gestão do time e partidas',
+    links: [
+      { title: 'Placar de partida', description: 'Contagem rápida de pontos e sets', path: '/scoreboard', icon: '🏐' },
+      { title: 'Gestão do time', description: 'Atletas, presença e planos de jogo', path: '/team', icon: '👥' },
+      { title: 'Modo de quadra', description: 'Controles grandes e cronômetro', path: '/court-mode', icon: '⏱️' },
+      { title: 'Backup de dados', description: 'Exportar e importar seus registros', path: '/backup', icon: '💾' },
+    ],
+  },
 ]
 
 export function MorePage() {

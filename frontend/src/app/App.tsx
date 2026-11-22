@@ -15,12 +15,20 @@ import { GlossaryTermPage } from '../features/glossary/pages/GlossaryTermPage'
 import { ScoutPage } from '../features/scout/pages/ScoutPage'
 import { MatchDetailPage } from '../features/scout/pages/MatchDetailPage'
 import { MorePage } from '../features/home/MorePage'
+import { TeamPage } from '../features/team/pages/TeamPage'
+import { ScoreboardPage } from '../features/scoreboard/pages/ScoreboardPage'
+import { CourtModePage } from '../features/court-mode/pages/CourtModePage'
+import { DataBackupPage } from '../features/backup/pages/DataBackupPage'
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/more" element={<MorePage />} />
+      <Route path="/team" element={<TeamPage />} />
+      <Route path="/scoreboard" element={<ScoreboardPage />} />
+      <Route path="/court-mode" element={<CourtModePage />} />
+      <Route path="/backup" element={<DataBackupPage />} />
       <Route path="/rules" element={<RulesPage />} />
       <Route path="/rules/:ruleId" element={<RuleDetailPage />} />
       <Route path="/search" element={<SearchResultsPage />} />

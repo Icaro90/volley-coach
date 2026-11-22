@@ -17,11 +17,12 @@ Adotar `hom` como branch de homologação e manter `main` como branch de produç
 - O GitHub Actions executará qualidade em cada `push` de qualquer branch.
 - A Vercel será configurada para criar deploy automático apenas para `hom` e `main`.
 - Após um push em `hom`, o GitHub Actions criará uma Pull Request de `hom` para `main` somente se ainda não houver uma aberta com a mesma origem e destino.
+- Após um push em qualquer branch `feature/**`, o GitHub Actions criará uma Pull Request dessa branch para `hom` somente se ainda não houver uma aberta com a mesma origem e destino. Commits posteriores atualizam a PR existente.
 - A PR automática não será mesclada automaticamente. A validação manual da homologação e a revisão continuam necessárias antes do merge em `main`.
-- O job de criação da PR receberá `pull-requests: write`; os demais jobs manterão apenas `contents: read`.
+- Os jobs de criação automática de PR recebem `pull-requests: write`; os demais jobs manterão apenas `contents: read`.
 - Nas configurações do repositório, GitHub Actions deverá estar autorizado a criar Pull Requests com `GITHUB_TOKEN`.
 
-O fluxo esperado é `feature/*` → `hom` → `main`. Novas features devem partir de `hom`, para que integrem a versão que será homologada.
+O fluxo esperado é `feature/*` → `hom` → `main`. Branches de feature seguem `feature/<spec>-<resumo-em-kebab-case>` e devem partir de `hom`, para que integrem a versão que será homologada. Branches `fix/*`, `docs/*` e `chore/*` também partem de `hom` e abrem PR manual para essa branch. Os detalhes estão em `docs/development-workflow.md`.
 
 ## Consequências
 
@@ -35,7 +36,7 @@ O fluxo esperado é `feature/*` → `hom` → `main`. Novas features devem parti
 
 ### Negativas
 
-- A pessoa desenvolvedora precisa manter `hom` atualizada e abrir Pull Requests de feature para ela.
+- O primeiro push de uma branch `feature/**` depende da permissão de Actions para abrir Pull Requests com `GITHUB_TOKEN`.
 - A configuração do projeto Vercel precisa associar a branch `hom` ao ambiente de homologação.
 - O workflow precisa de uma permissão adicional e limitada para criar Pull Requests.
 - A pessoa proprietária precisa habilitar essa capacidade nas configurações de Actions do repositório antes da primeira promoção.
